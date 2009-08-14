@@ -1,7 +1,18 @@
 %h1 
-  Welcome to Noel
+  WebTrends Tracker
 %form{:action => '/add', :method => 'get'}
-  %label
-    Tag:
-  %input{:id=>'input_wt_tag', :type=>'text', :name => 'input_wt_tag_name'}
-  %input{:id=>'input_wt_submit', :type=>'submit', :value=>'Add Tag'}
+  .form_row
+    %label
+      Tag:
+    %input{:id=>'input_wt_tag', :type=>'text', :name => 'input_wt_tag_name'}
+  .form_row
+    %label
+      Event
+    %select{:id=>'select_wt_event', :name=>'select_wt_event_name'}
+      %option{}Ads
+      %option{}Event
+      %option{}onclick
+      %option{}onchange
+  .form_row.last
+    %input{:id=>'input_wt_submit', :type=>'submit', :value=>'Add Tag'}
+
