@@ -1,0 +1,7 @@
+%h1 
+  Welcome to Noel
+%form{:action => '/add', :method => 'get'}
+  %label
+    Tag:
+  %input{:id=>'input_wt_tag', :type=>'text', :name => 'input_wt_tag_name'}
+  %input{:id=>'input_wt_submit', :type=>'submit', :value=>'Add Tag'}
