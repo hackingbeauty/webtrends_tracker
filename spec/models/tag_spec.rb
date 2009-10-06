@@ -12,4 +12,11 @@ describe Tag do
   it "should create a new instance given valid attributes" do
     Tag.create!(@valid_attributes)
   end
+  
+  it "should not create a new instance without a hook" do
+    @valid_attributes.delete(:hook)
+    tag = Tag.create(@valid_attributes)
+    tag.should have(1).errors_on(:hook)
+  end
+  
 end

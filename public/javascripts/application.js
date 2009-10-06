@@ -17,5 +17,17 @@
 
 $(document).ready (function() {
 	
+	$(".name").editInPlace({
+      url: document.location.pathname,
+      params: "_method=put", //to trick Rails into routing this url to the UPDATE
+      error: function(json){
+        var obj = eval( "(" + json.responseText + ")" );
+        var errorMsg = obj['error'];
+        $('#errors').html(errorMsg);
+      },
+      success: function(){
+        $('#errors').html('');
+      }
+  });
 	
 });
