@@ -1,0 +1,37 @@
+%h1
+  Product Name
+%ul  
+  %li
+    = @tag.hook
+  %li
+    = @tag.location
+  %li
+    = @tag.description
+  - if @tag.snapshot.exists?
+    %li
+      = image_tag @tag.snapshot.url
+  - else
+    %li 
+      Upload snapshot
+      - form_for :tag, :html => { :multipart => true } do |form|
+        %div
+          = form.file_field :snapshot
+
+%h2
+  Properties
+%table
+  %thead
+    %tr
+      %th
+        Key
+      %th
+        Value
+  %tbody
+    - @tag.properties.each do |prop|
+      %tr
+        %td
+          = prop.key
+        %td
+          = prop.value
+      
+      
