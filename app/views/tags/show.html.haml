@@ -1,24 +1,24 @@
 %h1
-  Product Name
+  =# @tag.product.name
   
-#errors  
+#errors
 
 %ul  
   %li
     %strong
       Hook:
-    %span.name#hook
+    %span.validate#hook
       = @tag.hook
   %li
     %strong
       Location:
-    %span.name#location
+    %span.validate#location
       = @tag.location
   %li
     %strong
       Description:
-    %span
-    = @tag.description
+    %span.validate#description
+      = @tag.description
   %li
     - if @tag.snapshot.exists?
       %strong

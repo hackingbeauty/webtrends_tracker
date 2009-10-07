@@ -9,7 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091006175016) do
+ActiveRecord::Schema.define(:version => 20091007135612) do
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "properties", :force => true do |t|
     t.string   "key"
@@ -34,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20091006175016) do
     t.string   "snapshot_file_name"
     t.string   "snapshot_content_type"
     t.integer  "snapshot_file_size"
+    t.integer  "product_id"
   end
 
 end

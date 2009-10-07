@@ -15,14 +15,15 @@
       <![endif]
       
     :javascript
-      rails_authenticity_token = '#{form_authenticity_token}'
+      rails_authenticity_token = '#{CGI.escape(form_authenticity_token)}'
     
   %body
     #header
       %ul
-        - Tag::PRODUCTS.each do |product|
+        %li= link_to "All Tags", tags_path
+        - @products.each do |p|
           %li
-            = link_to product, tags_path
+            = link_to p.name, p
     #page
       =show_flashes 
       = yield

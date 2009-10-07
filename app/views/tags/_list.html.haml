@@ -1,0 +1,26 @@
+- if @tags and !@tags.blank?
+  %table
+    %thead
+      %tr
+        %th
+          Hook
+        %th
+          Location
+        %th
+          Description
+        - if params[:action] == "index"
+          %th 
+            Product
+    %tbody
+      - @tags.each do |tag|
+        %tr
+          %td  
+            = link_to tag.hook, tag
+          %td
+            = tag.location
+          %td
+            = tag.description
+          - if params[:action] == "index"
+            %td
+              = tag.product.name
+          
