@@ -1,9 +1,7 @@
 class Tag < ActiveRecord::Base
   has_attached_file :snapshot
   
-  has_many :tag_properties
-  has_many :properties, :through => :tag_properties
-  
+  has_many :key_value_pairs
   belongs_to :product
   
   validates_presence_of :hook

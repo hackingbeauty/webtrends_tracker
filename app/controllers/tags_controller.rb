@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+  skip_before_filter :show_products, :only => :autocomplete
+  
   def index
     @tags = Tag.all
   end
@@ -33,7 +35,7 @@ class TagsController < ApplicationController
   def update_in_place
     @tag = Tag.find_by_id(params[:id])
     @tag.send("#{params[:element_id]}=", params[:update_value]) # set a single attribute from an edit-in-place field
-
+    
     if @tag.save
       render :text => params[:update_value]
     else
@@ -42,9 +44,35 @@ class TagsController < ApplicationController
     end
   end
   
+  def update_prop_in_place
+    @tag = Tag.find_by_id(params[:id])
+
+    # key_or_val will be equal to "key" or "value"
+    key_or_val, kvp_id = params[:element_id].split("_")
+    
+    @kvp = KeyValuePair.find_by_id(kvp_id)
+    @kvp.send("#{key_or_val}=", params[:update_value])
+    @kvp.save
+    render :text => params[:update_value]
+  end
+  
   def destroy
     Tag.find_by_id(params[:id]).destroy
     redirect_to tags_path
+  end
+  
+  def autocomplete
+    case params[:element_id]
+    when "tag_hook"
+      # hook_names = Tag.all(:select => "hook", :conditions => ["hook LIKE ?", "%#{params[:q]}%"]).map {|x| x.hook }
+      hook_names = Tag.all(:select => "hook", :conditions => ["hook LIKE ?", "%#{params[:q]}%"], :limit => 5).map(&:hook)
+      render :text => hook_names.join("\n")
+    when "tag_location"
+      location_names = Tag.all(:select => "location", :conditions => ["location LIKE ?", "%#{params[:q]}%"], :limit => 5).map(&:location)
+      render :text => location_names.join("\n")
+    else
+      render :text => "No autocomplete for this element", :status => 422
+    end
   end
   
 end

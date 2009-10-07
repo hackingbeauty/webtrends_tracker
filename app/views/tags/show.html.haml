@@ -3,21 +3,21 @@
   
 #errors
 
-%ul  
+%ul#tag_attributes  
   %li
     %strong
       Hook:
-    %span.validate#hook
+    %span.validate#hook<
       = @tag.hook
   %li
     %strong
       Location:
-    %span.validate#location
+    %span.validate#location<
       = @tag.location
   %li
     %strong
       Description:
-    %span.validate#description
+    %span.validate#description<
       = @tag.description
   %li
     - if @tag.snapshot.exists?
@@ -32,23 +32,25 @@
         = form.file_field :snapshot
         = form.submit "Save"
 
+    %li
+      - unless @tag.key_value_pairs.blank?
+        %ul#key_value_list
+          - @tag.key_value_pairs.each do |kvp|
+            %li
+              %span.validate_kvp{ :id => "key_#{kvp.id}" }
+                = kvp.key
+              %span.validate_kvp{ :id => "value_#{kvp.id}" }
+                = kvp.value 
+    %li
+      = link_to "Add", "#nogo", :id => "add_key_value"
+                
 = image_tag @tag.snapshot.url if @tag.snapshot.exists?
-
-
-- unless @tag.properties.blank?
-  %h2
-    Properties
-  %table
-    %thead
-      %tr
-        %th
-          Key
-        %th
-          Value
-    %tbody
-      - @tag.properties.each do |prop|
-        %tr
-          %td
-            = prop.key
-          %td
-            = prop.value      
+                 
+#key_value_snippet.hidden
+  %div
+    %input.key_input{:value => "Key" }
+    %input.value_input{:value => "Value" }
+    %input.tag_id_input{:value => @tag.id, :type => "hidden" }
+      = link_to "[save]", "#nogo",  :class => "save_tag_attr"
+      / = link_to "[remove]", "#nogo", :class=>"delete_tag_attr"
+  

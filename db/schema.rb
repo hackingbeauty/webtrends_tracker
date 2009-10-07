@@ -11,22 +11,16 @@
 
 ActiveRecord::Schema.define(:version => 20091007135612) do
 
-  create_table "products", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "properties", :force => true do |t|
+  create_table "key_value_pairs", :force => true do |t|
     t.string   "key"
     t.string   "value"
+    t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "tag_properties", :force => true do |t|
-    t.integer  "tag_id"
-    t.integer  "property_id"
+  create_table "products", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

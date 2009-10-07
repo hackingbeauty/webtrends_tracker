@@ -4,7 +4,9 @@
     %title
       WebTrends Tagging System
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
-    / %link{ :href => "stylesheets/application.css", :rel => "stylesheet", :media => "screen", :type => "text/css" }
+    %link{ :href => "/stylesheets/jquery.autocomplete.css", :rel => "stylesheet", :type => "text/css" }
+
+    %link{ :href => "/stylesheets/application.css", :rel => "stylesheet", :media => "screen", :type => "text/css" }
     /
       [if IE]>
       <link href="stylesheets/ie.css?1250365196" media="screen" rel="stylesheet" type="text/css" />
@@ -15,7 +17,7 @@
       <![endif]
       
     :javascript
-      rails_authenticity_token = '#{CGI.escape(form_authenticity_token)}'
+      rails_authenticity_token = '#{form_authenticity_token}'
     
   %body
     #header
@@ -27,4 +29,4 @@
     #page
       =show_flashes 
       = yield
-    = javascript_include_tag "jquery-1.3.2", "jquery-in-place-editor", "application", :cache => true
+    = javascript_include_tag "jquery-1.3.2", "jquery-in-place-editor", "jquery.autocomplete", "application", :cache => true
