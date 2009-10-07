@@ -9,8 +9,9 @@
         %th
           Description
         - if params[:action] == "index"
-          %th 
+          %th
             Product
+        %th
     %tbody
       - @tags.each do |tag|
         %tr
@@ -23,4 +24,5 @@
           - if params[:action] == "index"
             %td
               = tag.product.name
-          
+          %td
+            = link_to("[x]", tag, :method => :delete, :confirm => "Delete this tag?")
