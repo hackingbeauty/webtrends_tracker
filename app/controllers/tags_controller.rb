@@ -16,9 +16,10 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new(params[:tag])
     if @tag.save
-      redirect_to @tag
+      redirect_to product_path(@tag.product)
     else
-      render :action => :index
+      @product = @tag.product
+      render :action => 'new'
     end
   end
   
@@ -44,7 +45,7 @@ class TagsController < ApplicationController
     end
   end
   
-  def update_prop_in_place
+  def update_kvp_in_place
     @tag = Tag.find_by_id(params[:id])
 
     # key_or_val will be equal to "key" or "value"

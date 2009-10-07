@@ -2,49 +2,30 @@
 
 	//Create PRIMEDIA
 	if(!window.PRIMEDIA) {window['PRIMEDIA'] = {}}	
-
-	//Helper function to check if an element (i.e. div) exists. Argument is element id
-	var exists = function(element) {
-		if (!document.getElementById(element)) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-	window['PRIMEDIA']['exists'] = exists;
-	
-	
-	
+	  
+  $.fn.inPlaceEdit = function(url){
+    $(this).editInPlace({
+      url: url,
+      params: "_method=put&authenticity_token=" + encodeURIComponent(rails_authenticity_token), // to trick Rails into routing this url to the UPDATE
+      error: function(json){
+        var obj = eval( "(" + json.responseText + ")" );
+        var errorMsg = obj['error'];
+        $('#errors').html(errorMsg);
+      },
+      success: function(){
+        $('#errors').html('');
+      }
+    });
+  }
+  
 })();
 
 $(document).ready (function() {
 	
-	$(".validate").editInPlace({
-      url: document.location.pathname + "/update_in_place",
-      params: "_method=put&authenticity_token=" + encodeURIComponent(rails_authenticity_token), // to trick Rails into routing this url to the UPDATE
-      error: function(json){
-        var obj = eval( "(" + json.responseText + ")" );
-        var errorMsg = obj['error'];
-        $('#errors').html(errorMsg);
-      },
-      success: function(){
-        $('#errors').html('');
-      }
-  });
-  
-  $(".validate_kvp").editInPlace({
-      url: document.location.pathname + "/update_prop_in_place",
-      params: "_method=put&authenticity_token=" + encodeURIComponent(rails_authenticity_token), // to trick Rails into routing this url to the UPDATE
-      error: function(json){
-        var obj = eval( "(" + json.responseText + ")" );
-        var errorMsg = obj['error'];
-        $('#errors').html(errorMsg);
-      },
-      success: function(){
-        $('#errors').html('');
-      }
-  });
+	$('.validate').inPlaceEdit(document.location.pathname + "/update_in_place");
 	
+	$('.validate_kvp').inPlaceEdit(document.location.pathname + "/update_kvp_in_place");
+		
   $("#add_key_value").click(function() {
     $('ul#tag_attributes').append($('#key_value_snippet').html());
   });
@@ -73,7 +54,18 @@ $(document).ready (function() {
       }),
       success: function(msg){ 
         parent.remove();
-        $('#key_value_list').append("<li><span class='validate_kvp' id='key_"+ tag_id +"'>" + key + "</span><span class='validate_kvp' id='value_"+ tag_id +"'>"+ val +"</span></li>")
+        var path = document.location.pathname + "/update_kvp_in_place";
+        
+        var key_span = $("<span class='validate_kvp' id='key_"+ tag_id +"'>" + key + "</span>");
+        var val_span = $("<span class='validate_kvp' id='value_"+ tag_id +"'>"+ val +"</span>");
+        
+        var li = $('<li></li>');
+        li.append(key_span);
+        li.append(val_span);
+        $('ul#key_value_list').append(li);
+
+        key_span.inPlaceEdit(path);
+        val_span.inPlaceEdit(path);
       },
       error: function(){
         alert('There was an error saving this key value pair.')

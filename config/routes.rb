@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tags, 
     :member => { 
       :update_in_place => :put, 
-      :update_prop_in_place => :put 
+      :update_kvp_in_place => :put 
     },
     :collection => { 
       :autocomplete => :get 

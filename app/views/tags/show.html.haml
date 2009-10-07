@@ -33,8 +33,8 @@
         = form.submit "Save"
 
     %li
-      - unless @tag.key_value_pairs.blank?
-        %ul#key_value_list
+      %ul#key_value_list
+        - unless @tag.key_value_pairs.blank?
           - @tag.key_value_pairs.each do |kvp|
             %li
               %span.validate_kvp{ :id => "key_#{kvp.id}" }
