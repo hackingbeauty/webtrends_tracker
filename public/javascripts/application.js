@@ -23,11 +23,10 @@
 $(document).ready (function() {
 	
 	$('.validate').inPlaceEdit(document.location.pathname + "/update_in_place");
-	
 	$('.validate_kvp').inPlaceEdit(document.location.pathname + "/update_kvp_in_place");
 		
   $("#add_key_value").click(function() {
-    $('ul#tag_attributes').append($('#key_value_snippet').html());
+    $('ul#key_value_list').append($('#key_value_snippet').html());
   });
 
   $('#tag_hook').autocomplete('/tags/autocomplete', { extraParams: { element_id: "tag_hook" } }); 
@@ -35,6 +34,16 @@ $(document).ready (function() {
   
   $(".delete_tag_attr").live("click", function(){
     $(this).parent().remove();
+    var id = $(this).siblings('.validate_kvp').attr('id').split("_")[1];
+    
+    $.ajax({
+      type: "POST",
+      url: "/key_value_pairs/" + id,
+      data: {
+        "_method": "DELETE",
+        authenticity_token: rails_authenticity_token
+      }
+    });
   });
   
   $(".save_tag_attr").live("click", function(){
@@ -62,7 +71,8 @@ $(document).ready (function() {
         var li = $('<li></li>');
         li.append(key_span);
         li.append(val_span);
-        $('ul#key_value_list').append(li);
+        li.append($('#delete_key_value_snippet').html());
+        $('#key_value_list').append(li);
 
         key_span.inPlaceEdit(path);
         val_span.inPlaceEdit(path);

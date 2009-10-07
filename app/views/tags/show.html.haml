@@ -31,26 +31,10 @@
       %div
         = form.file_field :snapshot
         = form.submit "Save"
+         
+= render :partial => 'key_value_pairs/list'
 
-    %li
-      %ul#key_value_list
-        - unless @tag.key_value_pairs.blank?
-          - @tag.key_value_pairs.each do |kvp|
-            %li
-              %span.validate_kvp{ :id => "key_#{kvp.id}" }
-                = kvp.key
-              %span.validate_kvp{ :id => "value_#{kvp.id}" }
-                = kvp.value 
-    %li
-      = link_to "Add", "#nogo", :id => "add_key_value"
-                
 = image_tag @tag.snapshot.url if @tag.snapshot.exists?
                  
-#key_value_snippet.hidden
-  %div
-    %input.key_input{:value => "Key" }
-    %input.value_input{:value => "Value" }
-    %input.tag_id_input{:value => @tag.id, :type => "hidden" }
-      = link_to "[save]", "#nogo",  :class => "save_tag_attr"
-      / = link_to "[remove]", "#nogo", :class=>"delete_tag_attr"
+
   

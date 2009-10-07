@@ -1,1 +1,20 @@
-= render :partial => 'tags/form'
+%h2 Create a new tag
+
+- form_for :tag, :url => tags_path, :html => { :multipart => true } do |f|
+  = error_messages_for :tag
+  .form_row
+    = f.label :hook
+    = f.text_field :hook
+  .form_row
+    = f.label :location
+    = f.text_field :location
+  .form_row
+    = f.label :description
+    = f.text_area :description
+  .form_row
+    = f.label :snapshot
+    = f.file_field :snapshot
+  .form_row
+    = f.hidden_field :product_id, :value => params[:product_id]
+  .form_row
+    = f.submit "Next"

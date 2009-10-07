@@ -13,10 +13,15 @@ class TagsController < ApplicationController
     end
   end
   
+  def new
+    @tag = Tag.new
+  end
+  
   def create
     @tag = Tag.new(params[:tag])
     if @tag.save
-      redirect_to product_path(@tag.product)
+      redirect_to @tag
+      # redirect_to product_path(@tag.product)
     else
       @product = @tag.product
       render :action => 'new'
