@@ -51,8 +51,6 @@ class TagsController < ApplicationController
   end
   
   def update_kvp_in_place
-    @tag = Tag.find_by_id(params[:id])
-
     # key_or_val will be equal to "key" or "value"
     key_or_val, kvp_id = params[:element_id].split("_")
     

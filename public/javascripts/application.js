@@ -24,7 +24,7 @@ $(document).ready (function() {
 	
 	$('.validate').inPlaceEdit(document.location.pathname + "/update_in_place");
 	$('.validate_kvp').inPlaceEdit(document.location.pathname + "/update_kvp_in_place");
-		
+	
   $("#add_key_value").click(function() {
     $('ul#key_value_list').append($('#key_value_snippet').html());
   });
@@ -65,8 +65,8 @@ $(document).ready (function() {
         parent.remove();
         var path = document.location.pathname + "/update_kvp_in_place";
         
-        var key_span = $("<span class='validate_kvp' id='key_"+ tag_id +"'>" + key + "</span>");
-        var val_span = $("<span class='validate_kvp' id='value_"+ tag_id +"'>"+ val +"</span>");
+        var key_span = $("<span class='validate_kvp' id='key_"+ msg +"'>" + key + "</span>");
+        var val_span = $("<span class='validate_kvp' id='value_"+ msg +"'>"+ val +"</span>");
         
         var li = $('<li></li>');
         li.append(key_span);
