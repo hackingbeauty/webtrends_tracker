@@ -2,7 +2,7 @@
 
 	//Create PRIMEDIA
 	if(!window.PRIMEDIA) {window['PRIMEDIA'] = {}}	
-	  
+	
   $.fn.inPlaceEdit = function(url){
     $(this).editInPlace({
       url: url,
