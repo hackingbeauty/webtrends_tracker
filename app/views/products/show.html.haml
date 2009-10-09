@@ -1,5 +1,8 @@
-%h1= "#{@product.name} Tags"
+#main_head
+
+  %h1= "#{@product.name}"
+  
+  = link_to "Create A New Tag", product_new_tag_path(@product), :class => 'create'
 
 = render :partial => 'tags/list'
 
-= link_to "Create new tag", product_new_tag_path(@product)

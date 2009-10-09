@@ -1,0 +1,6 @@
+#header
+  %ul
+    %li= link_to "All Tags", tags_path
+    - @products.each do |p|
+      %li
+        = link_to p.name, p

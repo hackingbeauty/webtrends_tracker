@@ -2,7 +2,7 @@
   %table
     %thead
       %tr
-        %th
+        %th.left
           Hook
         %th
           Location
@@ -11,7 +11,7 @@
         - if params[:action] == "index"
           %th
             Product
-        %th
+        %th.right
     %tbody
       - @tags.each do |tag|
         %tr
@@ -25,4 +25,6 @@
             %td
               = tag.product.name
           %td
-            = link_to("[x]", tag, :method => :delete, :confirm => "Delete this tag?")
+            = link_to("Delete", tag, :class => "delete", :method => :delete, :confirm => "Delete this tag?")
+    %tfoot
+      %tr

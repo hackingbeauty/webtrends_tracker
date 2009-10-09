@@ -1,6 +1,6 @@
 %h2 Create a new tag
 
-- form_for :tag, :url => tags_path, :html => { :multipart => true } do |f|
+- form_for :tag, :url => tags_path, :html => { :id => 'create_tag', :multipart => true } do |f|
   = error_messages_for :tag
   .form_row
     = f.label :hook
@@ -14,7 +14,7 @@
   .form_row
     = f.label :snapshot
     = f.file_field :snapshot
-  .form_row
+  .form_row.hidden
     = f.hidden_field :product_id, :value => params[:product_id]
   .form_row
-    = f.submit "Next"
+    = f.submit "Next", :id => 'submit'

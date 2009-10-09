@@ -2,7 +2,7 @@
 
 	//Create PRIMEDIA
 	if(!window.PRIMEDIA) {window['PRIMEDIA'] = {}}	
-	
+	  
   $.fn.inPlaceEdit = function(url){
     $(this).editInPlace({
       url: url,
@@ -24,7 +24,7 @@ $(document).ready (function() {
 	
 	$('.validate').inPlaceEdit(document.location.pathname + "/update_in_place");
 	$('.validate_kvp').inPlaceEdit(document.location.pathname + "/update_kvp_in_place");
-	
+	  
   $("#add_key_value").click(function() {
     $('ul#key_value_list').append($('#key_value_snippet').html());
   });
@@ -33,8 +33,6 @@ $(document).ready (function() {
   $('#tag_location').autocomplete('/tags/autocomplete', { extraParams: { element_id: "tag_location" } });
   
   $(".delete_tag_attr").live("click", function(){
-    var answer = confirm('Are you sure?');
-    if(!answer){ return false; }
     $(this).parent().remove();
     var id = $(this).siblings('.validate_kvp').attr('id').split("_")[1];
     

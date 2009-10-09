@@ -11,13 +11,9 @@
       rails_authenticity_token = '#{form_authenticity_token}'
     
   %body
-    #header
-      %ul
-        %li= link_to "All Tags", tags_path
-        - @products.each do |p|
-          %li
-            = link_to p.name, p
     #page
-      =show_flashes 
-      = yield
+      = render :partial => "layouts/header"
+      #main
+        = show_flashes 
+        = yield
     = javascript_include_tag "jquery-1.3.2", "jquery-in-place-editor", "jquery.autocomplete", "application", :cache => true
