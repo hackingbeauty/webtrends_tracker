@@ -2,7 +2,8 @@ class TagsController < ApplicationController
   skip_before_filter :show_products, :only => :autocomplete
   
   def index
-    @tags = Tag.all
+    order = (params[:order] == "desc") ? "created_at desc" : "created_at asc"
+    @tags = Tag.all(:order => order)
   end
   
   def show
@@ -68,7 +69,6 @@ class TagsController < ApplicationController
   def autocomplete
     case params[:element_id]
     when "tag_hook"
-      # hook_names = Tag.all(:select => "hook", :conditions => ["hook LIKE ?", "%#{params[:q]}%"]).map {|x| x.hook }
       hook_names = Tag.all(:select => "hook", :conditions => ["hook LIKE ?", "%#{params[:q]}%"], :limit => 5).map(&:hook)
       render :text => hook_names.join("\n")
     when "tag_location"
