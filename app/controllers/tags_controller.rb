@@ -41,7 +41,8 @@ class TagsController < ApplicationController
   
   def update_in_place
     @tag = Tag.find_by_id(params[:id])
-    @tag.send("#{params[:element_id]}=", params[:update_value]) # set a single attribute from an edit-in-place field
+    update_attr = params[:element_id].gsub('tag_', '') # "tag_hook" becomes "hook"
+    @tag.send("#{update_attr}=", params[:update_value]) # set a single attribute from an edit-in-place field
     
     if @tag.save
       render :text => params[:update_value]

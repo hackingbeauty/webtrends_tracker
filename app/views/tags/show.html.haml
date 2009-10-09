@@ -7,17 +7,17 @@
   %li
     %strong
       Hook:
-    %span.validate#hook<
+    %span.validate#tag_hook<
       = @tag.hook
   %li
     %strong
       Location:
-    %span.validate#location<
+    %span.validate#tag_location<
       = @tag.location
   %li
     %strong
       Description:
-    %span.validate#description<
+    %span.validate#tag_description<
       = @tag.description
   %li
     - if @tag.snapshot.exists?
