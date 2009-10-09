@@ -3,11 +3,15 @@ namespace :setup do
   task :products => :environment do
     
     print "Creating products"
-    products = %w(ApartmentGuide RentalHouses NewHomeGuide)
+    products = {
+      "ag" => "ApartmentGuide",
+      "rh" => "RentalHouses",
+      "nh" => "NewHomeGuide"
+    }
     
-    products.each do |p_name|
+    products.each do |abbr, name|
       print "."
-      Product.find_or_create_by_name(:name => p_name)
+      Product.find_or_create_by_name(:name => name, :abbreviation => abbr)
     end
 
     puts "\nDone"

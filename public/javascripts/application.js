@@ -1,8 +1,6 @@
 (function(){
-
-	//Create PRIMEDIA
-	if(!window.PRIMEDIA) {window['PRIMEDIA'] = {}}	
-	  
+	if(!window.PRIMEDIA) {window['PRIMEDIA'] = {}} //Create PRIMEDIA
+	
   $.fn.inPlaceEdit = function(url){
     $(this).editInPlace({
       url: url,
@@ -17,19 +15,38 @@
       }
     });
   }
-  
 })();
 
 $(document).ready (function() {
+	// when you click an in-place-editable span, this is the input that appears
+	// <input class="inplace_field" type="text" value="desc" name="inplace_value"/>
+	
+  // $('.ac_over').live('click', function(){ 
+  //   //alert('clicked!');
+  //   //$(this).hide(); 
+  // })
+	
+	$('.validate').live('click', function(){
+	  var id = $(this).attr('id');
+	  $('.inplace_field').autocomplete('/tags/autocomplete', { extraParams: { element_id: id } });
+	});
+	
+	$('.validate_kvp').live('click', function(){
+	  var id = $(this).attr('id');
+	  if (id.match("key")){ id = "key"; } else { id = "value"; }
+	  $('.inplace_field').autocomplete('/key_value_pairs/autocomplete', { extraParams: { element_id: id } });
+	});
 	
 	$('.validate').inPlaceEdit(document.location.pathname + "/update_in_place");
 	$('.validate_kvp').inPlaceEdit(document.location.pathname + "/update_kvp_in_place");
 	  
   $("#add_key_value").click(function() {
     $('ul#key_value_list').append($('#key_value_snippet').html());
+    $('ul#key_value_list .key_input').autocomplete('/key_value_pairs/autocomplete', { extraParams: { element_id: "key" } });
+    $('ul#key_value_list .value_input').autocomplete('/key_value_pairs/autocomplete', { extraParams: { element_id: "value" } });
   });
 
-  $('#tag_hook').autocomplete('/tags/autocomplete', { extraParams: { element_id: "tag_hook" } }); 
+  $('#tag_hook').autocomplete('/tags/autocomplete', { extraParams: { element_id: "tag_hook" } });
   $('#tag_location').autocomplete('/tags/autocomplete', { extraParams: { element_id: "tag_location" } });
   
   $(".delete_tag_attr").live("click", function(){
@@ -73,7 +90,7 @@ $(document).ready (function() {
         li.append(val_span);
         li.append($('#delete_key_value_snippet').html());
         $('#key_value_list').append(li);
-
+        
         key_span.inPlaceEdit(path);
         val_span.inPlaceEdit(path);
       },

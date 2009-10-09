@@ -183,7 +183,7 @@ jQuery.fn.editInPlace = function(options) {
 					/* put the original background color in */
 					original_element.css("background", settings.bg_out);
 
-                    var this_elem = jQuery(this);
+          var this_elem = jQuery(this);
 
 					var new_html = (this_elem.is('form')) ? this_elem.children(0).val() : this_elem.parent().children(0).val();
 
@@ -193,7 +193,7 @@ jQuery.fn.editInPlace = function(options) {
 					} else {
 						var saving_message = settings.saving_text;
 					}
-
+$('.ac_results').hide();
 					/* place the saving text/image in the original element */
 					original_element.html(saving_message);
 
