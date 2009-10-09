@@ -69,10 +69,10 @@ class TagsController < ApplicationController
   def autocomplete
     case params[:element_id]
     when "tag_hook"
-      hook_names = Tag.all(:select => "hook", :conditions => ["hook LIKE ?", "%#{params[:q]}%"], :limit => 5).map(&:hook)
+      hook_names = Tag.all(:select => "distinct hook", :conditions => ["hook LIKE ?", "%#{params[:q]}%"], :limit => 5).map(&:hook)
       render :text => hook_names.join("\n")
     when "tag_location"
-      location_names = Tag.all(:select => "location", :conditions => ["location LIKE ?", "%#{params[:q]}%"], :limit => 5).map(&:location)
+      location_names = Tag.all(:select => "distinct location", :conditions => ["location LIKE ?", "%#{params[:q]}%"], :limit => 5).map(&:location)
       render :text => location_names.join("\n")
     else
       render :text => "No autocomplete for this element", :status => 422

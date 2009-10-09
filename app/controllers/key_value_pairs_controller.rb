@@ -15,4 +15,17 @@ class KeyValuePairsController < ApplicationController
     render :text => "ok", :status => 200
   end
   
+  def autocomplete
+    case params[:element_id]
+    when "key"
+      key_names = KeyValuePair.all(:select => "distinct key", :conditions => ["key LIKE ?", "%#{params[:q]}%"], :limit => 5).map(&:key)
+      render :text => key_names.join("\n")
+    when "value"
+      value_names = KeyValuePair.all(:select => "distinct value", :conditions => ["value LIKE ?", "%#{params[:q]}%"], :limit => 5).map(&:value)
+      render :text => value_names.join("\n")
+    else
+      render :text => "No autocomplete for this element", :status => 422
+    end
+  end
+  
 end

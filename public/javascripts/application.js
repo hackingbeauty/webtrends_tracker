@@ -27,6 +27,8 @@ $(document).ready (function() {
 	  
   $("#add_key_value").click(function() {
     $('ul#key_value_list').append($('#key_value_snippet').html());
+    $('ul#key_value_list .key_input').autocomplete('/key_value_pairs/autocomplete',   { extraParams: { element_id: "key" } });
+    $('ul#key_value_list .value_input').autocomplete('/key_value_pairs/autocomplete', { extraParams: { element_id: "value" } });
   });
 
   $('#tag_hook').autocomplete('/tags/autocomplete', { extraParams: { element_id: "tag_hook" } }); 

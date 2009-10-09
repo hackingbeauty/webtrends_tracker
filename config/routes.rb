@@ -1,5 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :key_value_pairs
+  map.resources :key_value_pairs,
+    :collection => { 
+      :autocomplete => :get 
+    }
+    
   map.resources :tags, :except => [:new, :edit],
     :member => { 
       :update_in_place => :put, 
