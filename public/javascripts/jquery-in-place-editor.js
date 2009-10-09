@@ -195,6 +195,7 @@ jQuery.fn.editInPlace = function(options) {
 					}
 					
           $('.ac_results').hide();
+          window.getSelection().removeAllRanges();
           
 					/* place the saving text/image in the original element */
 					original_element.html(saving_message);
