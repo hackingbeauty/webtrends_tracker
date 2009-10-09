@@ -2,8 +2,8 @@ class TagsController < ApplicationController
   skip_before_filter :show_products, :only => :autocomplete
   
   def index
-    order = (params[:order] == "desc") ? "created_at desc" : "created_at asc"
-    @tags = Tag.all(:order => order)
+    @order = (params[:order] == "desc") ? "created_at desc" : "created_at asc"
+    @tags = Tag.all(:order => @order)
   end
   
   def show
