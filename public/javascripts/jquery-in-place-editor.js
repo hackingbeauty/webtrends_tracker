@@ -168,32 +168,34 @@ jQuery.fn.editInPlace = function(options) {
 				{
 					editing = false;
 					click_count = 0;
-
+					
 					/* put the original background color in */
 					original_element.css("background", settings.bg_out);
-
+					
 					/* put back the original text */
 					original_element.html(original_html);
-
+					
 					return false;
 				}
-
+				
 				function saveAction()
 				{
 					/* put the original background color in */
 					original_element.css("background", settings.bg_out);
-
+					
           var this_elem = jQuery(this);
-
+          
 					var new_html = (this_elem.is('form')) ? this_elem.children(0).val() : this_elem.parent().children(0).val();
-
+					
 					/* set saving message */
 					if(settings.saving_image != ""){
 						var saving_message = '<img src="' + settings.saving_image + '" alt="Saving..." />';
 					} else {
 						var saving_message = settings.saving_text;
 					}
-$('.ac_results').hide();
+					
+          $('.ac_results').hide();
+          
 					/* place the saving text/image in the original element */
 					original_element.html(saving_message);
 
@@ -246,34 +248,34 @@ $('.ac_results').hide();
 
 					return false;
 				}
-
+				
 				/* set the focus to the new input element */
 				original_element.children("form").children(".inplace_field").focus().select();
-
+				
 				/* CLICK CANCEL BUTTON functionality */
 				original_element.children("form").children(".inplace_cancel").click(cancelAction);
-
+				
 				/* CLICK SAVE BUTTON functionality */
 				original_element.children("form").children(".inplace_save").click(saveAction);
-
-                /* if cancel/save buttons should be shown, cancel blur functionality */
-                if(!settings.show_buttons){
-                    /* if on_blur is set to save, set the save funcion */
-    				if(settings.on_blur == "save")
-    					original_element.children("form").children(".inplace_field").blur(saveAction);
-    				/* if on_blur is set to cancel, set the cancel funcion */
-    				else
-    					original_element.children("form").children(".inplace_field").blur(cancelAction);
-                }
-
+				
+        /* if cancel/save buttons should be shown, cancel blur functionality */
+        if(!settings.show_buttons){
+          /* if on_blur is set to save, set the save funcion */
+          if(settings.on_blur == "save")
+            original_element.children("form").children(".inplace_field").blur(saveAction);
+          /* if on_blur is set to cancel, set the cancel funcion */
+          else
+            original_element.children("form").children(".inplace_field").blur(cancelAction);
+        }
+        
 				/* hit esc key */
 				$(document).keyup(function(event){
-				    if (event.keyCode == 27) {
-						cancelAction();
-				    }
+  		    if (event.keyCode == 27) {
+  				  cancelAction();
+  		    }
 				});
-
-                original_element.children("form").submit(saveAction);
+				
+        original_element.children("form").submit(saveAction);
 
 			}/* END- if(click_count == 1) -END */
 		});

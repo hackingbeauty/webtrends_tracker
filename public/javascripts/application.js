@@ -20,11 +20,9 @@
 $(document).ready (function() {
 	// when you click an in-place-editable span, this is the input that appears
 	// <input class="inplace_field" type="text" value="desc" name="inplace_value"/>
-	
-  // $('.ac_over').live('click', function(){ 
-  //   //alert('clicked!');
-  //   //$(this).hide(); 
-  // })
+
+	// hack! fill in the edit in place field before the edit in place code makes it disappear
+	$('.ac_even, .ac_odd').live('mouseover', function(){ $('.inplace_field').val($(this).text());})
 	
 	$('.validate').live('click', function(){
 	  var id = $(this).attr('id');
@@ -50,6 +48,9 @@ $(document).ready (function() {
   $('#tag_location').autocomplete('/tags/autocomplete', { extraParams: { element_id: "tag_location" } });
   
   $(".delete_tag_attr").live("click", function(){
+    var sure = confirm('Are you sure?');
+    if(!sure){ return false; }
+    
     $(this).parent().remove();
     var id = $(this).siblings('.validate_kvp').attr('id').split("_")[1];
     
