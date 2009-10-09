@@ -16,6 +16,7 @@ class TagsController < ApplicationController
   
   def new
     @tag = Tag.new
+    @product = Product.find_by_id(params[:product_id])
   end
   
   def create
