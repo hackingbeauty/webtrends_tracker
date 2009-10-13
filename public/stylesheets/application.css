@@ -59,6 +59,13 @@ body {
   display:none;
 }
 
+h1 {
+	font-weight:bold;
+	font-size:18px;
+}
+
+strong {font-weight:bold;}
+
 /********  Header ********/
 
 #header {
@@ -146,9 +153,6 @@ form textarea {
 
 form .form_row #submit {
   float:left;
-  -moz-background-clip:border !important;
-  -moz-background-inline-policy:continuous !important;
-  -moz-background-origin:padding !important;
   -moz-border-radius-bottomleft:5px;
   -moz-border-radius-bottomright:5px;
   -moz-border-radius-topleft:5px;
@@ -162,7 +166,6 @@ form .form_row #submit {
   font-size:18px !important;
   font-variant:normal;
   font-weight:bold;
-/*  height:3em !important;*/
   line-height:normal;
   margin-left:120px;
   outline-color:-moz-use-text-color;
@@ -173,7 +176,6 @@ form .form_row #submit {
   text-decoration:none;
   text-shadow:0 1px 0 #DDFF66;
   width:200px;
-/*  width:13em !important;*/
 }
 
 /********  Table ********/
@@ -231,6 +233,66 @@ table td .delete{
   color:transparent;
 }
 
+
+/********  Edit Tag ********/
+
+form.edit_tag {
+	border-bottom:1px dotted black;
+	padding-bottom:20px;
+	margin-bottom:20px;
+	overflow:hidden;
+	width:666px;
+}
+
+form.edit_tag #tag_submit {
+	 -moz-border-radius-bottomleft:5px;
+	 -moz-border-radius-bottomright:5px;
+	 -moz-border-radius-topleft:5px;
+	 -moz-border-radius-topright:5px;
+	 background: #B9C9FE;
+	 border:1px solid white !important;
+	 color:#333333;
+	 cursor:pointer;
+	 display:block;
+	 font-family:Helvetica,Arial,Sans-serif;
+	 font-size:18px !important;
+	 font-variant:normal;
+	 font-weight:bold;
+	 line-height:normal;
+	 outline-color:-moz-use-text-color;
+	 outline-style:none;
+	 outline-width:medium;
+	 padding:8px 10px;
+	 text-align:center;
+	 text-decoration:none;
+	 text-shadow:0 1px 0 #DDFF66;
+	 width:200px;
+}
+
+a#add_key_value {
+	 -moz-border-radius-bottomleft:5px;
+	 -moz-border-radius-bottomright:5px;
+	 -moz-border-radius-topleft:5px;
+	 -moz-border-radius-topright:5px;
+	 background: #B9C9FE;
+	 border:1px solid white !important;
+	 color:#333333;
+	 cursor:pointer;
+	 display:block;
+	 font-family:Helvetica,Arial,Sans-serif;
+	 font-size:18px !important;
+	 font-variant:normal;
+	 font-weight:bold;
+	 line-height:normal;
+	 outline-color:-moz-use-text-color;
+	 outline-style:none;
+	 outline-width:medium;
+	 padding:8px 10px;
+	 text-align:center;
+	 text-decoration:none;
+	 text-shadow:0 1px 0 #DDFF66;
+	 width:200px;
+}
 
 
 

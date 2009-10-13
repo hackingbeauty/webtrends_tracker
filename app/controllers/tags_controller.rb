@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+
   skip_before_filter :show_products, :only => :autocomplete
   
   def index

@@ -30,7 +30,7 @@
     - form_for @tag, :html => { :multipart => true } do |form|
       %div
         = form.file_field :snapshot
-        = form.submit "Save"
+        = form.submit "Save Snapshot"
          
 = render :partial => 'key_value_pairs/list'
 

@@ -14,9 +14,9 @@ module ApplicationHelper
     flipped_order = (order == 'created_at desc') ? 'asc' : 'desc'
     path = url_for(:controller => params[:controller], :action => params[:action], :order => flipped_order)
     if flipped_order == "asc"
-      return link_to "Date created &darr;", path
+      return link_to("Date created &darr;", path)
     else
-      return link_to "Date created &uarr;", path
+      return link_to("Date created &uarr;", path)
     end
   end
   

@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+  
+  map.resource :user_session
+  
   map.resources :key_value_pairs,
     :collection => { 
       :autocomplete => :get 
