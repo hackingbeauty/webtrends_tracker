@@ -268,3 +268,7 @@ a#add_key_value {
 	border: dotted 3px orange;
 }
 
+/**** Some Form Stuff *****/
+.input_error {
+  border:1px solid red;
+}

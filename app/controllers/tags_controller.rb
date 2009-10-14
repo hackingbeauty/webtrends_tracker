@@ -17,7 +17,7 @@ class TagsController < ApplicationController
   
   def new
     @tag = Tag.new
-    @product = Product.find_by_id(params[:product_id])
+    @product = Product.find(params[:product_id])
   end
   
   def create
@@ -32,7 +32,7 @@ class TagsController < ApplicationController
   end
   
   def update
-    @tag = Tag.find_by_id(params[:id])
+    @tag = Tag.find(params[:id])
     if @tag.update_attributes(params[:tag])
       flash[:notice] = "Tag updated succesfully"
       redirect_to @tag
@@ -42,7 +42,7 @@ class TagsController < ApplicationController
   end
   
   def update_in_place
-    @tag = Tag.find_by_id(params[:id])
+    @tag = Tag.find(params[:id])
     update_attr = params[:element_id].gsub('tag_', '') # "tag_hook" becomes "hook"
     @tag.send("#{update_attr}=", params[:update_value]) # set a single attribute from an edit-in-place field
     
@@ -58,14 +58,14 @@ class TagsController < ApplicationController
     # key_or_val will be equal to "key" or "value"
     key_or_val, kvp_id = params[:element_id].split("_")
     
-    @kvp = KeyValuePair.find_by_id(kvp_id)
+    @kvp = KeyValuePair.find(kvp_id)
     @kvp.send("#{key_or_val}=", params[:update_value])
     @kvp.save
     render :text => params[:update_value]
   end
   
   def destroy
-    Tag.find_by_id(params[:id]).destroy
+    Tag.find(params[:id]).destroy
     redirect_to tags_path
   end
   
