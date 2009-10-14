@@ -1,4 +1,4 @@
-- form_for :user_session, @user_session, :url => user_session_path, :html => { :method => "post" } do |f|
+- form_for :user_session, @user_session, :builder => LabeledFormBuilder, :url => user_session_path, :html => { :method => "post" } do |f|
 	= f.text_field :email
 	= f.password_field :password
 	= f.submit

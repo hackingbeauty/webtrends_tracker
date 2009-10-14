@@ -4,9 +4,7 @@
     %title
       WebTrends Tag System
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
-    %link{ :href => "/stylesheets/jquery.autocomplete.css", :rel => "stylesheet", :type => "text/css" }
-    %link{ :href => "/stylesheets/application.css", :rel => "stylesheet", :media => "screen", :type => "text/css" }
-
+    = stylesheet_link_tag "/stylesheets/jquery.autocomplete.css", "reset", "application"
     :javascript
       rails_authenticity_token = '#{form_authenticity_token}'
     

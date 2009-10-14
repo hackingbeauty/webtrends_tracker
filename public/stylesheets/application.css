@@ -1,40 +1,7 @@
-/********  YUI Reset ********/
-
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
-  margin:0;
-  padding:0;
-}
-table {
-  border-collapse:collapse;
-  border-spacing:0;
-}
-fieldset,img { 
-  border:0;
-}
-address,caption,cite,code,dfn,em,strong,th,var {
-  font-style:normal;
-  font-weight:normal;
-}
-ol,ul {
-  list-style:none;
-}
-caption,th {
-  text-align:left;
-}
-h1,h2,h3,h4,h5,h6 {
-  font-size:100%;
-  font-weight:normal;
-}
-q:before,q:after {
-  content:'';
-}
-abbr,acronym { border:0;
-}
-
 /********  All Pages ********/
 
 body {
-    font-family:"Lucida Sans Unicode","Lucida Grande",Sans-Serif;
+  font-family:"Lucida Sans Unicode","Lucida Grande",Sans-Serif;
   font-size:16px;
 }
 
@@ -125,33 +92,19 @@ form#create_tag {
   -webkit-border-bottom-right-radius:10px;
 }
 
-form .form_row {
-  overflow:hidden;
-  clear:both;
-  margin-bottom:20px;
-}
-
 form label {
   float:left;
   display:block;
   width:120px;
 }
 
-form input,
-form textarea {
-  float:left;
+/*form .form_row {
+  overflow:hidden;
+  clear:both;
+  margin-bottom:20px;
 }
 
-form input {
-/*  height:20px;*/
-  width:345px;
-}
-
-form textarea {
-  width:350px;
-}
-
-form .form_row #submit {
+*//*form .form_row #submit {
   float:left;
   -moz-border-radius-bottomleft:5px;
   -moz-border-radius-bottomright:5px;
@@ -177,6 +130,8 @@ form .form_row #submit {
   text-shadow:0 1px 0 #DDFF66;
   width:200px;
 }
+
+*/
 
 /********  Table ********/
 
@@ -232,7 +187,6 @@ table td .delete{
   background: url('../images/icons/delete.png') no-repeat center center;
   color:transparent;
 }
-
 
 /********  Edit Tag ********/
 
@@ -294,5 +248,23 @@ a#add_key_value {
 	 width:200px;
 }
 
+/**** Flashes ***/
 
+.flash {
+	border: dotted 3px #999;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.flash_error {
+	border: dotted 3px red;
+}
+
+.flash_notice, .flash_message {
+	border: dotted 3px green;
+}
+
+.flash_warning {
+	border: dotted 3px orange;
+}
 
