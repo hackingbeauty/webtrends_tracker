@@ -8,7 +8,7 @@ class TagsController < ApplicationController
   end
   
   def show
-    @tag = Tag.find_by_id(params[:id])
+    @tag = Tag.find(params[:id])
     respond_to do |type|
       type.html
       type.js {render :json => @tag}

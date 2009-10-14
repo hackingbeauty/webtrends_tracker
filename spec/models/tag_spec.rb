@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: tags
+#
+#  id                    :integer         not null, primary key
+#  hook                  :string(255)
+#  location              :string(255)
+#  description           :text
+#  created_at            :datetime
+#  updated_at            :datetime
+#  snapshot_file_name    :string(255)
+#  snapshot_content_type :string(255)
+#  snapshot_file_size    :integer
+#  product_id            :integer
+#
+
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Tag do

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id           :integer         not null, primary key
+#  name         :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  abbreviation :string(255)
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
