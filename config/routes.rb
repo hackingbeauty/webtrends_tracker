@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
       :autocomplete => :get 
     }
     
-  map.resources :products, :only => [:show] do |product|
+  map.resources :products do |product|
     product.new_tag 'tags/new', :controller => 'tags', :action => 'new'
   end
   
