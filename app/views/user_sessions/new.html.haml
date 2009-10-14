@@ -1,3 +1,6 @@
+#intro
+  %h1
+    WebTrends Tracking System
 #login.rounded.module
   - form_for :user_session, @user_session, :builder => LabeledFormBuilder, :url => user_session_path, :html => { :method => "post" } do |f|
     = f.text_field :email

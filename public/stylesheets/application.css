@@ -81,7 +81,6 @@ body {
 
 input {
   border:1px solid #838383;
-
   color:#404048;
   display:block;
   font-size:1.8em;
@@ -156,11 +155,8 @@ span, a, p, li {
   padding:5px;
 }
 
-/********  Form ********/
+/********  Forms ********/
 
-form#create_tag {
-
-}
 
 form label {
   float:left;
@@ -223,7 +219,7 @@ table td .delete{
   color:transparent;
 }
 
-/********  Edit Tag ********/
+/********  Edit Tag Page ********/
 
 form.edit_tag {
 /*  border-bottom:1px dotted black;*/
@@ -260,6 +256,12 @@ form.edit_tag {
 
 /**** Login Page ****/
 
+#intro h1 {
+  font-size:2.4em;
+  margin-bottom:20px;
+  text-transform:uppercase;
+}
+
 #login {
   color:black;
   font-weight:bold;
@@ -274,8 +276,4 @@ form.edit_tag {
 
 #tag {
   margin-bottom:20px;
-}
-
-#key_value {
-
 }
