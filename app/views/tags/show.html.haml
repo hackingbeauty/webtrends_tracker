@@ -1,37 +1,39 @@
 %h1
   = @tag.product.name
+
+#tag.rounded.module
   
-#errors
+  #errors
 
-%ul#tag_attributes  
-  %li
-    %strong
-      Hook:
-    %span.validate#tag_hook<
-      = @tag.hook
-  %li
-    %strong
-      Location:
-    %span.validate#tag_location<
-      = @tag.location
-  %li
-    %strong
-      Description:
-    %span.validate#tag_description<
-      = @tag.description
-  %li
-    - if @tag.snapshot.exists?
+  %ul#tag_attributes  
+    %li
       %strong
-        Update snapshot:
-    - else
+        Hook:
+      %span.validate#tag_hook<
+        = @tag.hook
+    %li
       %strong
-        Upload snapshot:
+        Location:
+      %span.validate#tag_location<
+        = @tag.location
+    %li
+      %strong
+        Description:
+      %span.validate#tag_description<
+        = @tag.description
+    %li
+      - if @tag.snapshot.exists?
+        %strong
+          Update snapshot:
+      - else
+        %strong
+          Upload snapshot:
 
-    - form_for @tag, :html => { :multipart => true } do |form|
-      %div
-        = form.file_field :snapshot
-        = form.submit "Save Snapshot"
+      - form_for @tag, :html => { :multipart => true } do |form|
+        %div
+          = form.file_field :snapshot
+          = form.submit "Save Snapshot", :class => 'button'
+  = image_tag @tag.snapshot.url if @tag.snapshot.exists?
          
 = render :partial => 'key_value_pairs/list'
 
-= image_tag @tag.snapshot.url if @tag.snapshot.exists?

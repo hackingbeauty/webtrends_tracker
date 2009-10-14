@@ -1,13 +1,20 @@
 /********  All Pages ********/
 
 body {
+  background:#DEDEDE;
   font-family:"Lucida Sans Unicode","Lucida Grande",Sans-Serif;
-  font-size:16px;
+  font-size:11px;
 }
 
 #page {
+  background:white;
   margin:0 auto;
+  padding:20px 20px 50px 20px;
   width:975px;
+  -moz-border-radius-bottomleft:10px;
+  -moz-border-radius-bottomright:10px;
+  -webkit-border-bottom-left-radius:10px;
+  -webkit-border-bottom-right-radius:10px;
 }
 
 #main {
@@ -26,12 +33,87 @@ body {
   display:none;
 }
 
+.rounded {
+  -moz-border-radius-bottomleft:10px;
+	-moz-border-radius-bottomright:10px;
+	-moz-border-radius-topleft:10px;
+	-moz-border-radius-topright:10px;
+  -webkit-border-bottom-left-radius:10px;
+  -webkit-border-bottom-right-radius:10px;
+  -moz-border-top-left:10px;
+  -moz-border-top-right:10px;
+  padding:20px;
+}
+
+.module {
+  background:white;
+  border:5px solid #8B9EDF;
+}
+
+.button {
+  -moz-border-radius-bottomleft:5px;
+	 -moz-border-radius-bottomright:5px;
+	 -moz-border-radius-topleft:5px;
+	 -moz-border-radius-topright:5px;
+   -webkit-border-bottom-left-radius:5px;
+   -webkit-border-bottom-right-radius:5px;
+   -webkit-border-top-left-radius:5px;
+   -webkit-border-top-right-radius:5px;
+   background:#8B9EDF;
+	 border:2px solid black !important;
+	 color:#333333;
+	 cursor:pointer;
+	 display:block;
+	 font-family:Helvetica,Arial,Sans-serif;
+	 font-size:18px !important;
+	 font-variant:normal;
+	 font-weight:bold;
+	 line-height:normal;
+	 outline-color:-moz-use-text-color;
+	 outline-style:none;
+	 outline-width:medium;
+	 padding:8px 10px;
+	 text-align:center;
+	 text-decoration:none;
+	 text-shadow:0 1px 0 #DDFF66;
+	 width:200px;
+}
+
+input {
+  border:1px solid #838383;
+
+  color:#404048;
+  display:block;
+  font-size:1.8em;
+  margin-bottom:0.8em;
+  padding:0.2em;
+}
+
+input[type="hidden"] {
+  display:none;
+}
+
+label {
+  font-size:1.6em;
+}
+
 h1 {
 	font-weight:bold;
-	font-size:18px;
+	font-size:1.9em;
+}
+
+h2 {
+  font-weight:bold;
+	font-size:1.7em;
 }
 
 strong {font-weight:bold;}
+
+/********  Typography ********/
+
+span, a, p, li {
+  font-size:1.4em;
+}
 
 /********  Header ********/
 
@@ -61,7 +143,7 @@ strong {font-weight:bold;}
 #errorExplanation h2 {
   background-color:#CC0000;
   color:#FFFFFF;
-  font-size:12px;
+  font-size:1.6em;
   font-weight:bold;
   margin:-7px;
   padding:5px 5px 5px 15px;
@@ -77,61 +159,14 @@ strong {font-weight:bold;}
 /********  Form ********/
 
 form#create_tag {
-  background:#E8EDFF;
-  border:5px solid #B9C9FE;
-  margin-top:10px;
-  padding:30px;
-  width:500px;
-  -moz-border-radius-topleft:10px;
-  -webkit-border-top-left-radius:10px;
-  -moz-border-radius-topright:10px;
-  -webkit-border-top-right-radius:10px;
-  -moz-border-radius-bottomleft:10px;
-  -webkit-border-bottom-left-radius:10px;
-  -moz-border-radius-bottomright:10px;
-  -webkit-border-bottom-right-radius:10px;
+
 }
 
 form label {
   float:left;
   display:block;
-  width:120px;
+  width:140px;
 }
-
-/*form .form_row {
-  overflow:hidden;
-  clear:both;
-  margin-bottom:20px;
-}
-
-*//*form .form_row #submit {
-  float:left;
-  -moz-border-radius-bottomleft:5px;
-  -moz-border-radius-bottomright:5px;
-  -moz-border-radius-topleft:5px;
-  -moz-border-radius-topright:5px;
-  background: #B9C9FE;
-  border:1px solid white !important;
-  color:#333333;
-  cursor:pointer;
-  display:block;
-  font-family:Helvetica,Arial,Sans-serif;
-  font-size:18px !important;
-  font-variant:normal;
-  font-weight:bold;
-  line-height:normal;
-  margin-left:120px;
-  outline-color:-moz-use-text-color;
-  outline-style:none;
-  outline-width:medium;
-  padding:8px 10px;
-  text-align:center;
-  text-decoration:none;
-  text-shadow:0 1px 0 #DDFF66;
-  width:200px;
-}
-
-*/
 
 /********  Table ********/
 
@@ -139,7 +174,7 @@ table {
   border-collapse:collapse;
   clear:both;
   margin-top:10px;
-
+  font-size:1.6em;
   width:100%;
   text-align:left;
 }
@@ -147,7 +182,7 @@ table {
 table th {
   background-color:#B9C9FE;
   color:#003399;
-  font-size:18px;
+  
   font-weight:normal;
   padding:10px 10px 10px 20px;
 }
@@ -191,61 +226,11 @@ table td .delete{
 /********  Edit Tag ********/
 
 form.edit_tag {
-	border-bottom:1px dotted black;
+/*  border-bottom:1px dotted black;*/
 	padding-bottom:20px;
 	margin-bottom:20px;
 	overflow:hidden;
 	width:666px;
-}
-
-form.edit_tag #tag_submit {
-	 -moz-border-radius-bottomleft:5px;
-	 -moz-border-radius-bottomright:5px;
-	 -moz-border-radius-topleft:5px;
-	 -moz-border-radius-topright:5px;
-	 background: #B9C9FE;
-	 border:1px solid white !important;
-	 color:#333333;
-	 cursor:pointer;
-	 display:block;
-	 font-family:Helvetica,Arial,Sans-serif;
-	 font-size:18px !important;
-	 font-variant:normal;
-	 font-weight:bold;
-	 line-height:normal;
-	 outline-color:-moz-use-text-color;
-	 outline-style:none;
-	 outline-width:medium;
-	 padding:8px 10px;
-	 text-align:center;
-	 text-decoration:none;
-	 text-shadow:0 1px 0 #DDFF66;
-	 width:200px;
-}
-
-a#add_key_value {
-	 -moz-border-radius-bottomleft:5px;
-	 -moz-border-radius-bottomright:5px;
-	 -moz-border-radius-topleft:5px;
-	 -moz-border-radius-topright:5px;
-	 background: #B9C9FE;
-	 border:1px solid white !important;
-	 color:#333333;
-	 cursor:pointer;
-	 display:block;
-	 font-family:Helvetica,Arial,Sans-serif;
-	 font-size:18px !important;
-	 font-variant:normal;
-	 font-weight:bold;
-	 line-height:normal;
-	 outline-color:-moz-use-text-color;
-	 outline-style:none;
-	 outline-width:medium;
-	 padding:8px 10px;
-	 text-align:center;
-	 text-decoration:none;
-	 text-shadow:0 1px 0 #DDFF66;
-	 width:200px;
 }
 
 /**** Flashes ***/
@@ -270,5 +255,27 @@ a#add_key_value {
 
 /**** Some Form Stuff *****/
 .input_error {
-  border:1px solid red;
+  border:3px solid red;
+}
+
+/**** Login Page ****/
+
+#login {
+  color:black;
+  font-weight:bold;
+}
+
+#login #user_session_submit {
+  margin-left:139px;
+  margin-top:10px;
+}
+
+/**** Show Tag Page ****/
+
+#tag {
+  margin-bottom:20px;
+}
+
+#key_value {
+
 }
