@@ -20,7 +20,7 @@ class KeyValuePairsController < ApplicationController
   
   def destroy
     @key_value_pair.destroy
-    render :text => "ok", :status => 200
+    redirect_to @key_value_pair.tag
   end
 
   private

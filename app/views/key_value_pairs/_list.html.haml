@@ -1,8 +1,10 @@
 %table
   %tr
     %th{:width => "25%"} Key
-    %th Value
+    %th{:width => "50%"} Value
+    %th Action
   - for kvp in @tag.key_value_pairs
     %tr
       %td= h kvp.key
       %td= h kvp.value
+      %td= link_to "Delete", key_value_pair_path(kvp), :confirm => "Are you sure?", :class => "delete", :method => "delete"

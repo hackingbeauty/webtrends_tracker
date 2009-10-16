@@ -4,15 +4,15 @@ describe "tags/show" do
   
   before do
     # set up your tag
-    @tag = Tag.new({
+    @tag = Tag.create!({
       :hook => 'wt_ag_0001',
       :location => 'somewhere',
       :description => 'somewhere out there',
-      :product => Product.new(:name => "Apartment Guide")
+      :product => Product.new(:name => "Apartment Guide", :abbreviation => "ag")
     })
 
-    @tag.key_value_pairs.build :key => "WT.dl" , :value => "1"
-    @tag.key_value_pairs.build :key => "NAME" , :value => "DYNAMIC"
+    @tag.key_value_pairs.create :key => "WT.dl", :value => "1"
+    @tag.key_value_pairs.create :key => "NAME", :value => "DYNAMIC"
     
     assigns[:tag] = @tag
     render "tags/show"
@@ -59,6 +59,7 @@ describe "tags/show" do
       with_tag("tr") do
         with_tag("td", "WT.dl")
         with_tag("td", "1")
+        with_tag("a", /delete/i)
       end
       with_tag("tr") do
         with_tag("td", "NAME")
