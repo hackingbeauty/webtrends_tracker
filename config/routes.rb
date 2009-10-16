@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   
+  map.resource  :screen_shots
   map.resource  :user_session
   map.resources :tags do |tags|
     tags.resources :key_value_pairs

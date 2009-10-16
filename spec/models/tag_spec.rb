@@ -37,4 +37,16 @@ describe Tag do
     Tag.new(@valid_attributes).should_not be_valid
   end
   
+  it "should not create a new tag if the hook already exists" do
+    Tag.create!(@valid_attributes)
+
+    # error
+    tag2 = Tag.new(@valid_attributes)
+    tag2.should have(1).error_on(:hook)
+    
+    # resolution
+    tag2.hook = "wt_rh_1001"
+    tag2.should be_valid
+  end
+  
 end

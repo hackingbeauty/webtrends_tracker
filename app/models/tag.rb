@@ -16,7 +16,7 @@
 
 class Tag < ActiveRecord::Base
   
-  has_attached_file :snapshot
+  has_attached_file :snapshot, :styles => { :normal => "975x975>" }
   
   has_many :key_value_pairs
   belongs_to :product
@@ -28,6 +28,7 @@ class Tag < ActiveRecord::Base
   validates_format_of :hook, :with => /wt_[a-z]{2}_\w{4}/i, :message => "format is invalid. It should look like \"wt_<2-character-product-code>_<4-digit-base-36-number>\""
   validates_length_of :hook, :is => 10
   validate :check_hook_product_abbreviation
+  validates_uniqueness_of :hook
 
   def to_param
     "#{id}-#{hook}".downcase.gsub(/\s+/,'')

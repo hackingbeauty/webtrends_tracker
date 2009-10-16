@@ -6,8 +6,7 @@ describe TagsController do
     
     before :each do
       # simulate a logged in user.
-      current_user = mock_model(User)
-      @controller.stub!(:current_user).and_return(current_user)
+      current_user = stub_login(@controller)
     end
     
     def do_get

@@ -24,6 +24,9 @@
 #kvp_form
   = render :partial => "key_value_pairs/form", :locals => { :key_value_pair => KeyValuePair.new(:tag => @tag) }
 
-%h1 Screenshots
-
-= link_to "New"
+%h1 Screenshot
+- if @tag.snapshot
+  .snapshot
+    = image_tag @tag.snapshot.url(:normal)
+= render :partial => "screen_shot_form", :locals => { :tag => @tag }
+  

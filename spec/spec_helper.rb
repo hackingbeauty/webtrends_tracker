@@ -50,3 +50,9 @@ Spec::Runner.configure do |config|
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
 end
 
+# fakes out authentication, and returns the user mock
+def stub_login(controller)
+  current_user = mock_model(User)
+  controller.stub!(:current_user).and_return(current_user)
+  current_user
+end
