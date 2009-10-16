@@ -6,6 +6,12 @@ body {
   font-size:11px;
 }
 
+form {
+	background: #eee;
+	padding: 15px;
+	border: dotted 3px #aaa;
+}
+
 #page {
   background:white;
   margin:0 auto;
@@ -33,59 +39,17 @@ body {
   display:none;
 }
 
-.rounded {
-  -moz-border-radius-bottomleft:10px;
-	-moz-border-radius-bottomright:10px;
-	-moz-border-radius-topleft:10px;
-	-moz-border-radius-topright:10px;
-  -webkit-border-bottom-left-radius:10px;
-  -webkit-border-bottom-right-radius:10px;
-  -moz-border-top-left:10px;
-  -moz-border-top-right:10px;
-  padding:20px;
-}
-
-.module {
-  background:white;
-  border:5px solid #8B9EDF;
-}
-
-.button {
-  -moz-border-radius-bottomleft:5px;
-	 -moz-border-radius-bottomright:5px;
-	 -moz-border-radius-topleft:5px;
-	 -moz-border-radius-topright:5px;
-   -webkit-border-bottom-left-radius:5px;
-   -webkit-border-bottom-right-radius:5px;
-   -webkit-border-top-left-radius:5px;
-   -webkit-border-top-right-radius:5px;
-   background:#8B9EDF;
-	 border:2px solid black !important;
-	 color:#333333;
-	 cursor:pointer;
-	 display:block;
-	 font-family:Helvetica,Arial,Sans-serif;
-	 font-size:18px !important;
-	 font-variant:normal;
-	 font-weight:bold;
-	 line-height:normal;
-	 outline-color:-moz-use-text-color;
-	 outline-style:none;
-	 outline-width:medium;
-	 padding:8px 10px;
-	 text-align:center;
-	 text-decoration:none;
-	 text-shadow:0 1px 0 #DDFF66;
-	 width:200px;
-}
-
 input {
   border:1px solid #838383;
   color:#404048;
   display:block;
-  font-size:1.8em;
+  font-size:1.5em;
   margin-bottom:0.8em;
   padding:0.2em;
+}
+
+textarea {
+	font-size: 1.5em;
 }
 
 input[type="hidden"] {
@@ -93,7 +57,7 @@ input[type="hidden"] {
 }
 
 label {
-  font-size:1.6em;
+  font-size:1.5em;
 }
 
 h1 {
@@ -111,7 +75,7 @@ strong {font-weight:bold;}
 /********  Typography ********/
 
 span, a, p, li {
-  font-size:1.4em;
+  font-size:1.2em;
 }
 
 /********  Header ********/
@@ -130,33 +94,7 @@ span, a, p, li {
   margin-right:20px;
 }
 
-/********  Errors ********/
-
-#errorExplanation {
-  background-color:#F0F0F0;
-  border:2px solid red;
-  margin-bottom:20px;
-  padding:7px 7px 12px;
-}
-
-#errorExplanation h2 {
-  background-color:#CC0000;
-  color:#FFFFFF;
-  font-size:1.6em;
-  font-weight:bold;
-  margin:-7px;
-  padding:5px 5px 5px 15px;
-  text-align:left;
-}
-
-#errorExplanation p {
-  color:#333333;
-  margin-bottom:0;
-  padding:5px;
-}
-
 /********  Forms ********/
-
 
 form label {
   float:left;
@@ -219,16 +157,6 @@ table td .delete{
   color:transparent;
 }
 
-/********  Edit Tag Page ********/
-
-form.edit_tag {
-/*  border-bottom:1px dotted black;*/
-	padding-bottom:20px;
-	margin-bottom:20px;
-	overflow:hidden;
-	width:666px;
-}
-
 /**** Flashes ***/
 
 .flash {
@@ -250,42 +178,14 @@ form.edit_tag {
 }
 
 /**** Some Form Stuff *****/
+
 .input_error {
   border:3px solid red;
-}
-
-/**** Login Page ****/
-
-#intro h1 {
-  font-size:2.4em;
-  margin-bottom:20px;
-  text-transform:uppercase;
-}
-
-#login {
-  color:black;
-  font-weight:bold;
 }
 
 #login #user_session_submit {
   margin-left:139px;
   margin-top:10px;
-}
-
-/**** Show Tag Page ****/
-
-#tag {
-  margin-bottom:20px;
-}
-
-ul li .label {
-	width: 200px;
-	font-size: 1.5em;
-}
-
-ul li .value {
-	font-size: 1.5em;
-	margin-bottom: 10px;
 }
 
 table {

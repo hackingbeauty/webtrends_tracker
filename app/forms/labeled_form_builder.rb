@@ -17,7 +17,7 @@ class LabeledFormBuilder < ActionView::Helpers::FormBuilder
   
   
   def with_label(name)
-    @template.content_tag(:p, label(name) + yield)
+    @template.content_tag(:div, label(name) + yield)
   end
   
 end

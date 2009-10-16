@@ -11,6 +11,11 @@
 #
 
 class KeyValuePair < ActiveRecord::Base
+
   belongs_to :tag
   validates_presence_of :tag
+  
+  validates_presence_of :key
+  validates_presence_of :value
+  
 end

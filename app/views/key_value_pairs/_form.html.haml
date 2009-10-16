@@ -1,4 +1,5 @@
-- form_for @key_value_pair, :builder => LabeledFormBuilder do |f|
+- remote_form_for key_value_pair, :builder => LabeledFormBuilder do |f|
+  = f.hidden_field :tag_id
   = f.text_field :key
   = f.text_field :value
   = f.submit

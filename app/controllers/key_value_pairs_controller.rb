@@ -1,23 +1,20 @@
 class KeyValuePairsController < ApplicationController
 
   skip_before_filter :show_products
-  before_filter :load_key_value_pair
   
-  def new
-    @key_value_pair = KeyValuePair.new
-    respond_to do |wants|
-      wants.js do
-        render :partial => "form"
-      end
-    end
-  end
+  before_filter :load_key_value_pair
   
   def create
     @key_value_pair = KeyValuePair.new(params[:key_value_pair])
     if @key_value_pair.save
-      render :text => @key_value_pair.id, :status => 200
+      flash[:notice] = "Key Value Pair created successfully"
+      render :update do |page|
+        page.redirect_to @key_value_pair.tag
+      end
     else
-      render :text => "failed", :status => 422
+      render :update do |page|
+        page["kvp_form"].replace_html :partial => "key_value_pairs/form", :locals => { :key_value_pair => @key_value_pair }
+      end
     end
   end
   

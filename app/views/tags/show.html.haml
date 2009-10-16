@@ -19,10 +19,10 @@
     %td= h @tag.description
 
 %h1 Key Value Pairs
-         
-= link_to_remote "New", :update => "new_kv_pair", :url => new_key_value_pair_path, :method => :get
-#new_kv_pair
 = render :partial => 'key_value_pairs/list'
+%h1 New Key Value Pair
+#kvp_form
+  = render :partial => "key_value_pairs/form", :locals => { :key_value_pair => KeyValuePair.new(:tag => @tag) }
 
 %h1 Screenshots
 
