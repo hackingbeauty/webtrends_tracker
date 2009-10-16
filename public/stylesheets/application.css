@@ -277,3 +277,17 @@ form.edit_tag {
 #tag {
   margin-bottom:20px;
 }
+
+ul li .label {
+	width: 200px;
+	font-size: 1.5em;
+}
+
+ul li .value {
+	font-size: 1.5em;
+	margin-bottom: 10px;
+}
+
+table {
+	margin-bottom: 15px;
+}

@@ -1,10 +1,5 @@
-%h2== Create a new tag for #{@product.name}
+%h1== Create a new tag for #{@product.name}
 
 - form_for :tag, @tag, :url => tags_path, :builder => LabeledFormBuilder, :html => { :id => 'create_tag', :class => 'rounded module', :multipart => true } do |f|
-  = f.error_messages
-  = f.text_field :hook
-  = f.text_field :location
-  = f.text_area  :description, :cols => '70'
-  = f.file_field :snapshot
-  = f.hidden_field :product_id, :value => @product.id, :class => 'hidden'
-  = f.submit "Create Tag", :id => "submit", :class => "button"
+  = render :partial => "fields", :locals => { :f => f }
+  

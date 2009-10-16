@@ -1,39 +1,29 @@
-%h1
-  = @tag.product.name
+%h1= "#{h @tag.product.name} : #{h @tag.hook}"
 
-#tag.rounded.module
-  
-  #errors
+= link_to "Edit", edit_tag_path(@tag)
+|
+= link_to "Delete", tag_path(@tag), :confirm => "Are you sure?", :method => "delete"
 
-  %ul#tag_attributes  
-    %li
-      %strong
-        Hook:
-      %span.validate#tag_hook<
-        = @tag.hook
-    %li
-      %strong
-        Location:
-      %span.validate#tag_location<
-        = @tag.location
-    %li
-      %strong
-        Description:
-      %span.validate#tag_description<
-        = @tag.description
-    %li
-      - if @tag.snapshot.exists?
-        %strong
-          Update snapshot:
-      - else
-        %strong
-          Upload snapshot:
+%table
+  %tr
+    %th{ :width => "25%" } Name
+    %th Value
+  %tr
+    %td Hook
+    %td= h @tag.hook
+  %tr
+    %td Location
+    %td= h @tag.location
+  %tr
+    %td Description
+    %td= h @tag.description
 
-      - form_for @tag, :html => { :multipart => true } do |form|
-        %div
-          = form.file_field :snapshot
-          = form.submit "Save Snapshot", :class => 'button'
-  = image_tag @tag.snapshot.url if @tag.snapshot.exists?
+%h1 Key Value Pairs
          
+= link_to_remote "New", :update => "new_kv_pair", :url => new_key_value_pair_path, :method => :get
+#new_kv_pair
 = render :partial => 'key_value_pairs/list'
 
+%h1 Screenshots
+
+= link_to "New"

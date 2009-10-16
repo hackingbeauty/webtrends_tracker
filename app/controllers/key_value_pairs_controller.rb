@@ -1,31 +1,36 @@
 class KeyValuePairsController < ApplicationController
+
   skip_before_filter :show_products
+  before_filter :load_key_value_pair
+  
+  def new
+    @key_value_pair = KeyValuePair.new
+    respond_to do |wants|
+      wants.js do
+        render :partial => "form"
+      end
+    end
+  end
   
   def create
-    @kvp = KeyValuePair.new(params[:key_value_pair])
-    if @kvp.save
-      render :text => @kvp.id, :status => 200
+    @key_value_pair = KeyValuePair.new(params[:key_value_pair])
+    if @key_value_pair.save
+      render :text => @key_value_pair.id, :status => 200
     else
       render :text => "failed", :status => 422
     end
   end
   
   def destroy
-    @kvp = KeyValuePair.find_by_id(params[:id]).destroy
+    @key_value_pair.destroy
     render :text => "ok", :status => 200
   end
+
+  private
   
-  def autocomplete
-    case params[:element_id]
-    when "key"
-      key_names = KeyValuePair.all(:select => "distinct key", :conditions => ["key LIKE ?", "%#{params[:q]}%"], :limit => 5).map(&:key)
-      render :text => key_names.join("\n")
-    when "value"
-      value_names = KeyValuePair.all(:select => "distinct value", :conditions => ["value LIKE ?", "%#{params[:q]}%"], :limit => 5).map(&:value)
-      render :text => value_names.join("\n")
-    else
-      render :text => "No autocomplete for this element", :status => 422
-    end
+  def load_key_value_pair
+    @key_value_pair = KeyValuePair.find(params[:id]) if params[:id]
   end
+  
   
 end

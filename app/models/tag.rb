@@ -15,10 +15,13 @@
 #
 
 class Tag < ActiveRecord::Base
+  
   has_attached_file :snapshot
   
   has_many :key_value_pairs
   belongs_to :product
+  
+  named_scope :ordered, :order => "hook"
   
   validates_presence_of :hook
   validates_presence_of :product

@@ -1,14 +1,13 @@
 class TagsController < ApplicationController
 
-  skip_before_filter :show_products, :only => :autocomplete
-  
+  before_filter :load_tag
+  before_filter :load_product
+
   def index
-    @order = (params[:order] == "desc") ? "created_at desc" : "created_at asc"
-    @tags = Tag.all(:order => @order)
+    @tags = Tag.ordered
   end
   
   def show
-    @tag = Tag.find(params[:id])
     respond_to do |type|
       type.html
       type.js {render :json => @tag}
@@ -17,14 +16,15 @@ class TagsController < ApplicationController
   
   def new
     @tag = Tag.new
-    @product = Product.find(params[:product_id])
+  end
+  
+  def edit
   end
   
   def create
     @tag = Tag.new(params[:tag])
     if @tag.save
       redirect_to @tag
-      # redirect_to product_path(@tag.product)
     else
       @product = @tag.product
       render :action => 'new'
@@ -32,53 +32,29 @@ class TagsController < ApplicationController
   end
   
   def update
-    @tag = Tag.find(params[:id])
     if @tag.update_attributes(params[:tag])
       flash[:notice] = "Tag updated succesfully"
       redirect_to @tag
     else
-      render :action => :show
+      render :action => "edit"
     end    
   end
   
-  def update_in_place
-    @tag = Tag.find(params[:id])
-    update_attr = params[:element_id].gsub('tag_', '') # "tag_hook" becomes "hook"
-    @tag.send("#{update_attr}=", params[:update_value]) # set a single attribute from an edit-in-place field
-    
-    if @tag.save
-      render :text => params[:update_value]
-    else
-      errors = @tag.errors.full_messages.join("<br />")
-      render :json => { :error => errors }, :status => 422 # render the response object as content type json with HTTP status code of 422 (Unprocessable Entity)
-    end
-  end
-  
-  def update_kvp_in_place
-    # key_or_val will be equal to "key" or "value"
-    key_or_val, kvp_id = params[:element_id].split("_")
-    
-    @kvp = KeyValuePair.find(kvp_id)
-    @kvp.send("#{key_or_val}=", params[:update_value])
-    @kvp.save
-    render :text => params[:update_value]
-  end
-  
   def destroy
-    Tag.find(params[:id]).destroy
+    @tag.destroy
     redirect_to tags_path
   end
   
-  def autocomplete
-    case params[:element_id]
-    when "tag_hook"
-      hook_names = Tag.all(:select => "distinct hook", :conditions => ["hook LIKE ?", "%#{params[:q]}%"], :limit => 5).map(&:hook)
-      render :text => hook_names.join("\n")
-    when "tag_location"
-      location_names = Tag.all(:select => "distinct location", :conditions => ["location LIKE ?", "%#{params[:q]}%"], :limit => 5).map(&:location)
-      render :text => location_names.join("\n")
-    else
-      render :text => "No autocomplete for this element", :status => 422
+  private
+  
+  def load_tag
+    @tag = Tag.find(params[:id]) if params[:id]
+  end
+  
+  def load_product
+    @product = Product.find(params[:product_id]) if params[:product_id]
+    if @tag
+      @product ||= @tag.product 
     end
   end
   
