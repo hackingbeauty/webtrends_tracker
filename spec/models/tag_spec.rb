@@ -49,4 +49,9 @@ describe Tag do
     tag2.should be_valid
   end
   
+  it "should retrieve the key_value_pairs association" do
+    tag = Tag.create!(@valid_attributes)
+    tag.key_value_pairs.should == []
+  end
+  
 end
