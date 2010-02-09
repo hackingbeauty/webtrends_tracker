@@ -7,4 +7,5 @@ namespace :setup do
     User.create!(:email=> "jbeckley@primedia.com",   :password=> "pass", :password_confirmation => "pass")
     User.create!(:email=> "mmuskardin@primedia.com", :password=> "pass", :password_confirmation => "pass")
   end
+  
 end
