@@ -14,7 +14,9 @@
         %th.right
     %tbody
       - @tags.each do |tag|
-        %tr
+        
+        
+        %tr{:class=>"#{cycle('odd', 'even')}"}
           %td  
             = link_to tag.hook, tag
           %td

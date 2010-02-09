@@ -1,0 +1,9 @@
+#left-nav.span-5
+  - if logged_in?
+    .module
+      %h3
+        Products
+      %ul#products
+        - products.each do |p|
+          %li
+            = link_to p.name, p

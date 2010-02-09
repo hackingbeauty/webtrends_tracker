@@ -1,193 +1,87 @@
-/********  All Pages ********/
+/*	Main Styles
+	...................................................................... */
 
-body {
-  background:#DEDEDE;
-  font-family:"Lucida Sans Unicode","Lucida Grande",Sans-Serif;
-  font-size:11px;
-}
+body { background:black;font-family:Trebuchet MS, sans-serif; font-size:100%;}
 
-form {
-	background: #eee;
-	padding: 15px;
-	border: dotted 3px #aaa;
-}
+/*.container {background-color:white; -moz-border-radius:10px;-webkit-border-radius:5px;margin-top:90px;padding:20px;}
+*/
+.container h1 a#logo {font-size:0;}
 
-#page {
-  background:white;
-  margin:0 auto;
-  padding:20px 20px 50px 20px;
-  width:975px;
-  -moz-border-radius-bottomleft:10px;
-  -moz-border-radius-bottomright:10px;
-  -webkit-border-bottom-left-radius:10px;
-  -webkit-border-bottom-right-radius:10px;
-}
+.container #sub-container {background-color:white; -moz-border-radius:10px;-webkit-border-radius:5px;padding:20px;float:left;}
 
-#main {
-  clear:both;
-}
+.container #sub-container #sub-container-back {background:#d4d4d4;float:left;padding:5px;margin-left:10px;}
 
-#main_head h1 {
-  float:left;
-}
+a {color:#89cfe7; font-weight:bold;}
 
-#main_head a {
-  float:right;
-}
+li {list-style-type:none;}
 
-.hidden {
-  display:none;
-}
+th {text-transform:uppercase;}
 
-input {
-  border:1px solid #838383;
-  color:#404048;
-  display:block;
-  font-size:1.5em;
-  margin-bottom:0.8em;
-  padding:0.2em;
-}
 
-textarea {
-	font-size: 1.5em;
-}
+/*	Logo
+	...................................................................... */
 
-input[type="hidden"] {
-  display:none;
-}
+a#logo {background:url('../images/logo.png');width:320px;height:110px;display:block;}
 
-label {
-  font-size:1.5em;
-}
 
-h1 {
-	font-weight:bold;
-	font-size:1.9em;
-}
+/*	Top Nav
+	...................................................................... */
 
-h2 {
-  font-weight:bold;
-	font-size:1.7em;
-}
+.container #top-nav {height:60px;background:url('../images/backgrounds/background-nav.png')no-repeat;}
 
-strong {font-weight:bold;}
+.container #top-nav ul {margin-left:166px;}
 
-/********  Typography ********/
+.container #top-nav ul li {float:left;}
 
-span, a, p, li {
-  font-size:1.2em;
-}
+.container #top-nav ul li a {padding-top:5px;display:block;}
 
-/********  Header ********/
+.container #top-nav ul li.search {margin-right:175px;}
 
-#header {
-  height:50px;
-  margin:0 auto;
-}
+.container #top-nav ul li.logout {float:right;}
 
-#header ul {
-  margin-top:20px;
-}
 
-#header ul li {
-  float:left;
-  margin-right:20px;
-}
+/*	Left Nav
+	...................................................................... */
+ 
+.container #left-nav {}
 
-/********  Forms ********/
 
-form label {
-  float:left;
-  display:block;
-  width:140px;
-}
+/*	Module
+	...................................................................... */
 
-/********  Table ********/
+.container .module {background:white;}
 
-table {
-  border-collapse:collapse;
-  clear:both;
-  margin-top:10px;
-  font-size:1.6em;
-  width:100%;
-  text-align:left;
-}
+.container .module ul  {padding:0;list-style-position:outside;padding:7px 5px;}
 
-table th {
-  background-color:#B9C9FE;
-  color:#003399;
-  
-  font-weight:normal;
-  padding:10px 10px 10px 20px;
-}
+.container .module h3 {text-transform:uppercase;font-size:17px;font-weight:bold;border-bottom:1px solid #e4e3e3;padding:7px 5px;margin-bottom:0;}
 
-table th.left {
-  -moz-border-radius-topleft:10px;
-  -webkit-border-top-left-radius:10px;
-}
 
-table th.right {
-  -moz-border-radius-topright:10px;
-  -webkit-border-top-right-radius:10px;
-}
+/*	Main Table
+	...................................................................... */
 
-table td {
-  background:#E8EDFF none repeat scroll 0 0;
-  border-top:1px solid #FFFFFF;
-  color:#666699;
-  padding:10px 10px 10px 20px;
-}
+.container #main table th {background: white url('../images/gradients/gradient-table-heading.png') repeat-x; border:1px solid #dddddd;}
 
-table tr:hover td {
-  background:#D0DAFD none repeat scroll 0 0;
-}
+.container #main table tr.odd td {background:white;}
 
-table tfoot td.left {
-   -moz-border-radius-bottomleft:10px;
-   -webkit-border-bottom-left-radius:10px;
-}
+.container #main table tr.even td {background:#f0fbff;}
 
-table tfoot td.right {
-   -moz-border-radius-bottomright:10px;
-   -webkit-border-bottom-right-radius:10px;
-}
 
-table td .delete{
-  background: url('../images/icons/delete.png') no-repeat center center;
-  color:transparent;
-}
+/*	Inputs
+	...................................................................... */
 
-/**** Flashes ***/
+input {  font-size:18px;height:22px;margin:6px 0 0 0 !important;}
 
-.flash {
-	border: dotted 3px #999;
-	padding: 5px;
-	margin-bottom: 10px;
-}
+input#search-btn {background:url('../images/icons/icon-magnifying-glass.png') 0 3px no-repeat; border:none; width:25px;}
 
-.flash_error {
-	border: dotted 3px red;
-}
+/*
+input[type="hidden"] {display:none !important;}
+*/
 
-.flash_notice, .flash_message {
-	border: dotted 3px green;
-}
+/*	Login
+	...................................................................... */
 
-.flash_warning {
-	border: dotted 3px orange;
-}
+#login {-moz-border-radius:10px;-webkit-border-radius:10px;border:1px solid #eaeaea;background:url('../images/gradients/gradient-login.png') repeat-x;width:365px;margin-left:auto;margin-right:auto;}
 
-/**** Some Form Stuff *****/
+#login form {margin-left:auto;margin-right:auto;}
 
-.input_error {
-  border:3px solid red;
-}
-
-#login #user_session_submit {
-  margin-left:139px;
-  margin-top:10px;
-}
-
-table {
-	margin-bottom: 15px;
-}
+#login input {display:block;}

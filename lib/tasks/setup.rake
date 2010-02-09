@@ -4,9 +4,10 @@ namespace :setup do
     
     print "Creating products"
     products = {
-      "ag" => "ApartmentGuide",
-      "rh" => "RentalHouses",
-      "nh" => "NewHomeGuide"
+      "ag"  => "ApartmentGuide",
+      "rh"  => "RentalHouses",
+      "nh"  => "NewHomeGuide",
+      "nhd" => "NewHomeDirectory"
     }
     
     products.each do |abbr, name|
