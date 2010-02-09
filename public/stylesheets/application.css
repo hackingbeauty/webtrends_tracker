@@ -1,193 +1,40 @@
-/********  All Pages ********/
+/*	Main Styles
+	...................................................................... */
 
-body {
-  background:#DEDEDE;
-  font-family:"Lucida Sans Unicode","Lucida Grande",Sans-Serif;
-  font-size:11px;
+body { background: #DEDEDE url('../images/backgrounds/background-body.png') repeat-x;}
+
+.container {background-color:white; -moz-border-radius:5px;-webkit-border-radius:5px;margin-top:90px;}
+
+.container h1#heading {
+  position:relative;
+  top:-40px;
 }
 
-form {
-	background: #eee;
-	padding: 15px;
-	border: dotted 3px #aaa;
-}
+li {list-style-type:none;}
 
-#page {
-  background:white;
-  margin:0 auto;
-  padding:20px 20px 50px 20px;
-  width:975px;
-  -moz-border-radius-bottomleft:10px;
-  -moz-border-radius-bottomright:10px;
-  -webkit-border-bottom-left-radius:10px;
-  -webkit-border-bottom-right-radius:10px;
-}
+/*	Top Nav
+	...................................................................... */
 
-#main {
-  clear:both;
-}
+.container #top-nav {height:60px;}
 
-#main_head h1 {
-  float:left;
-}
+.container #top-nav ul {float:right;}
 
-#main_head a {
-  float:right;
-}
+.container #top-nav ul li {float:left;}
 
-.hidden {
-  display:none;
-}
 
-input {
-  border:1px solid #838383;
-  color:#404048;
-  display:block;
-  font-size:1.5em;
-  margin-bottom:0.8em;
-  padding:0.2em;
-}
+/*	Left Nav
+	...................................................................... */
+ 
+.container #left-nav {}
 
-textarea {
-	font-size: 1.5em;
-}
+/*	Module
+	...................................................................... */
 
-input[type="hidden"] {
-  display:none;
-}
+.container .module {}
 
-label {
-  font-size:1.5em;
-}
 
-h1 {
-	font-weight:bold;
-	font-size:1.9em;
-}
+/*	Main Table
+	...................................................................... */
 
-h2 {
-  font-weight:bold;
-	font-size:1.7em;
-}
+.container #main table th {background: url('../images/gradients/gradient-table-heading.png') repeat-x; border:1px solid #dddddd;}
 
-strong {font-weight:bold;}
-
-/********  Typography ********/
-
-span, a, p, li {
-  font-size:1.2em;
-}
-
-/********  Header ********/
-
-#header {
-  height:50px;
-  margin:0 auto;
-}
-
-#header ul {
-  margin-top:20px;
-}
-
-#header ul li {
-  float:left;
-  margin-right:20px;
-}
-
-/********  Forms ********/
-
-form label {
-  float:left;
-  display:block;
-  width:140px;
-}
-
-/********  Table ********/
-
-table {
-  border-collapse:collapse;
-  clear:both;
-  margin-top:10px;
-  font-size:1.6em;
-  width:100%;
-  text-align:left;
-}
-
-table th {
-  background-color:#B9C9FE;
-  color:#003399;
-  
-  font-weight:normal;
-  padding:10px 10px 10px 20px;
-}
-
-table th.left {
-  -moz-border-radius-topleft:10px;
-  -webkit-border-top-left-radius:10px;
-}
-
-table th.right {
-  -moz-border-radius-topright:10px;
-  -webkit-border-top-right-radius:10px;
-}
-
-table td {
-  background:#E8EDFF none repeat scroll 0 0;
-  border-top:1px solid #FFFFFF;
-  color:#666699;
-  padding:10px 10px 10px 20px;
-}
-
-table tr:hover td {
-  background:#D0DAFD none repeat scroll 0 0;
-}
-
-table tfoot td.left {
-   -moz-border-radius-bottomleft:10px;
-   -webkit-border-bottom-left-radius:10px;
-}
-
-table tfoot td.right {
-   -moz-border-radius-bottomright:10px;
-   -webkit-border-bottom-right-radius:10px;
-}
-
-table td .delete{
-  background: url('../images/icons/delete.png') no-repeat center center;
-  color:transparent;
-}
-
-/**** Flashes ***/
-
-.flash {
-	border: dotted 3px #999;
-	padding: 5px;
-	margin-bottom: 10px;
-}
-
-.flash_error {
-	border: dotted 3px red;
-}
-
-.flash_notice, .flash_message {
-	border: dotted 3px green;
-}
-
-.flash_warning {
-	border: dotted 3px orange;
-}
-
-/**** Some Form Stuff *****/
-
-.input_error {
-  border:3px solid red;
-}
-
-#login #user_session_submit {
-  margin-left:139px;
-  margin-top:10px;
-}
-
-table {
-	margin-bottom: 15px;
-}

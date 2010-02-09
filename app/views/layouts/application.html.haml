@@ -2,16 +2,23 @@
 %html{ :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
     %title
-      WebTrends Tag System
+      WebTrends Tracker
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
-    = stylesheet_link_tag "/stylesheets/jquery.autocomplete.css", "reset", "application"
+    = stylesheet_link_tag "blueprint/screen.css", "application.css", :media => "screen, projection", :cache => true
+    = stylesheet_link_tag "blueprint/print.css", :media => "print"
+    /
+      [if lt IE 8]>
+      <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+      <![endif]
+    
     :javascript
       rails_authenticity_token = '#{form_authenticity_token}'
     
   %body
-    #page
-      = render :partial => "layouts/header", :locals => { :products => @products }
-      #main
+    .container
+      = render :partial => "layouts/top_nav"
+      = render :partial => "layouts/left_nav", :locals => { :products => @products }
+      #main.span-18.last
         = show_flashes 
         = yield
     = javascript_include_tag "jquery-1.3.2", "jquery-in-place-editor", "jquery.autocomplete", "application", :cache => true

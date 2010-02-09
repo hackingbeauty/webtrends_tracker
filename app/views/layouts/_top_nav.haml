@@ -1,0 +1,9 @@
+#top-nav.span-24
+  %ul
+    %li
+      %input{:type => "text", :tabindex => 1, :size => 30, :id=> "search-input"}
+      %input{:type => "button", :name=> "search"}
+
+    - if logged_in?
+      %li
+        = link_to "Logout", user_session_path, :method => :delete
