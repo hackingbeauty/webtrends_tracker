@@ -9,11 +9,11 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      flash[:notice] = "Login successful!"
+      # flash[:notice] = "Login successful!"
       redirect_back_or_default tags_path 
       return
     end
-    flash.now[:error] = "Invalid Credentials"
+    flash.now[:error] = "You entered the wrong username and/or password!"
     render :action => :new
   end
   

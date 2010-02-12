@@ -1,15 +1,13 @@
-/*	Main Styles
+/*	=Main Styles
 	...................................................................... */
 
 body { background:black;font-family:Trebuchet MS, sans-serif; font-size:100%;}
 
-/*.container {background-color:white; -moz-border-radius:10px;-webkit-border-radius:5px;margin-top:90px;padding:20px;}
-*/
 .container h1 a#logo {font-size:0;}
 
 .container #sub-container {background-color:white; -moz-border-radius:10px;-webkit-border-radius:5px;padding:20px;float:left;}
 
-.container #sub-container #sub-container-back {background:#d4d4d4;float:left;padding:5px;margin-left:10px;}
+.container #sub-container #sub-container-back {background:#d4d4d4;float:left;padding:11px;margin-left:10px;}
 
 a {color:#89cfe7; font-weight:bold;}
 
@@ -18,16 +16,16 @@ li {list-style-type:none;}
 th {text-transform:uppercase;}
 
 
-/*	Logo
+/*	=Logo
 	...................................................................... */
 
 a#logo {background:url('../images/logo.png');width:320px;height:110px;display:block;}
 
 
-/*	Top Nav
+/*	=Top Nav
 	...................................................................... */
 
-.container #top-nav {height:60px;background:url('../images/backgrounds/background-nav.png')no-repeat;}
+.container #top-nav {height:38px;background:url('../images/backgrounds/background-nav.png')no-repeat;margin-bottom:30px;}
 
 .container #top-nav ul {margin-left:166px;}
 
@@ -40,13 +38,13 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 .container #top-nav ul li.logout {float:right;}
 
 
-/*	Left Nav
+/*	=Left Nav
 	...................................................................... */
  
 .container #left-nav {}
 
 
-/*	Module
+/*	=Module
 	...................................................................... */
 
 .container .module {background:white;}
@@ -56,7 +54,20 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 .container .module h3 {text-transform:uppercase;font-size:17px;font-weight:bold;border-bottom:1px solid #e4e3e3;padding:7px 5px;margin-bottom:0;}
 
 
-/*	Main Table
+/*	=Errors & Notices
+	...................................................................... */
+
+.flash_error,
+.flash_notice {clear:both;margin-bottom:20px;margin-left:20px;font-weight:bold;}
+
+.flash_error {color:red;}
+
+.flash_notice {color:green;}
+
+.fieldWithErrors .input_error {border:2px solid red;}
+
+
+/*	=Main Table
 	...................................................................... */
 
 .container #main table th {background: white url('../images/gradients/gradient-table-heading.png') repeat-x; border:1px solid #dddddd;}
@@ -66,22 +77,28 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 .container #main table tr.even td {background:#f0fbff;}
 
 
-/*	Inputs
+/*	=Inputs
 	...................................................................... */
 
 input {  font-size:18px;height:22px;margin:6px 0 0 0 !important;}
 
 input#search-btn {background:url('../images/icons/icon-magnifying-glass.png') 0 3px no-repeat; border:none; width:25px;}
 
-/*
-input[type="hidden"] {display:none !important;}
-*/
+input[type="hidden"] {display:none !important;} /* Rails adds weird hidden inputs for forms */
 
-/*	Login
+input.button {border:2px solid #89CFE7;position:absolute;right:27px;-moz-border-radius:5px;-webkit-border-radius:5px;height:30px;cursor:pointer;padding-bottom:2px;}
+
+input.button:hover {background:#e2e2e2;}
+
+
+/*	=Login
 	...................................................................... */
 
-#login {-moz-border-radius:10px;-webkit-border-radius:10px;border:1px solid #eaeaea;background:url('../images/gradients/gradient-login.png') repeat-x;width:365px;margin-left:auto;margin-right:auto;}
+#login {height:180px;position:relative;clear:both;-moz-border-radius:10px;-webkit-border-radius:10px;padding:22px;border:1px solid #eaeaea;background:url('../images/gradients/gradient-login.png') repeat-x;width:365px;margin:0 auto;}
 
 #login form {margin-left:auto;margin-right:auto;}
 
+#login form div {margin-bottom:20px;}
+
 #login input {display:block;}
+

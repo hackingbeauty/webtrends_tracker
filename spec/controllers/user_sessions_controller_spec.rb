@@ -68,7 +68,7 @@ describe UserSessionsController do
       @params[:user_session][:password] = "wrong password"
       do_post
       response.should render_template("user_sessions/new")
-      flash.now[:error].should eql("Invalid Credentials")
+      flash.now[:error].should eql("You entered the wrong username and/or password!")
     end
     
   end

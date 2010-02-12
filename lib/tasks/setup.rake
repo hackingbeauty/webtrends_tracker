@@ -7,7 +7,8 @@ namespace :setup do
       "ag"  => "ApartmentGuide",
       "rh"  => "RentalHouses",
       "nh"  => "NewHomeGuide",
-      "nhd" => "NewHomeDirectory"
+      "nhd" => "NewHomeDirectory",
+      "rt"  => "rt"
     }
     
     products.each do |abbr, name|

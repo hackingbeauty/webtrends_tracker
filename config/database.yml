@@ -14,17 +14,17 @@ test:
   database: webtrends_tracker_test
   pool: 5
   timeout: 5000
-  username: rhqa
-  password: t3st1ng
-  host: dbhost
+  # username: rhqa
+  # password: t3st1ng
+  # # host: dbhost
 
 qa:
   adapter: mysql
   encoding: utf8
   database: webtrends_tracker_qa
-  username: rhqa
-  password: t3st1ng
-  host: dbhost
+  # username: rhqa
+  # password: t3st1ng
+  # host: dbhost
 
 production:
   adapter: sqlite3
