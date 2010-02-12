@@ -20,9 +20,10 @@
         = link_to "WebTrends Tracker - Home", root_path, :id => "logo"
       #sub-container
         = render :partial => "layouts/top_nav"
-        #sub-container-back
-          = render :partial => "layouts/left_nav", :locals => { :products => @products }
-          #main.span-18.last
-            = show_flashes 
-            = yield
+        = show_flashes 
+        - if logged_in?
+          = render :partial => "layouts/authorized_view"
+        - else
+          = yield
+
     = javascript_include_tag "jquery-1.3.2", "jquery-in-place-editor", "jquery.autocomplete", "application", :cache => true

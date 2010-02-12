@@ -14,9 +14,8 @@
         %th.right
     %tbody
       - @tags.each do |tag|
-        
-        
-        %tr{:class=>"#{cycle('odd', 'even')}"}
+    
+        %tr{:class=>"#{cycle('odd', 'even')} row"}
           %td  
             = link_to tag.hook, tag
           %td
@@ -27,6 +26,6 @@
             %td
               = tag.product.name
           %td
-            = link_to("Delete", tag, :class => "delete", :method => :delete, :confirm => "Delete this tag?")
+            = link_to("Delete", tag, :class => "delete button", :method => :delete, :confirm => "Delete this tag?")
     %tfoot
       %tr

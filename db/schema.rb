@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(:version => 20091013152157) do
   create_table "key_value_pairs", :force => true do |t|
     t.string   "key"
     t.string   "value"
+    t.string   "key_val_type"
     t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"

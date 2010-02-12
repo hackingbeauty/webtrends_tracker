@@ -4,7 +4,7 @@ module ApplicationHelper
     retval = ""
     for name in [:notice, :warning, :message, :error]
       if flash[name]
-       retval += "<div class=\"flash\ flash_#{name}\"><h3>#{name.to_s.titleize}:</h3><span>#{flash[name]}</span></div>"
+       retval += "<div class=\"flash\ flash_#{name}\"><span>#{flash[name]}</span></div>"
       end
     end
     retval

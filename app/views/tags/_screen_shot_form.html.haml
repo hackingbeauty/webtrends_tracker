@@ -1,4 +1,4 @@
 - form_for tag, :url => screen_shots_path, :builder => LabeledFormBuilder, :html => { :method => :post, :enctype => "multipart/form-data" } do |f|
   = hidden_field_tag :tag_id, tag.id
   = f.file_field :snapshot
-  = f.submit
+  = f.submit "Save", :class => "button"

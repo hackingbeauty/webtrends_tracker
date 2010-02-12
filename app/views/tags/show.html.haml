@@ -1,32 +1,38 @@
-%h1= "#{h @tag.product.name} : #{h @tag.hook}"
-
-= link_to "Edit", edit_tag_path(@tag)
-|
-= link_to "Delete", tag_path(@tag), :confirm => "Are you sure?", :method => "delete"
+#tag
+  %h3= "#{h @tag.product.name} : #{h @tag.hook}"
+  .tag_actions
+    = link_to "Edit", edit_tag_path(@tag), :class => "button edit"
+    = link_to "Delete", tag_path(@tag), :confirm => "Are you sure?", :method => "delete", :class => "button"
 
 %table
-  %tr
-    %th{ :width => "25%" } Name
-    %th Value
-  %tr
-    %td Hook
-    %td= h @tag.hook
-  %tr
-    %td Location
-    %td= h @tag.location
-  %tr
-    %td Description
-    %td= h @tag.description
+  %thead
+    %tr
+      %th{ :width => "25%" } Name
+      %th Value
+  %tbody
+    %tr.odd
+      %td Hook
+      %td= h @tag.hook
+    %tr.even
+      %td Location
+      %td= h @tag.location
+    %tr.odd
+      %td Description
+      %td= h @tag.description
 
-%h1 Key Value Pairs
-= render :partial => 'key_value_pairs/list'
-%h1 New Key Value Pair
-#kvp_form
-  = render :partial => "key_value_pairs/form", :locals => { :key_value_pair => KeyValuePair.new(:tag => @tag) }
+.module
+  %h3 Key Value Pairs
+  = render :partial => 'key_value_pairs/list'
 
-%h1 Screenshot
-- if @tag.snapshot
-  .snapshot
-    = image_tag @tag.snapshot.url(:normal)
-= render :partial => "screen_shot_form", :locals => { :tag => @tag }
+.module
+  %h3 New Key Value Pair
+  #kvp_form
+    = render :partial => "key_value_pairs/form", :locals => { :key_value_pair => KeyValuePair.new(:tag => @tag) }
+
+.module
+  %h3 Screenshot
+  - if @tag.snapshot
+    .snapshot
+      = image_tag @tag.snapshot.url(:normal)
+  = render :partial => "screen_shot_form", :locals => { :tag => @tag }
   

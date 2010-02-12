@@ -5,6 +5,7 @@
 #  id         :integer         not null, primary key
 #  key        :string(255)
 #  value      :string(255)
+#  key_val_type      :string
 #  tag_id     :integer
 #  created_at :datetime
 #  updated_at :datetime

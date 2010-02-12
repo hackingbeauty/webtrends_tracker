@@ -2,4 +2,5 @@
   = f.hidden_field :tag_id
   = f.text_field :key
   = f.text_field :value
-  = f.submit
+  = f.select :key_val_type, %w[WebTrends DataWarehouse]
+  = f.submit "Save", :class => "button"
