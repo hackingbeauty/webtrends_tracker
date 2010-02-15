@@ -1,14 +1,5 @@
 #new-tag
   = f.error_messages
-  #radio
-    .radio-section
-      %label
-        Mulitrack
-      %input{:type => "radio", :value=> "multitrack", :checked => "checked", :name => "tag[kind]"}
-    .radio-section
-      %label
-        Page View
-      %input{:type => "radio", :value=> "page_view", :name => "tag[kind]"}
   .form-row
     = f.text_field :hook
   .form-row

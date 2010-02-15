@@ -15,7 +15,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe KeyValuePair do
   before(:each) do
-    tag = mock_model(Tag)
+    tag = mock_model(MultitrackTag)
     @valid_attributes = {
       :key => "WT.dl",
       :value => "multitrack",

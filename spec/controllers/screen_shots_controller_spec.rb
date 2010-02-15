@@ -5,7 +5,7 @@ describe ScreenShotsController do
   describe "on POST to :create" do
     
     before do
-      current_user = stub_login(@controller)
+      current_user = stub_login(@controller) #fakes a user object
 
       @uploaded_file = mock
       @params = {
@@ -16,7 +16,9 @@ describe ScreenShotsController do
       }
       
       @tag = mock_model(Tag, :null_object => true)
+      @tag.stub!(:type => "MultitrackTag")
       Tag.stub!(:find).with("1").and_return(@tag)
+      
     end
   
     def do_post

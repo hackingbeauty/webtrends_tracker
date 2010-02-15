@@ -11,7 +11,8 @@
 
 class Product < ActiveRecord::Base
   
-  has_many :tags
+  has_many :multitrack_tags
+  has_many :pageview_tags
   
   def to_param
     "#{id}-#{name}".downcase.gsub(/\s+/,'')

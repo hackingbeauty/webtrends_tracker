@@ -1,5 +1,10 @@
 .module
-  #main-head
-    = link_to "Create Tag", product_new_tag_path(@product), :class => 'button'
-  = render :partial => 'tags/list'
+  %h3
+    = "Tags for #{@product.name}"
+  = link_to "Create Multitrack Tag", product_new_multitrack_tag_path(@product), :class => 'button'
+  = link_to "Create PageView Tag", product_new_page_view_tag_path(@product), :class => 'button'  
+    
+.module
+  %h3  Multitrack Tags
+  = render :partial => 'multitrack_tags/list'
 

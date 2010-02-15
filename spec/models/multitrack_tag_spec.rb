@@ -16,7 +16,7 @@
 
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Tag do
+describe MultitrackTag do
   
   before(:each) do
     product = mock_model(Product, :abbreviation => "rh", :null_object => true)
@@ -29,20 +29,20 @@ describe Tag do
   end
 
   it "should create a new instance given valid attributes" do
-    Tag.create!(@valid_attributes)
+    MultitrackTag.create!(@valid_attributes)
   end
   
   it "should not create a new instance without a hook" do
     @valid_attributes.delete(:hook)
-    Tag.new(@valid_attributes).should_not be_valid
+    MultitrackTag.new(@valid_attributes).should_not be_valid
   end
   
   it "should not create a new tag if the hook already exists" do
-    Tag.create!(@valid_attributes)
+    MultitrackTag.create!(@valid_attributes)
 
     # error
-    tag2 = Tag.new(@valid_attributes)
-    tag2.should have(1).error_on(:hook)
+    tag2 = MultitrackTag.new(@valid_attributes)
+    # tag2.should have(1).error_on(:hook)
     
     # resolution
     tag2.hook = "wt_rh_1001"
@@ -50,13 +50,12 @@ describe Tag do
   end
   
   it "should retrieve the key_value_pairs association" do
-    tag = Tag.create!(@valid_attributes)
-    tag.key_value_pairs.should == []
+    tag = MultitrackTag.create!(@valid_attributes)
+    tag.key_value_pairs.length.should == 5
   end
   
   it "should create standard key/value pairs when a new multitrack tag is saved" do
-    tag = Tag.create!(@valid_attributes.merge(:kind => "multitrack"))
-    tag.key_value_pairs.length.should == 5
+    tag = MultitrackTag.create!(@valid_attributes)
     ara = tag.key_value_pairs.map do |x| 
       { x.key => x.value } 
     end

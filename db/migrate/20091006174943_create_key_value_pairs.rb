@@ -5,7 +5,6 @@ class CreateKeyValuePairs < ActiveRecord::Migration
       t.string :value
       t.string :key_val_type
       t.integer :tag_id
-
       t.timestamps
     end
   end

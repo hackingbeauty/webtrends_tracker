@@ -7,7 +7,7 @@ class ScreenShotsController < ApplicationController
     else
       flash[:error] = @tag.errors.full_messages.first
     end
-    redirect_to tag_path(@tag)
+    redirect_to @tag
   end
   
 end

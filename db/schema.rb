@@ -22,22 +22,22 @@ ActiveRecord::Schema.define(:version => 20091013152157) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
+    t.string   "abbreviation"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "abbreviation"
   end
 
   create_table "tags", :force => true do |t|
     t.string   "hook"
     t.string   "location"
     t.text     "description"
-    t.string   "kind"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "type"
+    t.integer  "product_id"
     t.string   "snapshot_file_name"
     t.string   "snapshot_content_type"
     t.integer  "snapshot_file_size"
-    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

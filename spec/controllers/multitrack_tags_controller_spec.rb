@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe TagsController do
+describe MultitrackTagsController do
   
   describe "on GET to :index" do
     

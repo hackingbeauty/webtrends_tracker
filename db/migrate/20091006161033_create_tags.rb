@@ -4,7 +4,11 @@ class CreateTags < ActiveRecord::Migration
       t.string :hook
       t.string :location
       t.text :description
-      t.string :kind
+      t.string :type
+      t.integer :product_id
+      t.string :snapshot_file_name
+      t.string :snapshot_content_type
+      t.integer :snapshot_file_size
       t.timestamps
     end
   end

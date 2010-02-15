@@ -1,0 +1,3 @@
+class PageViewTag < Tag
+
+end

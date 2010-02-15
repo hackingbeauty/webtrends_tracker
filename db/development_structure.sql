@@ -7,14 +7,14 @@ CREATE TABLE `key_value_pairs` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
+  `abbreviation` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `abbreviation` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
@@ -28,14 +28,15 @@ CREATE TABLE `tags` (
   `hook` varchar(255) DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
   `description` text,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
   `snapshot_file_name` varchar(255) DEFAULT NULL,
   `snapshot_content_type` varchar(255) DEFAULT NULL,
   `snapshot_file_size` int(11) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -59,14 +60,8 @@ CREATE TABLE `users` (
 
 INSERT INTO schema_migrations (version) VALUES ('20091006161033');
 
-INSERT INTO schema_migrations (version) VALUES ('20091006170400');
-
 INSERT INTO schema_migrations (version) VALUES ('20091006174943');
 
 INSERT INTO schema_migrations (version) VALUES ('20091007134539');
-
-INSERT INTO schema_migrations (version) VALUES ('20091007135612');
-
-INSERT INTO schema_migrations (version) VALUES ('20091009141317');
 
 INSERT INTO schema_migrations (version) VALUES ('20091013152157');

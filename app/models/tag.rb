@@ -16,50 +16,11 @@
 
 class Tag < ActiveRecord::Base
   
-  # attr_accessor :kind
-  # 
   has_attached_file :snapshot, :styles => { :normal => "975x975>" }
   
   has_many :key_value_pairs, :order => "'key'"
   belongs_to :product
-  
-  named_scope :ordered, :order => "hook"
-  
-  validates_presence_of :hook
+    
   validates_presence_of :product
-  validates_format_of :hook, :with => /wt_[a-z]{2}_\w{4}/i, :message => "format is invalid. It should look like \"wt_<2-character-product-code>_<4-digit-base-36-number>\""
-  validates_length_of :hook, :is => 10
-  validate :check_hook_product_abbreviation
-  validates_uniqueness_of :hook
-
-  def to_param
-    "#{id}-#{hook}".downcase.gsub(/\s+/,'')
-  end
-  
-  def check_hook_product_abbreviation
-    return if self.hook.nil? or self.product.nil?
-    unless self.hook.include?(self.product.abbreviation)
-      errors.add(:hook, "product abbreviation is wrong. It should look like \"wt_#{self.product.abbreviation}_####\"")
-    end
-  end
-  
-  def multitrack_key_values
-    {
-      "dcsuri"    => "uri of page",
-      "dcsdat"    => "timestamp",
-      "WT.vt_sid" => "session id",
-      "WT.co_f"   => "unique session id",
-      "WT.dl"     => "pageview or multitrack"
-    }
-  end
-  
-  def after_create
-    if self.kind == "multitrack"
-      multitrack_key_values.each do |k, v |
-        self.key_value_pairs.create(:key => k, :value => v)
-        # self.key_value_pairs.build(:key => k, :value => v).save
-      end
-    end
-  end
   
 end

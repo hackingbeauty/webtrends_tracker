@@ -4,7 +4,7 @@ describe KeyValuePairsController do
 
   before :each do
     stub_login(@controller)
-    @tag = Tag.create! :hook => "wt_ag_0001", :product => mock_model(Product, :abbreviation => "ag"), :location => "location"
+    @tag = MultitrackTag.create! :hook => "wt_ag_0001", :product => mock_model(Product, :abbreviation => "ag"), :location => "location"
   end
 
   describe "on POST to :create" do

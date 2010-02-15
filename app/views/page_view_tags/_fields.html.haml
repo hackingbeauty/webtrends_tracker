@@ -1,0 +1,9 @@
+#new-tag
+  = f.error_messages
+  .form-row
+    = f.text_field :location
+  .form-row
+    = f.text_area  :description, :cols => '70'
+  .form-row
+    = f.hidden_field :product_id, :value => @product.id, :class => 'hidden'
+    = f.submit "Save", :id => "submit", :class => "button"

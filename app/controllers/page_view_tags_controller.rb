@@ -1,11 +1,7 @@
-class TagsController < ApplicationController
-
+class PageViewTagsController < ApplicationController
+  
   before_filter :load_tag
   before_filter :load_product
-
-  def index
-    @tags = Tag.ordered
-  end
   
   def show
     respond_to do |type|
@@ -15,14 +11,11 @@ class TagsController < ApplicationController
   end
   
   def new
-    @tag = Tag.new
-  end
-  
-  def edit
+    @tag = PageViewTag.new
   end
   
   def create
-    @tag = Tag.new(params[:tag])
+    @tag = PageViewTag.new(params[:page_view_tag])
     if @tag.save
       redirect_to @tag
     else
@@ -30,25 +23,11 @@ class TagsController < ApplicationController
       render :action => 'new'
     end
   end
-  
-  def update
-    if @tag.update_attributes(params[:tag])
-      flash[:notice] = "Tag updated succesfully"
-      redirect_to @tag
-    else
-      render :action => "edit"
-    end    
-  end
-  
-  def destroy
-    @tag.destroy
-    redirect_to tags_path
-  end
-  
+
   private
   
   def load_tag
-    @tag = Tag.find(params[:id]) if params[:id]
+    @tag = PageViewTag.find(params[:id]) if params[:id]
   end
   
   def load_product
@@ -57,5 +36,5 @@ class TagsController < ApplicationController
       @product ||= @tag.product 
     end
   end
-  
+
 end
