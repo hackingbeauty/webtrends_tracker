@@ -16,11 +16,32 @@
 
 class Tag < ActiveRecord::Base
   
+  attr_accessor :kind
+  
   has_attached_file :snapshot, :styles => { :normal => "975x975>" }
   
   has_many :key_value_pairs, :order => "'key'"
   belongs_to :product
     
   validates_presence_of :product
+  
+  def multitrack_key_values
+    {
+      "dcsuri"    => "uri of page",
+      "dcsdat"    => "timestamp",
+      "WT.vt_sid" => "session id",
+      "WT.co_f"   => "unique session id",
+      "WT.dl"     => "pageview or multitrack"
+    }
+  end
+  
+  def after_create
+    if self.kind == "multitrack"
+      multitrack_key_values.each do |k, v |
+        self.key_value_pairs.create(:key => k, :value => v)
+        # self.key_value_pairs.build(:key => k, :value => v).save
+      end
+    end
+  end
   
 end
