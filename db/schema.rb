@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20091013152157) do
     t.string   "hook"
     t.string   "location"
     t.text     "description"
+    t.string   "kind"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "snapshot_file_name"

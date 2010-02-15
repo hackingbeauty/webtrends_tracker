@@ -1,5 +1,5 @@
 - if @tags and !@tags.blank?
-  %table
+  %table#main-table
     %thead
       %tr
         %th.left
@@ -8,6 +8,8 @@
           Location
         %th
           Description
+        %th
+          Type
         - if params[:action] == "index"
           %th
             Product
@@ -22,6 +24,8 @@
             = tag.location
           %td
             = tag.description
+          %td
+            = tag.kind
           - if params[:action] == "index"
             %td
               = tag.product.name

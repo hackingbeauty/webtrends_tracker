@@ -1,24 +1,20 @@
-#tag
-  %h3= "#{h @tag.product.name} : #{h @tag.hook}"
-  .tag_actions
-    = link_to "Edit", edit_tag_path(@tag), :class => "button edit"
-    = link_to "Delete", tag_path(@tag), :confirm => "Are you sure?", :method => "delete", :class => "button"
-
-%table
-  %thead
-    %tr
-      %th{ :width => "25%" } Name
-      %th Value
-  %tbody
-    %tr.odd
-      %td Hook
-      %td= h @tag.hook
-    %tr.even
-      %td Location
-      %td= h @tag.location
-    %tr.odd
-      %td Description
-      %td= h @tag.description
+.module
+  #tag
+    %h3= "#{h @tag.product.name} : #{h @tag.hook}"
+    .tag_actions
+      = link_to "Edit", edit_tag_path(@tag), :class => "button edit"
+      = link_to "Delete", tag_path(@tag), :confirm => "Are you sure?", :method => "delete", :class => "button"  
+  %ul
+    %li
+      %strong
+        Location
+      %span
+        = h @tag.location
+    %li
+      %strong
+        Description
+      %span
+        = h @tag.description
 
 .module
   %h3 Key Value Pairs

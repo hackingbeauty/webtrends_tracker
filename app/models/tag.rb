@@ -16,6 +16,8 @@
 
 class Tag < ActiveRecord::Base
   
+  # attr_accessor :kind
+  # 
   has_attached_file :snapshot, :styles => { :normal => "975x975>" }
   
   has_many :key_value_pairs, :order => "'key'"
@@ -38,6 +40,25 @@ class Tag < ActiveRecord::Base
     return if self.hook.nil? or self.product.nil?
     unless self.hook.include?(self.product.abbreviation)
       errors.add(:hook, "product abbreviation is wrong. It should look like \"wt_#{self.product.abbreviation}_####\"")
+    end
+  end
+  
+  def multitrack_key_values
+    {
+      "dcsuri"    => "uri of page",
+      "dcsdat"    => "timestamp",
+      "WT.vt_sid" => "session id",
+      "WT.co_f"   => "unique session id",
+      "WT.dl"     => "pageview or multitrack"
+    }
+  end
+  
+  def after_create
+    if self.kind == "multitrack"
+      multitrack_key_values.each do |k, v |
+        self.key_value_pairs.create(:key => k, :value => v)
+        # self.key_value_pairs.build(:key => k, :value => v).save
+      end
     end
   end
   

@@ -4,7 +4,7 @@ class CreateTags < ActiveRecord::Migration
       t.string :hook
       t.string :location
       t.text :description
-
+      t.string :kind
       t.timestamps
     end
   end
