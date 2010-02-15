@@ -19,6 +19,7 @@ h3 {text-transform:uppercase;font-size:17px;font-weight:bold;border-bottom:1px s
 
 textarea {display:block;}
 
+
 /*	=Logo
 	...................................................................... */
 
@@ -55,7 +56,6 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 .container .module ul  {padding:0;list-style-position:outside;}
 
 
-
 /*	=Errors & Notices
 	...................................................................... */
 
@@ -74,24 +74,23 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .container #main table th {background: white url('../images/gradients/gradient-table-heading.png') repeat-x; border:1px solid #dddddd;}
 
-/*.container #main table tr {cursor:pointer;}*/
-
 .container #main table tr.odd td {background:white;}
 
 .container #main table tr.even td {background:#f0fbff;}
 
 .container #main table tr.row:hover td {background:#006faf !important; color:white;}
 
+
 /*	=Inputs
 	...................................................................... */
 
 input {  font-size:18px;height:22px;margin:6px 0 0 0 !important;display:block;}
 
-input#search-btn {background:url('../images/icons/icon-magnifying-glass.png') 0 3px no-repeat; border:none; width:25px;}
+input#search-btn {background:url('../images/icons/icon-magnifying-glass.png') 0 3px no-repeat; border:none; width:25px;float:right;margin-top:-10px;position:relative;top:-31px;left:30px;}
 
 input[type="hidden"] {display:none !important;} /* Rails adds weird hidden inputs for forms */
 
-input.button {border:2px solid #89CFE7;position:absolute;right:27px;-moz-border-radius:5px;-webkit-border-radius:5px;height:30px;cursor:pointer;padding-bottom:2px;}
+input.button {border:2px solid #89CFE7;-moz-border-radius:5px;-webkit-border-radius:5px;height:30px;cursor:pointer;padding-bottom:2px;}
 
 input.button:hover {background:#e2e2e2;}
 
@@ -99,15 +98,9 @@ input.button:hover {background:#e2e2e2;}
 /*	=Login
 	...................................................................... */
 
+#login form div {margin-bottom:20px;}
+
 #login {height:180px;position:relative;clear:both;-moz-border-radius:10px;-webkit-border-radius:10px;padding:22px;border:1px solid #eaeaea;background:url('../images/gradients/gradient-login.png') repeat-x;width:365px;margin:0 auto;}
-
-form div {margin-bottom:20px;}
-
-
-/*	=Login
-	...................................................................... */
-
-#login {height:180px;position:relative;clear:both;-moz-border-radius:10px;-webkit-border-radius:10px;padding:22px 22px 22px 6px;border:1px solid #eaeaea;background:url('../images/gradients/gradient-login.png') repeat-x;width:365px;margin:0 auto;}
 
 #login form {margin-left:auto;margin-right:auto;}
 
@@ -115,3 +108,10 @@ form div {margin-bottom:20px;}
 
 #login input {display:block;}
 
+#login input.button {position:absolute;bottom:12px;right:27px;}
+
+
+/*	=New Tag Page (tags/new)
+	...................................................................... */
+
+#new_tag_form {}

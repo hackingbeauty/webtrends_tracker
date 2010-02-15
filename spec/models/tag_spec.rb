@@ -54,4 +54,17 @@ describe Tag do
     tag.key_value_pairs.should == []
   end
   
+  it "should create standard key/value pairs when a new multitrack tag is saved" do
+    tag = Tag.create!(@valid_attributes.merge(:kind => "multitrack"))
+    tag.key_value_pairs.length.should == 5
+    ara = tag.key_value_pairs.map do |x| 
+      { x.key => x.value } 
+    end
+    ara.include?("dcsuri" => 'uri of page').should be_true
+    ara.include?("dcsdat" => 'timestamp').should be_true
+    ara.include?("WT.vt_sid" => 'session id').should be_true
+    ara.include?("WT.co_f" => 'unique session id').should be_true
+    ara.include?("WT.dl" => 'pageview or multitrack').should be_true
+  end
+  
 end
