@@ -4,7 +4,7 @@ development:
   adapter: mysql
   encoding: utf8
   pool: 5
-  database: webtrends_tracker_dev
+  database: webtrends_tracker_development
   username: wt_dev
   password: y0ud0ntkn0w
   host: dbhost
