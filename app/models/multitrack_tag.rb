@@ -16,7 +16,6 @@
 
 class MultitrackTag < Tag
   
-
   named_scope :ordered, :order => "hook"
   
   validates_presence_of :hook
@@ -24,7 +23,6 @@ class MultitrackTag < Tag
   validates_length_of :hook, :is => 10
   validate :check_hook_product_abbreviation
   # validates_uniqueness_of :hook
-
 
   def check_hook_product_abbreviation
     return if self.hook.nil? or self.product.nil?
@@ -45,8 +43,7 @@ class MultitrackTag < Tag
   
   def after_create
     multitrack_key_values.each do |k, v |
-      self.key_value_pairs.create(:key => k, :value => v)
-      # self.key_value_pairs.build(:key => k, :value => v).save
+      self.key_value_pairs.create(:key => k, :value => v, :key_val_type => "WebTrends") 
     end
   end
   
