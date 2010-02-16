@@ -1,10 +1,23 @@
-.module
+.module.stats
   %h3
     = "Tags for #{@product.name}"
-  = link_to "Create Multitrack Tag", product_new_multitrack_tag_path(@product), :class => 'button'
-  = link_to "Create PageView Tag", product_new_page_view_tag_path(@product), :class => 'button'  
+  %div.stats    
+    %ul.stats-list
+      %li
+        = "Total Multitrack Tags: #{@total_multitrack_tags}"
+      %li
+        = "Total Page View Tags: #{@total_page_view_tags}"
+    %ul.actions
+      %li
+        = link_to "Create Multitrack Tag", product_new_multitrack_tag_path(@product), :class => 'button'
+      %li
+        = link_to "Create PageView Tag", product_new_page_view_tag_path(@product), :class => 'button'  
     
 .module
   %h3  Multitrack Tags
   = render :partial => 'multitrack_tags/list'
+  
+.module
+  %h3  Page View Tags
+  = render :partial => 'page_view_tags/list'
 

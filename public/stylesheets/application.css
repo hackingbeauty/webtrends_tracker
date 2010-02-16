@@ -56,7 +56,7 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 /*	=Module
 	...................................................................... */
 
-.container .module {background:white;-moz-border-radius:5px;-webkit-border-radius:5px;padding:10px 20px;margin-bottom:20px;}
+.container .module {background:white;-moz-border-radius:5px;-webkit-border-radius:5px;padding:10px 20px;margin-bottom:20px;clear:both;}
 
 .container .module ul  {padding:0;list-style-position:outside;}
 
@@ -86,6 +86,15 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 .container #main table#main-table tr.row:hover td {background:#006faf !important; color:white;}
 
 .container #main table#main-table {margin-top:10px;}
+
+.container #main table#main-table.page_view th.location {}
+
+.container #main table#main-table.page_view th.description {}
+
+.container #main table#main-table.page_view th.type {}
+
+.container #main table#main-table.page_view th.action {width:90px;}
+
 
 /*	=Inputs
 	...................................................................... */
@@ -119,6 +128,22 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 #login input.button {position:absolute;bottom:12px;right:27px;}
 
 
+/*	=Show Product Page (products/show)
+	...................................................................... */
+
+.module.stats {float:left;width:94.6%;}
+
+.module div.stats {margin-top:10px;}
+
+.module div.stats ul li {margin-bottom:10px;}
+
+.module div.stats ul.stats-list {float:left;}
+
+.module div.stats ul.actions {float:right;}
+
+.module div.stats ul li a.button {width:190px;}
+
+
 /*	=New Tag Page (tags/new)
 	...................................................................... */
 
@@ -133,3 +158,9 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 #new-tag #radio .radio-section label {float:left;}
 
 #new-tag #radio .radio-section input {float:right;position:relative;top:-3px;}
+
+
+/*	=Show Tag Page (tags/show)
+	...................................................................... */
+	
+#tag .tag_actions {float:right;margin-top:-35px;margin-right:10px;}

@@ -1,24 +1,20 @@
-- if @multitrack_tags and !@multitrack_tags.blank?
-  %table#main-table
+- if @page_view_tags and !@page_view_tags.blank?
+  %table#main-table.page_view
     %thead
       %tr
-        %th.left
-          Hook
-        %th
+        %th.location
           Location
-        %th
+        %th.description
           Description
-        %th
+        %th.type
           Type
         - if params[:action] == "index"
           %th
             Product
-        %th.right
+        %th.action
     %tbody
-      - @multitrack_tags.each do |tag|
+      - @page_view_tags.each do |tag|   
         %tr{:class=>"#{cycle('odd', 'even')} row"}
-          %td  
-            = link_to tag.hook, tag
           %td
             = tag.location
           %td

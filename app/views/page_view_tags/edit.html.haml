@@ -1,0 +1,5 @@
+.module
+  %h3== Edit Page View Tag
+
+  - form_for :tag, @tag, :url => tag_path(@tag), :builder => LabeledFormBuilder, :html => { :id => 'create_tag', :class => 'rounded module', :multipart => true, :method => :put } do |f|
+    = render :partial => "fields", :locals => { :f => f }

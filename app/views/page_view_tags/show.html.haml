@@ -1,0 +1,28 @@
+.module
+  #tag
+    %h3= "#{h @tag.product.name} : #{h @tag.hook}"
+    .tag_actions
+      = link_to "Edit", edit_page_view_tag_path(@tag), :class => "button edit"
+      = link_to "Delete", page_view_tag_path(@tag), :confirm => "Are you sure?", :method => "delete", :class => "button"  
+  %ul
+    %li
+      %strong
+        Location
+      %span
+        = h @tag.location
+    %li
+      %strong
+        Description
+      %span
+        = h @tag.description
+
+.module
+  %h3 Meta Tags
+  = render :partial => 'key_value_pairs/list'
+
+.module
+  %h3 New Meta Tags
+  #kvp_form
+    = render :partial => "key_value_pairs/form", :locals => { :key_value_pair => KeyValuePair.new(:tag => @tag) }
+
+  
