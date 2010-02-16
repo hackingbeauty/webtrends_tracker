@@ -7,9 +7,9 @@ RAILS_GEM_VERSION = '2.3.3' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-  config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com', :version => '2.3.1'
-  config.gem 'binarylogic-authlogic', :lib => 'authlogic', :source => 'http://gems.github.com', :version => '2.1.1'
-  config.gem 'haml', :version => '2.2.6'
+  config.gem 'paperclip', :version => '2.3.1'
+  config.gem 'authlogic', :version => '2.1.1'
+  config.gem 'haml', :version => '2.2.20'
   
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
