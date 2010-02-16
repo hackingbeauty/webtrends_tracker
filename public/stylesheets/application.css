@@ -109,7 +109,7 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 /*	=Forms
 	...................................................................... */
 
-.form-row {margin-bottom:20px;}
+.form-row {margin-bottom:20px;clear:both;}
 
 
 /*	=Login
@@ -142,6 +142,22 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 .module div.stats ul.actions {float:right;}
 
 .module div.stats ul li a.button {width:190px;}
+
+#multitracks {float:left;width:94.6%;}
+
+#multitracks .form-row {margin-bottom:5px !important;}
+
+#multitracks.module label {/*float:left;*/}
+
+#multitracks.module input {float:left;}
+
+#multitracks.module input#multitrack_tag_hook {margin-right:10px !important;}
+
+#multitracks.module input#multitrack_tag_location {margin-right:10px !important;}
+
+#multitracks.module input#multitrack_tag_description {margin-right:10px !important;}
+
+#multitracks.module a.button {margin-top:4px;}
 
 
 /*	=New Tag Page (tags/new)

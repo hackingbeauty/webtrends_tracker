@@ -25,7 +25,6 @@ class MultitrackTag < Tag
   validate :check_hook_product_abbreviation
   # validates_uniqueness_of :hook
 
-
   def check_hook_product_abbreviation
     return if self.hook.nil? or self.product.nil?
     unless self.hook.include?(self.product.abbreviation)
@@ -45,8 +44,7 @@ class MultitrackTag < Tag
   
   def after_create
     multitrack_key_values.each do |k, v |
-      self.key_value_pairs.create(:key => k, :value => v)
-      # self.key_value_pairs.build(:key => k, :value => v).save
+      self.key_value_pairs.create(:key => k, :value => v, :key_val_type => "WebTrends") 
     end
   end
   

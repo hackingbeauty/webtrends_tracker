@@ -10,10 +10,11 @@
   
   /*	=KeyValueForm Object
   	...................................................................... */
-    
-  var KeyValueForm = function(){ //constructor function object
+  
+  var KeyValueForm = function(){ // constructor function object
     this.create_key_val = function(){
       var kvp_form = document.getElementById("new_key_value_pair");
+      if(kvp_form)
       kvp_form.onsubmit = function(){
         $.ajax({
           type: 'post',
@@ -45,13 +46,45 @@
             
             return false;
            });
-          }
+          }//end success
         });
         return false;
-      }
-    }
-  }
+      }//end onsubmit
+    }//end create_key_val
+  }//end KeyValueForm
   window.PRIMEDIA.KeyValueForm = KeyValueForm;
+
+  var MultitrackTag = function(){ // constructor function object
+    this.create_tag_form_field = function(){
+      var create_multitrack_btn = document.getElementById("create-multitrack-tag");
+      if(create_multitrack_btn){
+        create_multitrack_btn.onclick = function(){
+          // var multitrack_section = document.getElementById("multitracks");
+          $('#multitracks').children(':last-child').after('<form class="create_tag" method="post" action="/multitrack_tags">' +
+            '<div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="'+ rails_authenticity_token +'" />' +
+            '<div class="form-row">' +
+            '<input type="text" size="10" name="multitrack_tag[hook]" id="multitrack_tag_hook" />' +
+            '<input type="text" size="15" name="multitrack_tag[location]" id="multitrack_tag_location" />' +
+            '<input type="text" size="19" name="multitrack_tag[description]" id="multitrack_tag_description" />' +
+            '<input class="hidden" id="multitrack_tag_product_id" name="multitrack_tag[product_id]" type="hidden" value="'+ PRIMEDIA_product_id +'" />' +
+            '<input type="submit" value="Save" name="commit" id="submit" class="button">' +
+            '</div>' +
+            '</form>');
+          return false;
+        }
+      }
+    },//end create_tag
+    this.save_multitrack_tag = function(){
+      console.log('1');
+      $('form.create_tag').live('submit',function(){
+        // console.log('boo');
+        //      return false;
+        // alert('ya clicked save ');
+      });
+    }
+    
+  }//end MultitrackTag
+  window.PRIMEDIA.MultitrackTag = MultitrackTag;
 
 })();
 
@@ -60,4 +93,37 @@ $(document).ready(function() {
   var kvp = new PRIMEDIA.KeyValueForm();
   kvp.create_key_val();
   
+  var mt = new PRIMEDIA.MultitrackTag();
+  mt.create_tag_form_field();
+  mt.save_multitrack_tag();
+  
 });
+
+
+
+
+
+
+
+
+
+
+
+
+//   
+// $.fn._delete = function(success){
+//   this.click(function(){
+//      var sure = confirm("Are you sure?");
+//      if ( ! sure )
+//        return false;
+//        
+//     $.ajax({
+//       type: 'post',
+//       data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
+//       url: this.href,
+//       success: success
+//     });
+//     
+//     return false;
+//    });
+// };
