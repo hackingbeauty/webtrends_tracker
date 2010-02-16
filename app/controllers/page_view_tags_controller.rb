@@ -23,6 +23,11 @@ class PageViewTagsController < ApplicationController
       render :action => 'new'
     end
   end
+  
+  def destroy    
+    @tag.destroy
+    redirect_to @tag.product
+  end
 
   private
   

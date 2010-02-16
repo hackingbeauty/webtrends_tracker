@@ -40,9 +40,9 @@ class MultitrackTagsController < ApplicationController
     end    
   end
   
-  def destroy
+  def destroy    
     @tag.destroy
-    redirect_to tags_path
+    redirect_to @tag.product
   end
   
   private

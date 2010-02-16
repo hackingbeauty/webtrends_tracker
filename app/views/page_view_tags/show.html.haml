@@ -20,7 +20,7 @@
   %h3 Meta Tags
   = render :partial => 'key_value_pairs/list'
 
-.module
+.module.key_val_form
   %h3 New Meta Tags
   #kvp_form
     = render :partial => "key_value_pairs/form", :locals => { :key_value_pair => KeyValuePair.new(:tag => @tag) }

@@ -5,16 +5,14 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :tags
   
-  map.resources :multitrack_tags do |tags| 
-    tags.resources :key_value_pairs
-  end
+  map.resources :multitrack_tags # do |tags| 
+  #     tags.resources :key_value_pairs
+  #   end
   
-  map.resources :page_view_tags do |tags| 
-    tags.resources :key_value_pairs
-  end
-  
+  map.resources :page_view_tags # do |tags| 
+  #     tags.resources :key_value_pairs
+  #   end
 
-  
   map.resources :key_value_pairs
   map.resources :products do |product|# nested route
     product.new_multitrack_tag 'multitrack_tags/new', :controller => 'multitrack_tags', :action => 'new'

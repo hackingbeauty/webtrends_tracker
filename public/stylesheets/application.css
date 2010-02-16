@@ -163,4 +163,4 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 /*	=Show Tag Page (tags/show)
 	...................................................................... */
 	
-#tag .tag_actions {float:right;margin-top:-35px;margin-right:10px;}
+.tag_actions {float:right;margin-top:-35px;margin-right:10px;}
