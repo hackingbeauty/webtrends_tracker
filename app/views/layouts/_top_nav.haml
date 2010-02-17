@@ -5,6 +5,6 @@
         %input{:id=> "search-input", :type => "text", :value=> "Search", :tabindex => 1, :size => 30}
         %input{:id => "search-btn", :type => "button", :name=> "search"}
       %li
-        = link_to "All Tags", multitrack_tags_path
+        = link_to "All Tags", products_path
       %li.logout
         = link_to "Logout", user_session_path, :method => :delete

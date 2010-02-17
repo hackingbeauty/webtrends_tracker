@@ -1,5 +1,9 @@
 class ProductsController < ApplicationController
   
+  def index
+    @tags = Tag.list(params[:page])
+  end
+  
   def show
     @product = Product.find(params[:id])
     @order = (params[:order] == "desc") ? "created_at desc" : "created_at asc"

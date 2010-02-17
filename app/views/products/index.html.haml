@@ -1,0 +1,35 @@
+.module
+  %table#multitrack-tags-table.main-table
+    %thead
+      %tr
+        %th.left
+          Hook
+        %th
+          Location
+        %th
+          Description
+        %th
+          Type
+        - if params[:action] == "index"
+          %th
+            Product
+        %th.right
+    %tbody
+      - @tags.each do |tag|
+        %tr{:class=>"#{cycle('odd', 'even')} row"}
+          %td  
+            = link_to tag.hook, tag
+          %td
+            = tag.location
+          %td
+            = tag.description
+          %td
+            = tag.type
+          - if params[:action] == "index"
+            %td
+              = tag.product.name
+          %td
+            = link_to("Delete", tag, :class => "delete button", :method => :delete, :confirm => "Delete this tag?")
+    %tfoot
+      %tr
+  = will_paginate @tags

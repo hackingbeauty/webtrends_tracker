@@ -4,7 +4,7 @@ class MultitrackTagsController < ApplicationController
   before_filter :load_product
 
   def index
-    @tags = MultitrackTag.ordered
+    @multitrack_tags = MultitrackTag.ordered
   end
   
   def show

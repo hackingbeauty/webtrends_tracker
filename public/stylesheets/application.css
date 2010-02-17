@@ -161,9 +161,10 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 
 #multitracks.module #multitracks-add {display:none;margin-bottom:10px;float:left;width:100%;}
 
-#multitracks.module #multitracks-add #submit-multitrack-btn {float:right;margin-right:16px !important;}
+.submit-multitrack-btn {margin-left:2px !important;}
 
 #multitracks.module #multitracks-show {clear:both;}
+
 
 /*	=New Tag Page (tags/new)
 	...................................................................... */

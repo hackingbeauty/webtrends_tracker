@@ -30,22 +30,23 @@
                   '<td>' + kvp.key_val_type + '</td>' + 
                   '<td><a class="button" href="/key_value_pairs/' + kvp.id + '">Delete</a></td></tr>').
               appendTo($('#key_val_table table'));
-              
+           //AJAX Delete    
            $('a[href=/key_value_pairs/' + kvp.id + ']').click(function(){
              var sure = confirm("Are you sure?");
-             if ( ! sure )
+             if ( ! sure ) {
                return false;
+             } else {
+               $.ajax({
+                 type: 'post',
+                 data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
+                 url: this.href,
+                 success: function(){
+                   $('#key_val_table table tr:last').fadeOut(1000);
+                 }
+               });
                
-            $.ajax({
-              type: 'post',
-              data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
-              url: this.href,
-              success: function(){
-                $('#key_val_table table tr:last').fadeOut(1000);
-              }
-            });
-            
-            return false;
+             }
+             return false;
            });
           }//end success
         });
@@ -63,23 +64,23 @@
           if($('#multitracks-add').is(':hidden')) {
             $('#multitracks-add').show();
           }
-          $('#multitracks-add #submit-multitrack-btn').before('<form class="create_tag" method="post" action="/multitrack_tags">' +
+          $('#multitracks-add').after('<form class="create_tag" method="post" action="/multitrack_tags">' +
             '<div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="'+ rails_authenticity_token +'" />' +
             '<div class="form-row">' +
             '<input type="text" size="10" name="multitrack_tag[hook]" class="multitrack_tag_hook" />' +
             '<input type="text" size="15" name="multitrack_tag[location]" class="multitrack_tag_location" />' +
-            '<input type="text" size="19" name="multitrack_tag[description]" class="multitrack_tag_description" />' +
+            '<input type="text" size="15" name="multitrack_tag[description]" class="multitrack_tag_description" />' +
             '<input class="hidden" class="multitrack_tag_product_id" name="multitrack_tag[product_id]" type="hidden" value="'+ PRIMEDIA_product_id +'" />' +
             '<a class="clear button">Clear</a>' +
+            '<a class="submit-multitrack-btn button">Save</a>' +
             '</div>' +
             '</form>');
-
           return false;
         }
       }
     },//end create_tag
     
-    this.clear_multitrack_tag_form_row = function(){
+    this.delete_multitrack_tag_form_row = function(){
       $('.clear').live('click', function(){
         var form_row = $(this).parents('form.create_tag');
         $(form_row).fadeOut(300);
@@ -87,7 +88,7 @@
     },//end clear_multitrack_tag_form_row
     
     this.save_multitrack_tag = function(){
-      $('#submit-multitrack-btn').live('click',function(){
+      $('.submit-multitrack-btn').live('click',function(){
         $('form.create_tag').each(function(index){
           var hook_val = $(this).find('input.multitrack_tag_hook').val();
           if(hook_val != ""){//create the post if a hook is supplied
@@ -100,18 +101,16 @@
                alert("Multitrack tag could not be created");
               },
               success: function(res){
-                // if(!$('table#multitrack-tags-table')){
-                //   $('<table id="multitrack-tags-table" class="main-table"' +
-                //   '<thead><tr><th class="left">Hook</th><th>Location</th><th>Description</th><th>Type</th><th class="right"></th></tr></thead> ' +
-                //   '</table>').appendTo($('#multitracks-show'));
-                // }
                 var multitrack_tag = res.multitrack_tag;
                 $('<tr><td>' + multitrack_tag.hook + '</td>' +
                       '<td>' + multitrack_tag.location + '</td>' + 
                       '<td>' + multitrack_tag.description + '</td>' + 
-                      '<td>' + multitrack_tag.kind + '</td>').
+                      '<td>' + multitrack_tag.kind + '</td>' +
+                      '<td><a class="button" href="/multitrack_tags/'+ multitrack_tag.id +'">Delete</a></td></tr>d').
                   appendTo($('table#multitrack-tags-table'));
-                console.log(multitrack_tag);  
+                $('form.create_tag').find(':input:text').each(function(){
+                  $(this).val(''); //clear the inputs
+                });
               }
             });
           }
@@ -131,7 +130,7 @@ $(document).ready(function() {
   
   var mt = new PRIMEDIA.MultitrackTag();
   mt.create_tag_form_field();
-  mt.clear_multitrack_tag_form_row();
+  mt.delete_multitrack_tag_form_row();
   mt.save_multitrack_tag();
   
 });

@@ -20,7 +20,7 @@
   %h3 Key Value Pairs
   = render :partial => 'key_value_pairs/list'
   #key_val_form
-  / %h3 New Key Value Pair
+
   #kvp_form
     = render :partial => "key_value_pairs/form", :locals => { :key_value_pair => KeyValuePair.new(:tag => @tag) }
 
