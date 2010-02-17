@@ -6,6 +6,11 @@
 # and recreated between test runs.  Don't rely on the data there!
 config.cache_classes = true
 
+
+# Gem version for rspec
+config.gem 'rspec', :version => '1.3.0', :lib => 'spec'
+config.gem 'rspec-rails', :version => '1.3.2', :lib => 'spec'
+
 # Log error messages when you accidentally call methods on nil.
 config.whiny_nils = true
 

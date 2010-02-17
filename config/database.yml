@@ -17,9 +17,9 @@ test:
   encoding: utf8
   pool: 5
   database: webtrends_tracker_test
-  # username: wt_dev
-  # password: y0ud0ntkn0w
-  # host: dbhost
+  username: wt_dev
+  password: y0ud0ntkn0w
+  host: dbhost
 
 qa:
   adapter: mysql

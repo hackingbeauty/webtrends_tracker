@@ -19,3 +19,4 @@ nbproject
 tmp/restart.txt
 spec/fixtures/refinements.yml
 .ackrc
+db/development_structure.sql
