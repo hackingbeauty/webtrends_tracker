@@ -18,6 +18,9 @@ ActionController::Routing::Routes.draw do |map|
     product.new_multitrack_tag 'multitrack_tags/new', :controller => 'multitrack_tags', :action => 'new'
     product.new_page_view_tag 'page_view_tags/new', :controller => 'page_view_tags', :action => 'new'
   end
+  
+  map.spreadsheet '/spreadsheet', :controller => 'spreadsheets'
+  
   map.root :controller => 'multitrack_tags', :action => 'index'
   
 end
