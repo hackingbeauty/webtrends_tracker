@@ -77,23 +77,23 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 /*	=Main Table
 	...................................................................... */
 
-.container #main table#main-table th {background: white url('../images/gradients/gradient-table-heading.png') repeat-x; border:1px solid #dddddd;}
+.container #main table.main-table th {background: white url('../images/gradients/gradient-table-heading.png') repeat-x; border:1px solid #dddddd;}
 
-.container #main table#main-table tr.odd td {background:white;}
+.container #main table.main-table tr.odd td {background:white;}
 
-.container #main table#main-table tr.even td {background:#f0fbff;}
+.container #main table.main-table tr.even td {background:#f0fbff;}
 
-.container #main table#main-table tr.row:hover td {background:#006faf !important; color:white;}
+.container #main table.main-table tr.row:hover td {background:#006faf !important; color:white;}
 
-.container #main table#main-table {margin-top:10px;}
+.container #main table.main-table {margin-top:10px;}
 
-.container #main table#main-table.page_view th.location {}
+.container #main table.main-table.page_view th.location {}
 
-.container #main table#main-table.page_view th.description {}
+.container #main table.main-table.page_view th.description {}
 
-.container #main table#main-table.page_view th.type {}
+.container #main table.main-table.page_view th.type {}
 
-.container #main table#main-table.page_view th.action {width:90px;}
+.container #main table.main-table.page_view th.action {width:90px;}
 
 
 /*	=Inputs
@@ -145,20 +145,25 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 
 #multitracks {float:left;width:94.6%;}
 
-#multitracks .form-row {margin-bottom:5px !important;}
+#multitracks .form-row {margin:5px 0 !important;}
 
 #multitracks.module label {/*float:left;*/}
 
 #multitracks.module input {float:left;}
 
-#multitracks.module input#multitrack_tag_hook {margin-right:10px !important;}
+#multitracks.module input.multitrack_tag_hook {margin-right:10px !important;}
 
-#multitracks.module input#multitrack_tag_location {margin-right:10px !important;}
+#multitracks.module input.multitrack_tag_location {margin-right:10px !important;}
 
-#multitracks.module input#multitrack_tag_description {margin-right:10px !important;}
+#multitracks.module input.multitrack_tag_description {margin-right:10px !important;}
 
 #multitracks.module a.button {margin-top:4px;}
 
+#multitracks.module #multitracks-add {display:none;margin-bottom:10px;float:left;width:100%;}
+
+#multitracks.module #multitracks-add #submit-multitrack-btn {float:right;margin-right:16px !important;}
+
+#multitracks.module #multitracks-show {clear:both;}
 
 /*	=New Tag Page (tags/new)
 	...................................................................... */

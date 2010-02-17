@@ -39,7 +39,6 @@ class Tag < ActiveRecord::Base
     if self.kind == "multitrack"
       multitrack_key_values.each do |k, v |
         self.key_value_pairs.create(:key => k, :value => v)
-        # self.key_value_pairs.build(:key => k, :value => v).save
       end
     end
   end

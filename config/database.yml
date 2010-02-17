@@ -5,9 +5,9 @@ development:
   encoding: utf8
   pool: 5
   database: webtrends_tracker_development
-  username: wt_dev
-  password: y0ud0ntkn0w
-  host: dbhost
+  # username: wt_dev
+  # password: y0ud0ntkn0w
+  # host: dbhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -17,9 +17,9 @@ test:
   encoding: utf8
   pool: 5
   database: webtrends_tracker_test
-  username: wt_dev
-  password: y0ud0ntkn0w
-  host: dbhost
+  # username: wt_dev
+  # password: y0ud0ntkn0w
+  # host: dbhost
 
 qa:
   adapter: mysql

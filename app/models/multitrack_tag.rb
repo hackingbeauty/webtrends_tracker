@@ -16,7 +16,6 @@
 
 class MultitrackTag < Tag
   
-
   named_scope :ordered, :order => "hook"
   
   validates_presence_of :hook
