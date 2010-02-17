@@ -44,21 +44,16 @@ class Tag < ActiveRecord::Base
   end
   
   def value_str(key)
-    @key_value_pairs ||= self.key_value_pairs  
+    @key_value_pairs ||= self.key_value_pairs
+    
     key_names = @key_value_pairs.map(&:key)
+    
     if key_names.include?(key)
       kvp = @key_value_pairs.select {|x| x.key == key }.first
       return kvp.value if kvp
     end
+    
     return '-'
-  end
-  
-  def self.per_page
-    20
-  end
-  
-  def self.list(page=1)
-    Tag.paginate(:page => page, :order => :type)
   end
   
 end
