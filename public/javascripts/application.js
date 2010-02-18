@@ -13,6 +13,16 @@
   	...................................................................... */
   
   var KeyValueForm = function(){ // constructor function object 
+    this.feint_input_value = function(){
+      console.log('inside feint input value');
+      $('form#new_key_value_pair input:text').each(function(){
+        $(this).addClass("feint");
+        $(this).focus(function(){
+          $(this).val('');
+          $(this).addClass('normal');
+        });
+      });//end each
+    },//end feint_input_value
     this.create_key_val = function(){
       var kvp_form = document.getElementById("new_key_value_pair");
       if(kvp_form)
@@ -52,7 +62,11 @@
              });//end click
              $('form#new_key_value_pair').find(':input:text').each(function(){
                $(this).val(''); //clear the inputs
+               $(this).removeClass('normal');
+               $(this).addClass('feint');
              });
+             $('form#new_key_value_pair input#key_value_pair_key').val('key');
+             $('form#new_key_value_pair input#key_value_pair_value').val('value');
             }//end success
           });//end ajax
         }//end if
@@ -77,13 +91,23 @@
           $('#pageviews-add').after('<form class="create_page_view_tag" method="post" action="/page_view_tags">' +
             '<div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="'+ rails_authenticity_token +'" />' +
             '<div class="form-row">' +
-            '<input type="text" size="15" name="page_view_tag[location]" class="page_view_tag_location" />' +
-            '<input type="text" size="15" name="page_view_tag[description]" class="page_view_tag_description" />' +
+            '<input type="text" size="15" name="page_view_tag[location]" class="page_view_tag_location" value="location" />' +
+            '<input type="text" size="15" name="page_view_tag[description]" class="page_view_tag_description" value="description" />' +
             '<input class="hidden" class="multitrack_tag_product_id" name="page_view_tag[product_id]" type="hidden" value="'+ PRIMEDIA_product_id +'" />' +
             '<a class="clear button">Clear</a>' +
             '<a class="submit-pageview-btn button">Save</a>' +
             '</div>' +
             '</form>');
+            $('form.create_page_view_tag input:text').each(function(){//make input value of inputs feint
+              $(this).addClass("feint");
+            });
+            $('form.create_page_view_tag input:text').each(function(){//make input value of inputs feint
+              $(this).addClass("feint");
+              $(this).focus(function(){//when user focuses on input, remove value and make font bolder
+                $(this).val('');
+                $(this).addClass('normal');
+              });
+            });
           return false;
         }
       }
@@ -141,14 +165,21 @@
           $('#multitracks-add').after('<form class="create_multitrack_tag" method="post" action="/multitrack_tags">' +
             '<div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="'+ rails_authenticity_token +'" />' +
             '<div class="form-row">' +
-            '<input type="text" size="10" name="multitrack_tag[hook]" class="multitrack_tag_hook" />' +
-            '<input type="text" size="15" name="multitrack_tag[location]" class="multitrack_tag_location" />' +
-            '<input type="text" size="15" name="multitrack_tag[description]" class="multitrack_tag_description" />' +
+            '<input type="text" size="10" name="multitrack_tag[hook]" class="multitrack_tag_hook" value="hook"/>' +
+            '<input type="text" size="15" name="multitrack_tag[location]" class="multitrack_tag_location" value="location" />' +
+            '<input type="text" size="15" name="multitrack_tag[description]" class="multitrack_tag_description" value="description" />' +
             '<input class="hidden" class="multitrack_tag_product_id" name="multitrack_tag[product_id]" type="hidden" value="'+ PRIMEDIA_product_id +'" />' +
             '<a class="clear button">Clear</a>' +
             '<a class="submit-multitrack-btn button">Save</a>' +
             '</div>' +
             '</form>');
+            $('form.create_multitrack_tag input:text').each(function(){//make input value of inputs feint
+              $(this).addClass("feint");
+              $(this).focus(function(){//when user focuses on input, remove value and make font bolder
+                $(this).val('');
+                $(this).addClass('normal');
+              });
+            });
           return false;
         }
       }
@@ -201,6 +232,7 @@ $(document).ready(function() {
   
   var kvp = new PRIMEDIA.KeyValueForm();
   kvp.create_key_val();
+  kvp.feint_input_value();
   
   var pt = new PRIMEDIA.PageViewTag();
   pt.create_tag_form_field();
@@ -213,32 +245,3 @@ $(document).ready(function() {
   mt.save_multitrack_tag();
   
 });
-
-
-
-
-
-
-
-
-
-
-
-
-//   
-// $.fn._delete = function(success){
-//   this.click(function(){
-//      var sure = confirm("Are you sure?");
-//      if ( ! sure )
-//        return false;
-//        
-//     $.ajax({
-//       type: 'post',
-//       data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
-//       url: this.href,
-//       success: success
-//     });
-//     
-//     return false;
-//    });
-// };
