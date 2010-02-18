@@ -177,7 +177,7 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 
 #pageviews.module input.page_view_tag_location {margin-right:10px !important;}
 
-#pageviews.module input.page_view_tag_description {margin-right:10px !important;}
+#pageviews.module input.page_view_tag_description {margin-right:10px !important;width:340px;}
 
 #pageviews.module a.button {margin-top:4px;}
 
