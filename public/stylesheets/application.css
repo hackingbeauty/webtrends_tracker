@@ -41,13 +41,13 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .container #top-nav ul {margin-left:-30px;}
 
-.container #top-nav ul li {float:left;margin-right:40px;}
+.container #top-nav ul li {float:left;margin-right:20px;}
 
 .container #top-nav ul li a {/*padding-top:5px;*/display:block;margin-top:3px;}
 
 .container #top-nav ul li a.button {background-color:#E2E2E2;/*margin-right:25px;*/}
 
-.container #top-nav ul li.search {/*margin-right:175px;*/margin-right:192px;}
+.container #top-nav ul li.search {/*margin-right:175px;*/margin-right:232px;}
 
 .container #top-nav ul li.logout {/*float:right;*/margin-right:0 !important;}
 

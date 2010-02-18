@@ -11,6 +11,7 @@ Rails::Initializer.run do |config|
   config.gem 'authlogic', :version => '2.1.1'
   config.gem 'haml', :version => '2.2.20'
   config.gem 'will_paginate', :version => '2.3.12'
+  config.gem 'activeresource', :version => '2.3.5'
   
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
