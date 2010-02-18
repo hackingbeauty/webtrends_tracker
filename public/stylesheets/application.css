@@ -25,6 +25,8 @@ textarea {display:block;}
 
 a.button {color:black;font-size:18px;height:22px;text-decoration:none;display:inline-block;padding:0px 4px 4px 4px;}
 
+span.instruction {font-size:75%;}
+
 /*	=Logo
 	...................................................................... */
 
@@ -40,7 +42,9 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .container #top-nav ul li {float:left;}
 
-.container #top-nav ul li a {padding-top:5px;display:block;}
+.container #top-nav ul li a {/*padding-top:5px;*/display:block;margin-top:3px;}
+
+.container #top-nav ul li a.button {background-color:#E2E2E2;margin-right:25px;}
 
 .container #top-nav ul li.search {margin-right:175px;}
 
@@ -164,6 +168,22 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 .submit-multitrack-btn {margin-left:2px !important;}
 
 #multitracks.module #multitracks-show {clear:both;}
+
+#pageviews.module #pageviews-add {display:none;margin-bottom:10px;:float:left;width:100%;}
+
+#pageviews.module #pageviews-show {clear:both;}
+
+#pageviews.module input {float:left;}
+
+#pageviews.module input.page_view_tag_location {margin-right:10px !important;}
+
+#pageviews.module input.page_view_tag_description {margin-right:10px !important;}
+
+#pageviews.module a.button {margin-top:4px;}
+
+.submit-pageview-btn {margin-left:2px !important;}
+
+#pageviews.module .form-row {margin:5px 0 !important;}
 
 
 /*	=New Tag Page (tags/new)

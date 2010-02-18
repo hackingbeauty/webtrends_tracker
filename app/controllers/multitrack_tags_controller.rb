@@ -32,14 +32,11 @@ class MultitrackTagsController < ApplicationController
       else
         type.html do
           @product = @tag.product
+          render :action => 'new'
         end
         type.js {render :json => @tag.product}
-        # render :action => 'new'
       end
-      
     end
-    
-
   end
   
   def update

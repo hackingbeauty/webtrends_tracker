@@ -11,18 +11,23 @@
       %li
         = link_to "Create Multitrack Tag", product_new_multitrack_tag_path(@product), :class => 'button', :id => 'create-multitrack-tag'
       %li
-        = link_to "Create Page View Tag", product_new_page_view_tag_path(@product), :class => 'button'  
+        = link_to "Create Page View Tag", product_new_page_view_tag_path(@product), :class => 'button', :id => 'create-pageview-tag'  
     
 #multitracks.module
   #multitracks-add
     %h3  Add Multitrack Tags
   #multitracks-show      
-    %h3  Multitrack Tags
+    %h3  
+      = "Multitrack Tag <span class='instruction'>(Many Multitrack Tags per page. Contains many Key/Value pairs)"
     = render :partial => 'multitrack_tags/list'
   
 #pageviews.module
-  %h3  Page View Tags
-  = render :partial => 'page_view_tags/list'
+  #pageviews-add
+    %h3  Add Page View Tags
+  #pageviews-show
+    %h3  
+      = "Page View Tags <span class='instruction'>(One Page View Tag per page. May contain many Key/Value pairs)"
+    = render :partial => 'page_view_tags/list'
   
 - content_for :js_data_load do
   = "var PRIMEDIA_product_id = #{@product.id}"
