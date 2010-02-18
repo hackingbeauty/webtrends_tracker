@@ -1,5 +1,6 @@
 (function(){
 	
+	
   /*	=Namespace
   	...................................................................... */
 
@@ -70,8 +71,8 @@
           $('#pageviews-add').after('<form class="create_page_view_tag" method="post" action="/page_view_tags">' +
             '<div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="'+ rails_authenticity_token +'" />' +
             '<div class="form-row">' +
-            '<input type="text" size="15" name="pageview_tag[location]" class="page_view_tag_location" />' +
-            '<input type="text" size="15" name="pageview_tag[description]" class="page_view_tag_description" />' +
+            '<input type="text" size="15" name="page_view_tag[location]" class="page_view_tag_location" />' +
+            '<input type="text" size="15" name="page_view_tag[description]" class="page_view_tag_description" />' +
             '<input class="hidden" class="multitrack_tag_product_id" name="page_view_tag[product_id]" type="hidden" value="'+ PRIMEDIA_product_id +'" />' +
             '<a class="clear button">Clear</a>' +
             '<a class="submit-pageview-btn button">Save</a>' +
@@ -106,7 +107,7 @@
                       '<td>' + page_view_tag.description + '</td>' + 
                       '<td>' + page_view_tag.kind + '</td>' +
                       '<td><a class="button" href="/page_view_tags/'+page_view_tag.id +'">Delete</a></td></tr>d').
-                  appendTo($('table#pageview-tags-table'));
+                  appendTo($('table#page-view-tags-table'));
                 $('form.create_page_view_tag').find(':input:text').each(function(){
                   $(this).val(''); //clear the inputs
                 });

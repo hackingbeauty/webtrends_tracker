@@ -7,7 +7,7 @@ body { background:black;font-family:Trebuchet MS, sans-serif; font-size:100%;}
 
 .container #sub-container {background-color:white; -moz-border-radius:10px;-webkit-border-radius:5px;padding:20px;float:left;}
 
-.container #sub-container #sub-container-back {background:#d4d4d4;float:left;padding:11px;margin-left:10px;}
+.container #sub-container #sub-container-back {background:#d4d4d4;float:left;padding:11px;margin-left:10px;-moz-border-radius:5px;-webkit-border-radius:5px;}
 
 a {color:#89cfe7; font-weight:bold;}
 
@@ -91,13 +91,13 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .container #main table.main-table {margin-top:10px;}
 
-.container #main table.main-table.page_view th.location {}
+.container #main table#multitrack-tags-table a.delete {position:relative;left:13px;}
 
-.container #main table.main-table.page_view th.description {}
+.container #main table#page-view-tags-table a.delete {position:relative;left:4px;}
 
-.container #main table.main-table.page_view th.type {}
+.container #main table#page-view-tags-table th.location {width:200px;}
 
-.container #main table.main-table.page_view th.action {width:90px;}
+.container #main table#page-view-tags-table th.description {width:210px;}
 
 
 /*	=Inputs
@@ -206,3 +206,26 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 	...................................................................... */
 	
 .tag_actions {float:right;margin-top:-35px;margin-right:10px;}
+
+
+/*	=KeyValueForm (key_value_pairs/_form)
+	...................................................................... */
+
+#kvp_form {margin-bottom:10px !important;float:left;width:100%;}
+
+#kvp_form label {display:none;}
+
+#kvp_form input,
+#kvp_form select {float:left;}
+
+#kvp_form input#key_value_pair_key {width:200px;margin-right:10px !important;}
+
+#kvp_form input#key_value_pair_value {width:200px;margin-right:10px !important;margin-top:20px;}
+
+#kvp_form select#key_value_pair_key_val_type {margin-right:10px !important;width:165px;height:26px;font-size:18px;margin:0.4em 0;}
+
+#kvp_list {clear:both;}
+
+
+
+

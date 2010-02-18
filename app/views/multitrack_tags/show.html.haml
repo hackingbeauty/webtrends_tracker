@@ -1,28 +1,36 @@
 .module
   #tag
-    %h3= "#{h @tag.product.name} : #{h @tag.hook}"
+    %h3= "Multitrack Tag for #{h @tag.product.name}"
     .tag_actions
       = link_to "Edit", edit_multitrack_tag_path(@tag), :class => "button edit"
       = link_to "Delete", multitrack_tag_path(@tag), :confirm => "Are you sure?", :method => "delete", :class => "button"  
   %ul
     %li
       %strong
-        Location
+        Hook:
+      %span
+        = h @tag.hook
+    %li
+      %strong
+        Location:
       %span
         = h @tag.location
     %li
       %strong
-        Description
+        Description:
       %span
         = h @tag.description
 
 .module#key_val_table
-  %h3 Key Value Pairs
-  = render :partial => 'key_value_pairs/list'
-  #key_val_form
-
+  %h3
+    Add Key/Value Pairs
   #kvp_form
     = render :partial => "key_value_pairs/form", :locals => { :key_value_pair => KeyValuePair.new(:tag => @tag) }
+  
+  %h3 Key Value Pairs
+  = render :partial => 'key_value_pairs/list'
+
+
 
 .module
   %h3 Screenshot

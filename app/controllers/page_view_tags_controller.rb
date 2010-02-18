@@ -16,14 +16,22 @@ class PageViewTagsController < ApplicationController
   
   def create
     @tag = PageViewTag.new(params[:page_view_tag])
-    if @tag.save
-      redirect_to @tag
-    else
-      @product = @tag.product
-      render :action => 'new'
+    respond_to do |type|
+      if @tag.save
+        type.html do
+          redirect_to @tag
+        end
+        type.js {render :json => @tag}
+      else
+        type.html do
+          @product = @tag.product
+          render :action => 'new'
+        end
+        type.js {render :json => @tag.product}
+      end
     end
   end
-  
+    
   def destroy    
     @tag.destroy
     redirect_to @tag.product
