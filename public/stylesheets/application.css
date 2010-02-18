@@ -15,7 +15,7 @@ li {list-style-type:none;}
 
 th {text-transform:uppercase;}
 
-h3 {text-transform:uppercase;font-size:17px;font-weight:bold;border-bottom:1px solid #e4e3e3;padding:7px 5px;margin-bottom:0;background:white;}
+h3 {text-transform:uppercase;font-size:17px;font-weight:bold;border-bottom:1px solid #e4e3e3;padding:7px 5px;margin-bottom:5px;background:white;}
 
 textarea {display:block;}
 
@@ -26,6 +26,7 @@ textarea {display:block;}
 a.button {color:black;font-size:18px;height:22px;text-decoration:none;display:inline-block;padding:0px 4px 4px 4px;}
 
 span.instruction {font-size:75%;}
+
 
 /*	=Logo
 	...................................................................... */
@@ -38,23 +39,28 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .container #top-nav {height:38px;background:url('../images/backgrounds/background-nav.png')no-repeat;margin-bottom:30px;}
 
-.container #top-nav ul {margin-left:166px;}
+.container #top-nav ul {margin-left:-30px;}
 
-.container #top-nav ul li {float:left;}
+.container #top-nav ul li {float:left;margin-right:40px;}
 
 .container #top-nav ul li a {/*padding-top:5px;*/display:block;margin-top:3px;}
 
-.container #top-nav ul li a.button {background-color:#E2E2E2;margin-right:25px;}
+.container #top-nav ul li a.button {background-color:#E2E2E2;/*margin-right:25px;*/}
 
-.container #top-nav ul li.search {margin-right:175px;}
+.container #top-nav ul li.search {/*margin-right:175px;*/margin-right:192px;}
 
-.container #top-nav ul li.logout {float:right;}
+.container #top-nav ul li.logout {/*float:right;*/margin-right:0 !important;}
 
 
 /*	=Left Nav
 	...................................................................... */
  
-.container #left-nav {}
+.container #left-nav ul#totals {/*margin-top:10px;*/}
+ 
+.container #left-nav ul#totals li {border-bottom:1px dotted black;padding:10px 0;}
+
+.container #left-nav ul#totals li.last {border-bottom:none;}
+
 
 
 /*	=Module
@@ -205,7 +211,7 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 /*	=Show Tag Page (tags/show)
 	...................................................................... */
 	
-.tag_actions {float:right;margin-top:-35px;margin-right:10px;}
+.tag_actions {float:right;margin-top:-38px;margin-right:10px;}
 
 
 /*	=KeyValueForm (key_value_pairs/_form)

@@ -7,3 +7,13 @@
         - products.each do |p|
           %li
             = link_to p.name, p
+    .module
+      %h3
+        = "Totals <span class='instruction'>(ALL sites)</span>"
+      %ul#totals
+        %li
+          = "Total Tags: #{total_tags}"
+        %li
+          = "Total Multitrack Tags: #{total_multitrack_tags}"
+        %li.last
+          = "Total PageView Tags: #{total_page_view_tags}"

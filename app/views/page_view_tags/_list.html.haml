@@ -16,7 +16,7 @@
     - @page_view_tags.each do |tag|   
       %tr{:class=>"#{cycle('odd', 'even')} row"}
         %td
-          = tag.location
+          = link_to tag.location, tag
         %td
           = tag.description
         %td

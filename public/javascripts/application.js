@@ -12,44 +12,50 @@
   /*	=KeyValueForm Object
   	...................................................................... */
   
-  var KeyValueForm = function(){ // constructor function object  
+  var KeyValueForm = function(){ // constructor function object 
     this.create_key_val = function(){
       var kvp_form = document.getElementById("new_key_value_pair");
       if(kvp_form)
       kvp_form.onsubmit = function(){
-        $.ajax({
-          type: 'post',
-          url: '/key_value_pairs/', 
-          data: $(kvp_form).serialize(),
-          dataType: 'json',
-          error: function() { alert('Key value pair could not be created'); },
-          success: function(res){
-            var kvp = res.key_value_pair;
-            $('<tr><td>' + kvp.key + '</td>' +
-                  '<td>' + kvp.value + '</td>' + 
-                  '<td>' + kvp.key_val_type + '</td>' + 
-                  '<td><a class="button" href="/key_value_pairs/' + kvp.id + '">Delete</a></td></tr>').
-              appendTo($('#key_val_table table'));
-           //AJAX Delete    
-           $('a[href=/key_value_pairs/' + kvp.id + ']').click(function(){
-             var sure = confirm("Are you sure?");
-             if ( ! sure ) {
-               return false;
-             } else {
-               $.ajax({
-                 type: 'post',
-                 data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
-                 url: this.href,
-                 success: function(){
-                   $('#key_val_table table tr:last').fadeOut(1000);
-                 }
-               });
+        var key_input = $(this).find('input#key_value_pair_key').val();
+        if(key_input != ""){//create the post if a hook is supplied
+          $.ajax({
+            type: 'post',
+            url: '/key_value_pairs/', 
+            data: $(kvp_form).serialize(),
+            dataType: 'json',
+            error: function() { alert('Key value pair could not be created'); },
+            success: function(res){
+              var kvp = res.key_value_pair;
+              $('<tr><td>' + kvp.key + '</td>' +
+                    '<td>' + kvp.value + '</td>' + 
+                    '<td>' + kvp.key_val_type + '</td>' + 
+                    '<td><a class="button" href="/key_value_pairs/' + kvp.id + '">Delete</a></td></tr>').
+                appendTo($('#key_val_table table'));
+             //AJAX Delete    
+             $('a[href=/key_value_pairs/' + kvp.id + ']').click(function(){
+               var sure = confirm("Are you sure?");
+               if ( ! sure ) {
+                 return false;
+               } else {
+                 $.ajax({
+                   type: 'post',
+                   data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
+                   url: this.href,
+                   success: function(){
+                     $('#key_val_table table tr:last').fadeOut(1000);
+                   }
+                 });//end ajax
                
-             }
-             return false;
-           });
-          }//end success
-        });
+               }//end if
+               return false;
+             });//end click
+             $('form#new_key_value_pair').find(':input:text').each(function(){
+               $(this).val(''); //clear the inputs
+             });
+            }//end success
+          });//end ajax
+        }//end if
         return false;
       }//end onsubmit
     }//end create_key_val
