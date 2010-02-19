@@ -51,7 +51,7 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .container #top-nav ul li a.button {background-color:#E2E2E2;}
 
-.container #top-nav ul li.search {margin-right:232px;width:390px;}
+.container #top-nav ul li.search {margin-right:232px;width:315px;}
 
 .container #top-nav ul li.logout {margin-right:0 !important;}
 
@@ -93,7 +93,7 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .container #main table.main-table th {font-weight:bold; font-size:14px;background: white url('../images/gradients/gradient-table-heading.png') repeat-x; border:1px solid #dddddd;}
 
-.container #main table.main-table tr {font-size:15px;}
+.container #main table.main-table tr {font-size:16px;}
 
 .container #main table.main-table tr.odd td {background:white;}
 
@@ -120,9 +120,9 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 input {height:22px;}
 
 input,
-textarea {font-size:18px;margin:6px 0 0 0 !important;display:block;}
+textarea {font-size:18px;margin:6px 0 0 0 !important;display:block;font-family:Trebuchet MS, sans-serif;}
 
-input#search-input {float:left;}
+input#search-input {float:left;padding-left:10px;}
 
 input#search-btn {background:url('../images/icons/icon-magnifying-glass.png') 5px 4px no-repeat; border:none; width:25px;float:right;/*margin-top:-10px;position:relative;top:-31px;left:30px;*/}
 
