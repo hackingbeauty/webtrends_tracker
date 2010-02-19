@@ -5,7 +5,7 @@ development:
   encoding: utf8
   pool: 5
   database: webtrends_tracker_development
-  username: wt_dev
+  username: ccuser
   password: y0ud0ntkn0w
   host: dbhost
 
@@ -17,7 +17,7 @@ test:
   encoding: utf8
   pool: 5
   database: webtrends_tracker_test
-  username: wt_dev
+  username: ccuser
   password: y0ud0ntkn0w
   host: dbhost
 
