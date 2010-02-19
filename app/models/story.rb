@@ -20,7 +20,7 @@ class Story < ActiveResource::Base
   end
   
   def multitrack_story_description(tag)
-    desc  = "Please create a WebTrends multitrack tag with a hook of #{tag.hook} - #{tag.location}.\n"
+    desc  = "Please create a WebTrends multitrack tag with a hook of #{tag.hook} - #{tag.location}.\n\n"
     desc += "Please verify that the following key/value pairs are present when a multitrack tag is fired for #{tag.hook}:\n"
     
     defaults = tag.multitrack_key_values.keys

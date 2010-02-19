@@ -36,7 +36,7 @@ describe Story do
       s.name.should == "WebTrends - Create/Update multitrack tag for #{t.location}" 
       s.requested_by.should == "Jeri Beckley"
     
-      desc  = "Please create a WebTrends multitrack tag with a hook of wt_ag_0001 - Search results page.\n"
+      desc  = "Please create a WebTrends multitrack tag with a hook of wt_ag_0001 - Search results page.\n\n"
       desc += "Please verify that the following key/value pairs are present when a multitrack tag is fired for wt_ag_0001:\n"
       desc += "clicktype => search\n"
       desc += "WT.dl => <pageview or multitrack> (default)\n"

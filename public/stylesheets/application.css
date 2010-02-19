@@ -114,13 +114,13 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 .container #main table#page-view-tags-table th.description {width:210px;}
 
 
-
-
-
 /*	=Inputs
 	...................................................................... */
 
-input {font-size:18px;height:22px;margin:6px 0 0 0 !important;display:block;}
+input {height:22px;}
+
+input,
+textarea {font-size:18px;margin:6px 0 0 0 !important;display:block;}
 
 input#search-input {float:left;}
 
@@ -247,5 +247,9 @@ form.create_multitrack_tag ul li {float:left;}
 #kvp_list {clear:both;}
 
 
+/*	=New Story Form (story/new)
+	...................................................................... */
+	
+#new-story textarea {height:300px;width:100%;}
 
 
