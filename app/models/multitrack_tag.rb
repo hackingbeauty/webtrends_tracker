@@ -37,7 +37,8 @@ class MultitrackTag < Tag
       "dcsdat"    => "timestamp",
       "WT.vt_sid" => "session id",
       "WT.co_f"   => "unique session id",
-      "WT.dl"     => "pageview or multitrack"
+      "WT.dl"     => "pageview or multitrack",
+      "rand"      => "random cache buster"
     }
   end
   

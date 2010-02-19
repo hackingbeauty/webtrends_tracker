@@ -1,0 +1,10 @@
+#new-story
+  = f.error_messages
+  .form-row
+    = f.text_field :name
+  .form-row
+    = f.text_field :requested_by
+  .form-row
+    = f.text_area  :description, :cols => '70'
+
+    = f.submit "Save", :id => "submit", :class => "button"

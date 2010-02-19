@@ -7,7 +7,7 @@ body { background:black;font-family:Trebuchet MS, sans-serif; font-size:100%;}
 
 .container #sub-container {background-color:white; -moz-border-radius:10px;-webkit-border-radius:5px;padding:20px;float:left;}
 
-.container #sub-container #sub-container-back {background:#d4d4d4;float:left;padding:11px;margin-left:10px;-moz-border-radius:5px;-webkit-border-radius:5px;}
+.container #sub-container #sub-container-back {background:#d4d4d4;float:left;padding:11px;margin-left:10px;-moz-border-radius:5px;-webkit-border-radius:5px;width:910px;}
 
 a {color:#89cfe7; font-weight:bold;}
 
@@ -41,19 +41,19 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 /*	=Top Nav
 	...................................................................... */
 
-.container #top-nav {height:38px;background:url('../images/backgrounds/background-nav.png')no-repeat;margin-bottom:30px;}
+.container #top-nav {height:38px;background: url('../images/backgrounds/background-nav.png') no-repeat;margin-bottom:30px;}
 
 .container #top-nav ul {margin-left:-30px;}
 
 .container #top-nav ul li {float:left;margin-right:20px;}
 
-.container #top-nav ul li a {/*padding-top:5px;*/display:block;margin-top:3px;}
+.container #top-nav ul li a {display:block;margin-top:3px;}
 
-.container #top-nav ul li a.button {background-color:#E2E2E2;/*margin-right:25px;*/}
+.container #top-nav ul li a.button {background-color:#E2E2E2;}
 
-.container #top-nav ul li.search {/*margin-right:175px;*/margin-right:232px;}
+.container #top-nav ul li.search {margin-right:232px;width:390px;}
 
-.container #top-nav ul li.logout {/*float:right;*/margin-right:0 !important;}
+.container #top-nav ul li.logout {margin-right:0 !important;}
 
 
 /*	=Left Nav
@@ -91,7 +91,9 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 /*	=Main Table
 	...................................................................... */
 
-.container #main table.main-table th {background: white url('../images/gradients/gradient-table-heading.png') repeat-x; border:1px solid #dddddd;}
+.container #main table.main-table th {font-weight:bold; font-size:14px;background: white url('../images/gradients/gradient-table-heading.png') repeat-x; border:1px solid #dddddd;}
+
+.container #main table.main-table tr {font-size:15px;}
 
 .container #main table.main-table tr.odd td {background:white;}
 
@@ -109,13 +111,20 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .container #main table#page-view-tags-table th.description {width:210px;}
 
+.container #main table#page-view-tags-table th.description {width:210px;}
+
+
+
+
 
 /*	=Inputs
 	...................................................................... */
 
 input {font-size:18px;height:22px;margin:6px 0 0 0 !important;display:block;}
 
-input#search-btn {background:url('../images/icons/icon-magnifying-glass.png') 0 3px no-repeat; border:none; width:25px;float:right;margin-top:-10px;position:relative;top:-31px;left:30px;}
+input#search-input {float:left;}
+
+input#search-btn {background:url('../images/icons/icon-magnifying-glass.png') 5px 4px no-repeat; border:none; width:25px;float:right;/*margin-top:-10px;position:relative;top:-31px;left:30px;*/}
 
 input[type="hidden"] {display:none !important;} /* Rails adds weird hidden inputs for forms */
 
@@ -125,6 +134,9 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 
 .form-row {margin-bottom:20px;clear:both;}
 
+form.create_page_view_tag ul li {float:left;}
+
+form.create_multitrack_tag ul li {float:left;}
 
 /*	=Login
 	...................................................................... */
@@ -138,8 +150,6 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 #login form div {margin-bottom:20px;}
 
 #login input {display:block;}
-
-#login input.button {position:absolute;bottom:12px;right:27px;}
 
 
 /*	=Show Product Page (products/show)
@@ -167,7 +177,7 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 
 #multitracks.module input.multitrack_tag_hook {margin-right:10px !important;}
 
-#multitracks.module input.multitrack_tag_location {margin-right:10px !important;}
+#multitracks.module input.multitrack_tag_location {margin-right:10px !important;width:174px;}
 
 #multitracks.module input.multitrack_tag_description {margin-right:10px !important;}
 
@@ -177,17 +187,17 @@ input[type="hidden"] {display:none !important;} /* Rails adds weird hidden input
 
 .submit-multitrack-btn {margin-left:2px !important;}
 
-#multitracks.module #multitracks-show {clear:both;}
+#multitracks.module #multitracks-show {clear:both;border:1px solid white;}
 
 #pageviews.module #pageviews-add {display:none;margin-bottom:10px;:float:left;width:100%;}
 
-#pageviews.module #pageviews-show {clear:both;}
+#pageviews.module #pageviews-show {clear:both;border:1px solid white;}
 
 #pageviews.module input {float:left;}
 
 #pageviews.module input.page_view_tag_location {margin-right:10px !important;}
 
-#pageviews.module input.page_view_tag_description {margin-right:10px !important;width:340px;}
+#pageviews.module input.page_view_tag_description {margin-right:10px !important;width:310px;}
 
 #pageviews.module a.button {margin-top:4px;}
 

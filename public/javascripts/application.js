@@ -9,12 +9,11 @@
   }
 
   
-  /*	=KeyValueForm Object
+  /*	=KeyValueForm Object     
   	...................................................................... */
   
   var KeyValueForm = function(){ // constructor function object 
     this.feint_input_value = function(){
-      console.log('inside feint input value');
       $('form#new_key_value_pair input:text').each(function(){
         $(this).addClass("feint");
         $(this).focus(function(){
@@ -91,11 +90,13 @@
           $('#pageviews-add').after('<form class="create_page_view_tag" method="post" action="/page_view_tags">' +
             '<div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="'+ rails_authenticity_token +'" />' +
             '<div class="form-row">' +
-            '<input type="text" size="15" name="page_view_tag[location]" class="page_view_tag_location" value="location" />' +
-            '<input type="text" size="15" name="page_view_tag[description]" class="page_view_tag_description" value="description" />' +
-            '<input class="hidden" class="multitrack_tag_product_id" name="page_view_tag[product_id]" type="hidden" value="'+ PRIMEDIA_product_id +'" />' +
-            '<a class="clear button">Clear</a>' +
-            '<a class="submit-pageview-btn button">Save</a>' +
+            '<ul>' +
+            '<li><input type="text" size="15" name="page_view_tag[location]" class="page_view_tag_location" value="location" /></li>' +
+            '<li><input type="text" size="15" name="page_view_tag[description]" class="page_view_tag_description" value="description" /></li>' +
+            '<li><input class="hidden" class="multitrack_tag_product_id" name="page_view_tag[product_id]" type="hidden" value="'+ PRIMEDIA_product_id +'" /></li>' +
+            '<li><a class="clear button">Clear</a></li>' +
+            '<li><a class="submit-pageview-btn button">Save</a></li>' +
+            '</ul>' +
             '</div>' +
             '</form>');
             $('form.create_page_view_tag input:text').each(function(){//make input value of inputs feint
@@ -165,12 +166,14 @@
           $('#multitracks-add').after('<form class="create_multitrack_tag" method="post" action="/multitrack_tags">' +
             '<div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="'+ rails_authenticity_token +'" />' +
             '<div class="form-row">' +
-            '<input type="text" size="10" name="multitrack_tag[hook]" class="multitrack_tag_hook" value="hook"/>' +
-            '<input type="text" size="15" name="multitrack_tag[location]" class="multitrack_tag_location" value="location" />' +
-            '<input type="text" size="15" name="multitrack_tag[description]" class="multitrack_tag_description" value="description" />' +
-            '<input class="hidden" class="multitrack_tag_product_id" name="multitrack_tag[product_id]" type="hidden" value="'+ PRIMEDIA_product_id +'" />' +
-            '<a class="clear button">Clear</a>' +
-            '<a class="submit-multitrack-btn button">Save</a>' +
+            '<ul>' +
+            '<li><input type="text" size="10" name="multitrack_tag[hook]" class="multitrack_tag_hook" value="hook"/></li>' +
+            '<li><input type="text" size="15" name="multitrack_tag[location]" class="multitrack_tag_location" value="location" /></li>' +
+            '<li><input type="text" size="15" name="multitrack_tag[description]" class="multitrack_tag_description" value="description" /></li>' +
+            '<li><input class="hidden" class="multitrack_tag_product_id" name="multitrack_tag[product_id]" type="hidden" value="'+ PRIMEDIA_product_id +'" /></li>' +
+            '<li><a class="clear button">Clear</a></li>' +
+            '<li><a class="submit-multitrack-btn button">Save</a></li>' +
+            '</ul>' +
             '</div>' +
             '</form>');
             $('form.create_multitrack_tag input:text').each(function(){//make input value of inputs feint

@@ -25,24 +25,6 @@ class Tag < ActiveRecord::Base
     
   validates_presence_of :product
   
-  def multitrack_key_values
-    {
-      "dcsuri"    => "uri of page",
-      "dcsdat"    => "timestamp",
-      "WT.vt_sid" => "session id",
-      "WT.co_f"   => "unique session id",
-      "WT.dl"     => "pageview or multitrack"
-    }
-  end
-  
-  def after_create
-    if self.kind == "multitrack"
-      multitrack_key_values.each do |k, v |
-        self.key_value_pairs.create(:key => k, :value => v)
-      end
-    end
-  end
-  
   def value_str(key)
     @key_value_pairs ||= self.key_value_pairs  
     key_names = @key_value_pairs.map(&:key)

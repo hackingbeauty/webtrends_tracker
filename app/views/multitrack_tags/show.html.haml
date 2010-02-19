@@ -3,7 +3,8 @@
     %h3= "Multitrack Tag for #{h @tag.product.name}"
     .tag_actions
       = link_to "Edit", edit_multitrack_tag_path(@tag), :class => "button edit"
-      = link_to "Delete", multitrack_tag_path(@tag), :confirm => "Are you sure?", :method => "delete", :class => "button"  
+      = link_to "Delete", multitrack_tag_path(@tag), :confirm => "Are you sure?", :method => "delete", :class => "button"
+      = link_to "Create Story", new_story_path(:tag_id => @tag.id), :class => "button"  
   %ul
     %li
       %strong

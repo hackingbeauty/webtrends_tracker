@@ -1,0 +1,2 @@
+- form_for :story, @story, :url => story_path, :builder => LabeledFormBuilder, :html => { :id => 'create_story', :class => 'module', :multipart => true } do |f|
+  = render :partial => "fields", :locals => { :f => f }

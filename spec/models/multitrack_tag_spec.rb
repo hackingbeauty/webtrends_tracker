@@ -51,7 +51,7 @@ describe MultitrackTag do
   
   it "should retrieve the key_value_pairs association" do
     tag = MultitrackTag.create!(@valid_attributes)
-    tag.key_value_pairs.length.should == 5
+    tag.key_value_pairs.length.should == 6
   end
   
   it "should create standard key/value pairs when a new multitrack tag is saved" do
