@@ -25,16 +25,11 @@ class MultitrackTagsController < ApplicationController
     @tag = MultitrackTag.new(params[:multitrack_tag])
     respond_to do |type|
       if @tag.save
-        type.html do
-          redirect_to @tag
-        end
-        type.js {render :json => @tag}
+        type.html { redirect_to @tag }
+        type.js { render :json => @tag }
       else
-        type.html do
-          @product = @tag.product
-          render :action => 'new'
-        end
-        type.js {render :json => @tag.product}
+        type.html { @product = @tag.product; render :action => 'new' }
+        type.js { render :json => @tag.errors.full_messages, :status => :unprocessable_entity }        
       end
     end
   end

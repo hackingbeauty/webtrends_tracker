@@ -180,7 +180,7 @@
             '<li><input type="text" size="15" name="multitrack_tag[description]" class="multitrack_tag_description" value="description" /></li>' +
             '<li><input class="hidden" class="multitrack_tag_product_id" name="multitrack_tag[product_id]" type="hidden" value="'+ PRIMEDIA_product_id +'" /></li>' +
             '<li><a class="clear button">Clear</a></li>' +
-            '<li><a class="submit-multitrack-btn button">Save</a></li>' +
+            '<li><input type="submit" class="button submit-multitrack-btn" value="Save" /></li>' +
             '</ul>' +
             '</div>' +
             '</form>');
@@ -204,17 +204,27 @@
     },//end delete_multitrack_tag_form_row
     
     this.save_multitrack_tag = function(){
-      $('.submit-multitrack-btn').live('click',function(){
-        $('form.create_multitrack_tag').each(function(index){
-          var hook_val = $(this).find('input.multitrack_tag_hook').val();
-          if(hook_val != ""){//create the post if a hook is supplied
+      $('form.create_multitrack_tag').live('submit',function(){
             $.ajax({
               type: 'post',
               url: '/multitrack_tags/',
               data: $(this).serialize(),
               dataType: 'json',
               error: function(res) { 
-               alert("Multitrack tag could not be created");
+                var errors = JSON.parse(res.responseText);
+                
+                var error_list = $('<ul>');
+                
+                for(var i=0, j=errors.length; i < j; i++){
+                  $('<li>' + errors[i] + '</li>').appendTo(error_list);
+                }
+                
+                error_list.appendTo($('#error_container'));
+                $('#error_container').slideDown(400);
+                setTimeout(function(){
+                  $('#error_container').slideUp(500);
+                }, 8000);
+                
               },
               success: function(res){
                 var multitrack_tag = res.multitrack_tag;              
@@ -236,10 +246,11 @@
                 $('form.create_multitrack_tag').find(':input:text').each(function(){
                   $(this).val(''); //clear the inputs
                 });
-              }
-            });
-          }
-        })//end each
+              }//end success
+            });//end ajax
+            return false;
+          // }//end if
+        // })//end each
       })//end live
     }//end save_multitrack_tag
     

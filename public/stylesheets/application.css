@@ -66,7 +66,6 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 .container #left-nav ul#totals li.last {border-bottom:none;}
 
 
-
 /*	=Module
 	...................................................................... */
 
@@ -86,6 +85,8 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 .flash_notice {color:green;}
 
 .fieldWithErrors .input_error {border:2px solid red;}
+
+#error_container {background-color:white;padding:5px 0; width:100%;display:none;position:absolute;}
 
 
 /*	=Main Table
