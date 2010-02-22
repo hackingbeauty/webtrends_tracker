@@ -13,8 +13,8 @@ describe KeyValuePairsController do
       @params = {
         :key_value_pair => {
           :tag_id => @tag.id,
-          :key => "key",
-          :value => "value"
+          :key => "some key",
+          :value => "some value"
         }
       }
     end

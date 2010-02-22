@@ -18,7 +18,7 @@ class KeyValuePairsController < ApplicationController
           flash[:error] = "Could not create Key Value Pair"
           redirect_to @key_value_pair.tag
         end
-        type.js { render :json => @key_value_pair }
+        type.js { render :json => @key_value_pair.errors.full_messages, :status => :unprocessable_entity }
       end
     end
   end

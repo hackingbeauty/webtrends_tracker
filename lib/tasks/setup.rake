@@ -11,7 +11,7 @@ namespace :setup do
       { :name => "ApartmentGuide",   :abbreviation => "ag",  :pivotal_project_id => 6091  },
       { :name => "RentalHouses",     :abbreviation => "rh",  :pivotal_project_id => 6703  },
       { :name => "NewHomeGuide",     :abbreviation => "nh",  :pivotal_project_id => 8834  },
-      { :name => "NewHomeDirectory", :abbreviation => "nhd", :pivotal_project_id => 8834  },
+      { :name => "NewHomeDirectory", :abbreviation => "nh", :pivotal_project_id => 8834  },
       { :name => "Rentals",          :abbreviation => "rt",  :pivotal_project_id => 22353 },  
     ]
         

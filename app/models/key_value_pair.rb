@@ -18,5 +18,14 @@ class KeyValuePair < ActiveRecord::Base
   
   validates_presence_of :key
   validates_presence_of :value
+  validates_uniqueness_of :key, :scope => :tag_id
   
+  def validate
+    if self.key == 'key'
+      errors.add_to_base("Key must not be blank")
+    end
+    if self.value == 'value'
+      errors.add_to_base("Value must not be blank")
+    end
+  end
 end

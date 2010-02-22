@@ -3,6 +3,17 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "multitrack_tags/show" do
   
   before do
+    # @tag = mock('multitrack_tag',
+    #   :hook => 'wt_ag_0001',
+    #   :location => 'somewhere',
+    #   :description => 'somewhere out there',
+    #   :product => mock('product', :name => "Apartment Guide", :abbreviation => "ag"),
+    #   :key_value_pairs => [
+    #     mock('kvp', :key => 'WT.dl', :value => '1', :id => '123'),
+    #     mock('kvp', :key => 'foo', :value => 'bar', :id => '456'),
+    #   ]
+    # )
+    
     # set up your tag
     @tag = MultitrackTag.create!({
       :hook => 'wt_ag_0001',
@@ -11,7 +22,6 @@ describe "multitrack_tags/show" do
       :product => Product.new(:name => "Apartment Guide", :abbreviation => "ag")
     })
 
-    @tag.key_value_pairs.create :key => "WT.dl", :value => "1"
     @tag.key_value_pairs.create :key => "NAME", :value => "DYNAMIC"
     
     assigns[:tag] = @tag
@@ -41,7 +51,7 @@ describe "multitrack_tags/show" do
     response.should have_tag("table") do
       with_tag("tr") do
         with_tag("td", "WT.dl")
-        with_tag("td", "1")
+        with_tag("td", "dcsuri")
         with_tag("a", /delete/i)
       end
       with_tag("tr") do
