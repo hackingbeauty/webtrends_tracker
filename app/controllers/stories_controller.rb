@@ -1,12 +1,12 @@
 class StoriesController < ApplicationController
   
   def new
-    @tag = Tag.find(params[:tag_id])
+    @tag = Tag.find_by_id(params[:tag_id])
     @story = Story.new({ :tag => @tag })
   end
   
   def create
-    @tag = Tag.find(params[:tag][:id])
+    @tag = Tag.find_by_id(params[:tag][:id])
     @story = Story.new(params[:story].merge({ :tag => @tag }))
     if @story.post_to_pivotal
       flash[:notice] = "Pivotal Story successfully submitted!"

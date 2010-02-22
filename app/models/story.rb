@@ -14,7 +14,7 @@ class Story < ActiveRecord::Base
   end
   
   def pivotal_project_id
-    35087 #self.tag.product.pivotal_project_id
+    self.tag.product.pivotal_project_id
   end
   
   def site
@@ -52,26 +52,9 @@ class Story < ActiveRecord::Base
   def after_initialize
     if tag
       self.name ||= "WebTrends - Create/Update multitrack tag for #{tag.location}" 
-      self.description ||= multitrack_story_description(tag)
+      self.description ||= tag.story_description
     end
     self.requested_by ||= "Jeri Beckley"
   end
-  
-  def multitrack_story_description(tag)
-    desc  = "Please create a WebTrends multitrack tag with a hook of #{tag.hook} - #{tag.location}.\n\n"
-    desc += "Please verify that the following key/value pairs are present when a multitrack tag is fired for #{tag.hook}:\n"
-    
-    defaults = tag.multitrack_key_values.keys
       
-    tag.key_value_pairs.each do |kvp|
-      if defaults.include?(kvp.key)
-        desc += "#{kvp.key} => #{kvp.value} (default)\n"
-      else
-        desc += "#{kvp.key} => #{kvp.value}\n"
-      end
-    end
-    
-    desc += "\n**Please note: All values denoted as \"(default)\" DO NOT need to be specified manually - they are automatically generated."
-  end
-    
 end

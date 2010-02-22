@@ -66,4 +66,19 @@ describe MultitrackTag do
     ara.include?("WT.dl" => 'pageview or multitrack').should be_true
   end
   
+  it "should return a sensible story description for pivotal tracker" do
+    tag = MultitrackTag.new(@valid_attributes)
+    tag.key_value_pairs << KeyValuePair.new(:key => 'clicktype', :value => 'search')
+    tag.key_value_pairs << KeyValuePair.new(:key => 'WT.dl', :value => 'pageview or multitrack')
+    tag.key_value_pairs << KeyValuePair.new(:key => 'rand', :value => 'random cache buster')
+    
+    desc  = "Please create a WebTrends multitrack tag with a hook of wt_rh_1000 - value for location.\n\n"
+    desc += "Please verify that the following key/value pairs are present when a multitrack tag is fired for wt_rh_1000:\n"
+    desc += "clicktype => search\n"
+    desc += "WT.dl => pageview or multitrack (default)\n"
+    desc += "rand => random cache buster (default)\n"
+    desc += "\n**Please note: All values denoted as \"(default)\" DO NOT need to be specified manually - they are automatically generated."
+    tag.story_description.should == desc
+  end
+  
 end

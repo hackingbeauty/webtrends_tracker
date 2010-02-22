@@ -48,4 +48,21 @@ class MultitrackTag < Tag
     end
   end
   
+  def story_description
+    desc  = "Please create a WebTrends multitrack tag with a hook of #{hook} - #{location}.\n\n"
+    desc += "Please verify that the following key/value pairs are present when a multitrack tag is fired for #{hook}:\n"
+
+    defaults = multitrack_key_values.keys
+
+    key_value_pairs.each do |kvp|
+      if defaults.include?(kvp.key)
+        desc += "#{kvp.key} => #{kvp.value} (default)\n"
+      else
+        desc += "#{kvp.key} => #{kvp.value}\n"
+      end
+    end
+
+    desc += "\n**Please note: All values denoted as \"(default)\" DO NOT need to be specified manually - they are automatically generated."
+  end
+  
 end
