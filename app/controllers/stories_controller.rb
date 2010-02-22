@@ -3,12 +3,18 @@ class StoriesController < ApplicationController
   def new
     @tag = Tag.find(params[:tag_id])
     @story = Story.new({ :tag => @tag })
-    # Story.create(:name => "EWWWWWWW", :requested_by => "Jeri Beckley", :description => "green eggs and ham", :project_id => "35087")
   end
   
   def create
-    # headers['X-TrackerToken'] = "#{self.pivotal_token}"
-    
+    @tag = Tag.find(params[:tag][:id])
+    @story = Story.new(params[:story].merge({ :tag => @tag }))
+    if @story.post_to_pivotal
+      flash[:notice] = "Pivotal Story successfully submitted!"
+      redirect_to @tag
+    else
+      flash[:error] = "The Pivotal Story could not be created"
+      render :action => 'new'
+    end
   end
   
 end

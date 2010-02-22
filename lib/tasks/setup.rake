@@ -1,28 +1,28 @@
 namespace :setup do
   
   desc "Setup Admins and Products"
-  task :all => [:admin, :products]
+  task :all => [:products, :admin]
 
   desc "Create default products"
   task :products => :environment do
     
     print "Creating products"
-    products = {
-      "ag"  => "ApartmentGuide",
-      "rh"  => "RentalHouses",
-      "nh"  => "NewHomeGuide",
-      "nhd" => "NewHomeDirectory",
-      "rt"  => "Rentals"
-    }
-    
-    products.each do |abbr, name|
+    products = [
+      { :name => "ApartmentGuide",   :abbreviation => "ag",  :pivotal_project_id => 6091  },
+      { :name => "RentalHouses",     :abbreviation => "rh",  :pivotal_project_id => 6703  },
+      { :name => "NewHomeGuide",     :abbreviation => "nh",  :pivotal_project_id => 8834  },
+      { :name => "NewHomeDirectory", :abbreviation => "nhd", :pivotal_project_id => 8834  },
+      { :name => "Rentals",          :abbreviation => "rt",  :pivotal_project_id => 22353 },  
+    ]
+        
+    products.each do |hsh|
       print "."
-      Product.find_or_create_by_name(:name => name, :abbreviation => abbr)
+      Product.find_or_create_by_name(hsh)
     end
 
     puts "\nDone"
   end
-
+  
   # Add whatever fields you validate in user model
   # for me only username and password
 

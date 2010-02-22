@@ -39,7 +39,7 @@
               $('<tr><td>' + kvp.key + '</td>' +
                     '<td>' + kvp.value + '</td>' + 
                     '<td>' + kvp.key_val_type + '</td>' + 
-                    '<td><a class="button" href="/key_value_pairs/' + kvp.id + '">Delete</a></td></tr>').
+                    '<td><a class="delete button" href="/key_value_pairs/' + kvp.id + '">Delete</a></td></tr>').
                 appendTo($('#key_val_table table'));
              //AJAX Delete    
              $('a[href=/key_value_pairs/' + kvp.id + ']').click(function(){
@@ -134,11 +134,19 @@
               },
               success: function(res){
                 var page_view_tag = res.page_view_tag;
-                $('<tr><td>' + page_view_tag.location + '</td>' +
+                var previous_class, next_class;
+                previous_class = $('table#page-view-tags-table tbody tr:last-child').attr('class');
+                if( previous_class.match(/even/) ) {
+                  next_class = 'odd';
+                } else {
+                  next_class = 'even';
+                }             
+                var new_row = $('<tr><td><a href="/page_view_tags/' + page_view_tag.id +'">' + page_view_tag.location + '</a></td>' +
                       '<td>' + page_view_tag.description + '</td>' + 
-                      '<td>' + page_view_tag.kind + '</td>' +
-                      '<td><a class="button" href="/page_view_tags/'+page_view_tag.id +'">Delete</a></td></tr>d').
-                  appendTo($('table#page-view-tags-table'));
+                      '<td>PageViewTag</td>' +
+                      '<td><a class="delete button" href="/page_view_tags/'+page_view_tag.id +'">Delete</a></td></tr>d');
+                new_row.insertAfter($('table#page-view-tags-table tbody tr:last-child'));
+                new_row.addClass(next_class);
                 $('form.create_page_view_tag').find(':input:text').each(function(){
                   $(this).val(''); //clear the inputs
                 });
@@ -209,13 +217,22 @@
                alert("Multitrack tag could not be created");
               },
               success: function(res){
-                var multitrack_tag = res.multitrack_tag;
-                $('<tr><td>' + multitrack_tag.hook + '</td>' +
+                var multitrack_tag = res.multitrack_tag;              
+                var previous_class, next_class;             
+                previous_class = $('table#multitrack-tags-table tbody tr:last-child').attr('class');             
+                if( previous_class.match(/even/) ) {
+                  next_class = 'odd';
+                } else {
+                  next_class = 'even';
+                }             
+                var new_row = $('<tr><td><a href="/multitrack_tags/' + multitrack_tag.id + '">' + multitrack_tag.hook + '</a></td>' +
                       '<td>' + multitrack_tag.location + '</td>' + 
                       '<td>' + multitrack_tag.description + '</td>' + 
-                      '<td>' + multitrack_tag.kind + '</td>' +
-                      '<td><a class="button" href="/multitrack_tags/'+ multitrack_tag.id +'">Delete</a></td></tr>d').
-                  appendTo($('table#multitrack-tags-table'));
+                      '<td>MultitrackTag</td>' +
+                      '<td><a class="delete button" href="/multitrack_tags/'+ multitrack_tag.id +'">Delete</a></td></tr>d');
+                      
+                new_row.insertAfter($('table#multitrack-tags-table tbody tr:last-child'));
+                new_row.addClass(next_class);
                 $('form.create_multitrack_tag').find(':input:text').each(function(){
                   $(this).val(''); //clear the inputs
                 });

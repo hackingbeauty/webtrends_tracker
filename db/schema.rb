@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091013152157) do
+ActiveRecord::Schema.define(:version => 20100222144044) do
 
   create_table "key_value_pairs", :force => true do |t|
     t.string   "key"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20091013152157) do
     t.string   "abbreviation"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "pivotal_project_id"
   end
 
   create_table "tags", :force => true do |t|

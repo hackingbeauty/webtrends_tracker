@@ -15,9 +15,7 @@
 #
 
 class Tag < ActiveRecord::Base
-  
-  attr_accessor :kind
-  
+    
   has_attached_file :snapshot, :styles => { :normal => "975x975>" }
   
   has_many :key_value_pairs, :order => "'key'"

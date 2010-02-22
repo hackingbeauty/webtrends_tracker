@@ -6,5 +6,7 @@
     = f.text_field :requested_by
   .form-row
     = f.text_area  :description, :cols => '70'
+    
+    = hidden_field :tag, :id
 
     = f.submit "Save", :id => "submit", :class => "button"
