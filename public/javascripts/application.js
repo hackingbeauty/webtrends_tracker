@@ -80,6 +80,22 @@
   	...................................................................... */
   
   var PageViewTag = function() { //constructor function object
+    this.form_row_events = function(){
+      $('#pageviews input:text').live('focus',function(){
+        var self = $(this);
+        self.data('default', self.val());
+        self.val('');
+        self.addClass('normal');
+      });
+      $('#pageviews input:text').live('blur',function(){
+        var self = $(this);
+        if(self.val() == ''){
+          self.val(self.data('default'));
+          self.removeClass('normal');
+          self.addClass('feint');
+        }
+      });
+    },
     this.create_tag_form_field = function(){
       var create_pageview_btn = document.getElementById("create-pageview-tag");
       if(create_pageview_btn){
@@ -87,7 +103,7 @@
           if($('#pageviews-add').is(':hidden')) {
             $('#pageviews-add').show();
           }
-          $('#pageviews-add').after('<form class="create_page_view_tag" method="post" action="/page_view_tags">' +
+          var form_row = '<form class="create_page_view_tag" method="post" action="/page_view_tags">' +
             '<div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="'+ rails_authenticity_token +'" />' +
             '<div class="form-row">' +
             '<ul>' +
@@ -95,20 +111,14 @@
             '<li><input type="text" size="15" name="page_view_tag[description]" class="page_view_tag_description" value="description" /></li>' +
             '<li><input class="hidden" class="multitrack_tag_product_id" name="page_view_tag[product_id]" type="hidden" value="'+ PRIMEDIA_product_id +'" /></li>' +
             '<li><a class="clear button">Clear</a></li>' +
-            '<li><a class="submit-pageview-btn button">Save</a></li>' +
+            '<li><input type="submit" class="button submit-pageview-btn" value="Save" /></li>' +
             '</ul>' +
             '</div>' +
-            '</form>');
-            $('form.create_page_view_tag input:text').each(function(){//make input value of inputs feint
-              $(this).addClass("feint");
-            });
-            $('form.create_page_view_tag input:text').each(function(){//make input value of inputs feint
-              $(this).addClass("feint");
-              $(this).focus(function(){//when user focuses on input, remove value and make font bolder
-                $(this).val('');
-                $(this).addClass('normal');
-              });
-            });
+            '</form>';          
+          $('#pageviews-add').after(form_row);
+          $('#pageviews input:text').each(function(){
+            $(this).addClass('feint');
+          });    
           return false;
         }
       }
@@ -120,40 +130,43 @@
       })
     },//end delete_pageview_tag_form_row
     this.save_page_view_tag = function(){
-      $('.submit-pageview-btn').live('click',function(){
-        $('form.create_page_view_tag').each(function(index){
-          var hook_val = $(this).find('input.pageview_tag_location').val();
-          if(hook_val != ""){//create the post if a hook is supplied
-            $.ajax({
-              type: 'post',
-              url: '/page_view_tags/',
-              data: $(this).serialize(),
-              dataType: 'json',
-              error: function(res) { 
-               alert("PageView tag could not be created");
-              },
-              success: function(res){
-                var page_view_tag = res.page_view_tag;
-                var previous_class, next_class;
-                previous_class = $('table#page-view-tags-table tbody tr:last-child').attr('class');
-                if( previous_class.match(/even/) ) {
-                  next_class = 'odd';
-                } else {
-                  next_class = 'even';
-                }             
-                var new_row = $('<tr><td><a href="/page_view_tags/' + page_view_tag.id +'">' + page_view_tag.location + '</a></td>' +
-                      '<td>' + page_view_tag.description + '</td>' + 
-                      '<td>PageViewTag</td>' +
-                      '<td><a class="delete button" href="/page_view_tags/'+page_view_tag.id +'">Delete</a></td></tr>d');
-                new_row.insertAfter($('table#page-view-tags-table tbody tr:last-child'));
-                new_row.addClass(next_class);
-                $('form.create_page_view_tag').find(':input:text').each(function(){
-                  $(this).val(''); //clear the inputs
-                });
-              }
+      $('form.create_page_view_tag').live('submit',function(){
+        $.ajax({
+          type: 'post',
+          url: '/page_view_tags/',
+          data: $(this).serialize(),
+          dataType: 'json',
+          error: function(res) { 
+           var errors = JSON.parse(res.responseText);
+           var error_list = $('<ul>');
+           var error_container = $('#error_container');
+           error_container.html('');
+           for(var i=0, j=errors.length; i < j; i++){
+             $('<li>' + errors[i] + '</li>').appendTo(error_list);
+           }
+           error_list.appendTo(error_container);
+           error_container.slideDown(400);
+           setTimeout(function(){
+             error_container.slideUp(500);
+           }, 8000);
+          },
+          success: function(res){
+            var page_view_tag = res.page_view_tag;
+            var previous_class = $('table#page-view-tags-table tbody tr:last-child').attr('class');
+            var next_class = previous_class.match(/even/) ? 'odd' : 'even';
+
+            var new_row = $('<tr><td><a href="/page_view_tags/' + page_view_tag.id +'">' + page_view_tag.location + '</a></td>' +
+                  '<td>' + page_view_tag.description + '</td>' + 
+                  '<td>PageViewTag</td>' +
+                  '<td><a class="delete button" href="/page_view_tags/'+page_view_tag.id +'">Delete</a></td></tr>d');
+            new_row.insertAfter($('table#page-view-tags-table tbody tr:last-child'));
+            new_row.addClass(next_class);
+            $('form.create_page_view_tag').find(':input:text').each(function(){
+              $(this).val(''); //clear the inputs
             });
-          }
-        })//end each
+          }//end success
+        });//end ajax
+        return false;
       })//end live
     }// end save_page_view_tag
   }
@@ -164,6 +177,22 @@
   	...................................................................... */
   	
   var MultitrackTag = function(){ // constructor function object
+    this.form_row_events = function(){
+      $('#multitracks input:text').live('focus',function(){
+        var self = $(this);
+        self.data('default', self.val());
+        self.val('');
+        self.addClass('normal');
+      });
+      $('#multitracks input:text').live('blur',function(){
+        var self = $(this);
+        if(self.val() == ''){
+          self.val(self.data('default'));
+          self.removeClass('normal');
+          self.addClass('feint');
+        }
+      });
+    },
     this.create_tag_form_field = function(){
       var create_multitrack_btn = document.getElementById("create-multitrack-tag");
       if(create_multitrack_btn){        
@@ -186,16 +215,11 @@
             '</form>');
             $('form.create_multitrack_tag input:text').each(function(){//make input value of inputs feint
               $(this).addClass("feint");
-              $(this).focus(function(){//when user focuses on input, remove value and make font bolder
-                $(this).val('');
-                $(this).addClass('normal');
-              });
             });
           return false;
         }
       }
     },//end create_tag
-    
     this.delete_multitrack_tag_form_row = function(){
       $('.clear').live('click', function(){
         var form_row = $(this).parents('form.create_multitrack_tag');
@@ -214,15 +238,17 @@
                 var errors = JSON.parse(res.responseText);
                 
                 var error_list = $('<ul>');
+                var error_container = $('#error_container');
+                error_container.html('');
                 
                 for(var i=0, j=errors.length; i < j; i++){
                   $('<li>' + errors[i] + '</li>').appendTo(error_list);
                 }
                 
-                error_list.appendTo($('#error_container'));
-                $('#error_container').slideDown(400);
+                error_list.appendTo(error_container);
+                error_container.slideDown(400);
                 setTimeout(function(){
-                  $('#error_container').slideUp(500);
+                  error_container.slideUp(500);
                 }, 8000);
                 
               },
@@ -269,10 +295,12 @@ $(document).ready(function() {
   pt.create_tag_form_field();
   pt.delete_pageview_tag_form_row();
   pt.save_page_view_tag();
+  pt.form_row_events();
   
   var mt = new PRIMEDIA.MultitrackTag();
   mt.create_tag_form_field();
   mt.delete_multitrack_tag_form_row();
   mt.save_multitrack_tag();
-  
+  mt.form_row_events();
+    
 });

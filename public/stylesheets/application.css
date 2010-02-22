@@ -86,7 +86,7 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .fieldWithErrors .input_error {border:2px solid red;}
 
-#error_container {background-color:white;padding:5px 0; width:100%;display:none;position:absolute;}
+#error_container {background-color:white;padding:5px 0; width:100%;display:none;position:fixed;top:0px;}
 
 
 /*	=Main Table
@@ -186,7 +186,8 @@ form.create_multitrack_tag ul li {float:left;}
 
 #multitracks.module #multitracks-add {display:none;margin-bottom:10px;float:left;width:100%;}
 
-.submit-multitrack-btn {margin-left:2px !important;}
+.submit-multitrack-btn,
+.submit-pageview-btn {margin-left:2px !important;position:relative;top:-2px;background-color:white;font-weight:bold;}
 
 #multitracks.module #multitracks-show {clear:both;border:1px solid white;}
 
