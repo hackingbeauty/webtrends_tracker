@@ -20,11 +20,12 @@
     },//end faint_form_rows
     this.form_row_events = function(){
       $('#kvp_form input:text')
-        .live('focus',function(){
+        .live('focus', function(){
           var self = $(this);
-          if ( ! self.data('default') )
+          
+          if ( ! self.data('default') ) {
             self.data('default', self.val());
-
+          }
           if ( self.data('default') == self.val() ){
             self.val('');            
             self.addClass('normal');
@@ -41,62 +42,70 @@
     },//end form_row_events
     this.create_key_val = function(){
       var kvp_form = document.getElementById("new_key_value_pair");
-      if(kvp_form)
-      kvp_form.onsubmit = function(){    
-        $.ajax({
-          type: 'post',
-          url: '/key_value_pairs/', 
-          data: $(kvp_form).serialize(),
-          dataType: 'json',
-          error: function(res) {
-            console.log('error!');
-            var errors = JSON.parse(res.responseText);
-            var error_list = $('<ul>');
-            var error_container = $('#error_container');
-            error_container.html('');
-            for(var i=0, j=errors.length; i < j; i++)
-              $('<li>' + errors[i] + '</li>').appendTo(error_list);
-            error_list.appendTo(error_container);
-            error_container.slideDown(400);
-            setTimeout(function(){ error_container.slideUp(500); }, 8000);  
-          },
-          success: function(res){
-            var previous_row_class = $('table#kvp-table tbody tr:last-child').attr('class');
-            var kvp = res.key_value_pair;
-            $('<tr class="row"><td>' + kvp.key + '</td>' +
-                  '<td>' + kvp.value + '</td>' + 
-                  '<td>' + kvp.key_val_type + '</td>' + 
-                  '<td><a class="delete button" href="/key_value_pairs/' + kvp.id + '">Delete</a></td></tr>').
-              appendTo($('#key_val_table table'));
-           //AJAX Delete button    
-           $('a[href=/key_value_pairs/' + kvp.id + ']').click(function(){
-             var sure = confirm("Are you sure?");
-             if ( ! sure ) {
+      if(kvp_form){
+        kvp_form.onsubmit = function(){    
+          $.ajax({
+            type: 'post',
+            url: '/key_value_pairs/', 
+            data: $(kvp_form).serialize(),
+            dataType: 'json',
+            error: function(res) {
+              var errors = JSON.parse(res.responseText);
+              var error_list = $('<ul>');
+              var error_container = $('#error_container');
+              error_container.html('');
+              for(var i=0, j=errors.length; i < j; i++)
+                $('<li>' + errors[i] + '</li>').appendTo(error_list);
+              error_list.appendTo(error_container);
+              error_container.slideDown(400);
+              setTimeout(function(){ error_container.slideUp(500); }, 8000);  
+            },
+            success: function(res){
+              var kvp = res.key_value_pair;
+              var new_row = $('<tr class="row"><td>' + kvp.key + '</td>' +
+                    '<td>' + kvp.value + '</td>' + 
+                    '<td>' + kvp.key_val_type + '</td>' + 
+                    '<td><a class="delete button" href="/key_value_pairs/' + kvp.id + '">Delete</a></td></tr>');             
+             //AJAX Delete button    
+             $('a[href=/key_value_pairs/' + kvp.id + ']').click(function(){
+               var sure = confirm("Are you sure?");
+               if ( ! sure ) {
+                 return false;
+               } else {
+                 $.ajax({
+                   type: 'post',
+                   data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
+                   url: this.href,
+                   success: function(){
+                     $('#key_val_table table tr:last').fadeOut(1000);
+                   }
+                 });//end ajax
+               }//end if
                return false;
+             });//end click 
+             //zebra striping
+             var prev = $('table#kvp-table tbody tr:last-child');
+             if( prev.length ) {
+               new_row.insertAfter(prev);
+               var previous_class = prev.attr('class');             
+               var next_class = previous_class.match(/even/) ? 'odd' : 'even';
+               new_row.addClass(next_class);
              } else {
-               $.ajax({
-                 type: 'post',
-                 data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
-                 url: this.href,
-                 success: function(){
-                   $('#key_val_table table tr:last').fadeOut(1000);
-                 }
-               });//end ajax
-             }//end if
-             return false;
-           });//end click 
-           var next_row_class = previous_row_class.match(/even/) ? 'odd' : 'even';
-           $('table#kvp-table tbody tr:last-child').addClass(next_row_class);//zebra striping
-           $('#kvp_form input:text').each(function(){//reset default inputs to faint values
-             $(this).removeClass('normal');
-             $(this).addClass('faint');
-           });
-           $('form#new_key_value_pair input#key_value_pair_key').val('key');//reset default input value
-           $('form#new_key_value_pair input#key_value_pair_value').val('value');//reset default input value
-          }//end success
-        });//end ajax
-        return false;
-      }//end onsubmit
+               new_row.appendTo($('#kvp-table tbody'));
+               new_row.addClass('odd');
+             }
+             $('#kvp_form input:text').each(function(){//reset default inputs to faint values
+               $(this).removeClass('normal');
+               $(this).addClass('faint');
+             });
+             $('form#new_key_value_pair input#key_value_pair_key').val('key');//reset default input value
+             $('form#new_key_value_pair input#key_value_pair_value').val('value');//reset default input value
+            }//end success
+          });//end ajax
+          
+          return false;
+        }//end onsubmit
+      }//endif keyval form
     }//end create_key_val
   }//end KeyValueForm
   window.PRIMEDIA.KeyValueForm = KeyValueForm;

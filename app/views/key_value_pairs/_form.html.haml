@@ -1,6 +1,6 @@
 - form_for key_value_pair, :builder => LabeledFormBuilder do |f|
   = f.hidden_field :tag_id
-  = f.text_field :key, :value => 'key'
-  = f.text_field :value, :value => 'value'
+  = f.text_field :key, :value => 'key', :autocomplete => 'off'
+  = f.text_field :value, :value => 'value', :autocomplete => 'off'
   = f.select :key_val_type, %w[WebTrends DataWarehouse]
   = f.submit "Save", :class => "button"

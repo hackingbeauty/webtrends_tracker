@@ -1,12 +1,14 @@
 %table#kvp-table.main-table
-  %tr
-    %th{:width => "25%"} Key
-    %th{:width => "50%"} Value
-    %th{:width => "25%"} Type
-    %th Action
-  - for kvp in @tag.key_value_pairs
-    %tr{:class=>"#{cycle('odd', 'even')} row"}
-      %td= h kvp.key
-      %td= h kvp.value
-      %td= h kvp.key_val_type
-      %td= link_to "Delete", key_value_pair_path(kvp), :confirm => "Are you sure?", :class => "delete button", :method => "delete"
+  %thead
+    %tr
+      %th{:width => "25%"} Key
+      %th{:width => "50%"} Value
+      %th{:width => "25%"} Type
+      %th Action
+  %tbody
+    - for kvp in @tag.key_value_pairs
+      %tr{:class=>"#{cycle('odd', 'even')} row"}
+        %td= h kvp.key
+        %td= h kvp.value
+        %td= h kvp.key_val_type
+        %td= link_to "Delete", key_value_pair_path(kvp), :confirm => "Are you sure?", :class => "delete button", :method => "delete"
