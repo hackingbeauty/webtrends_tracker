@@ -51,7 +51,7 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .container #top-nav ul li a.button {background-color:#E2E2E2;}
 
-.container #top-nav ul li.search {margin-right:310px;width:315px;}
+.container #top-nav ul li.search {margin-right:290px;width:306px;}
 
 .container #top-nav ul li.logout {margin-right:0 !important;}
 
@@ -189,7 +189,7 @@ form.create_multitrack_tag ul li {float:left;}
 
 .submit-multitrack-btn,
 .submit-pageview-btn {margin-left:2px !important;position:relative;top:-2px;background-color:white;font-weight:bold;}
-faint
+
 #multitracks.module #multitracks-show {clear:both;border:1px solid white;}
 
 #pageviews.module #pageviews-add {display:none;margin-bottom:10px;:float:left;width:100%;}

@@ -101,7 +101,7 @@
              $('form#new_key_value_pair input#key_value_pair_key').val('key');//reset default input value
              $('form#new_key_value_pair input#key_value_pair_value').val('value');//reset default input value
             }//end success
-          });//end ajax
+          });//end ajaxca
           
           return false;
         }//end onsubmit
