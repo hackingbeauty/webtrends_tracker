@@ -9,7 +9,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   config.gem 'paperclip', :version => '2.3.1'
   config.gem 'authlogic', :version => '2.1.1'
-  config.gem 'haml', :version => '2.2.20'
+  config.gem 'haml', :version => '2.2.6'
   config.gem 'will_paginate', :version => '2.2.2'
   config.gem 'nokogiri', :version => '1.4.1'
   
