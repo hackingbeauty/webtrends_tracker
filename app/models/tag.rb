@@ -18,7 +18,7 @@ class Tag < ActiveRecord::Base
     
   has_attached_file :snapshot, :styles => { :normal => "975x975>" }
   
-  has_many :key_value_pairs, :order => "'key'"
+  has_many :key_value_pairs, :order => "'key'", :dependent => :destroy
   belongs_to :product
     
   validates_presence_of :product
