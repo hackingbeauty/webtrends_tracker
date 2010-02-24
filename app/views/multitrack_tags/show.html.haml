@@ -10,7 +10,7 @@
       %strong
         Hook:
       %span
-        = h @tag.hook
+        = link_to h(@tag.hook), @tag.product
     %li
       %strong
         Location:
@@ -33,7 +33,7 @@
 
 .module
   %h3 Screenshot
-  - if @tag.snapshot
+  - if @tag.snapshot.exists?
     .snapshot
       = image_tag @tag.snapshot.url(:normal)
   = render :partial => "screen_shot_form", :locals => { :tag => @tag }

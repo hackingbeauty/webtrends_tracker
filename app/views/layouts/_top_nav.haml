@@ -2,8 +2,10 @@
   - if logged_in?
     %ul
       %li.search
-        %input{:id=> "search-input", :type => "text", :value=> "Search", :tabindex => 1, :size => 28}
-        %input{:id => "search-btn", :type => "button", :name=> "search"}
+        %form{ :action => '#', :method => 'get' }
+          %input{:type => 'hidden', :name => 'authenticity_token', :value => form_authenticity_token }
+          %input{:id=> 'search-input', :type => 'text', :name => 'search_input', :value => 'Search', :tabindex => 1, :size => 28}
+          %input{:id => 'search-btn', :type => 'button', :name=> 'search'}
       %li
         = link_to "All Tags", products_path
       %li

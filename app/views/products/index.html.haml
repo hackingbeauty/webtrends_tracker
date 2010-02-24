@@ -19,10 +19,17 @@
     %tbody
       - @tags.each do |tag|
         %tr{:class=>"#{cycle('odd', 'even')} row"}
-          %td  
-            = link_to tag.hook, tag
           %td
-            = tag.location
+            - if tag.hook
+              = link_to tag.hook, tag 
+            - else
+              = "---------------"
+          %td
+            - if tag.hook
+              = tag.location
+            - else
+              = link_to tag.location, tag
+
           %td
             = tag.description
           %td

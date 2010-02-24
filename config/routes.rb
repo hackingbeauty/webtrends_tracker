@@ -8,13 +8,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :tags
   
-  map.resources :multitrack_tags # do |tags| 
-  #     tags.resources :key_value_pairs
-  #   end
+  map.resources :multitrack_tags
   
-  map.resources :page_view_tags # do |tags| 
-  #     tags.resources :key_value_pairs
-  #   end
+  map.resources :page_view_tags
 
   map.resources :key_value_pairs
   map.resources :products do |product|# nested route
@@ -23,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.spreadsheet '/spreadsheet', :controller => 'spreadsheets'
-  
+
   map.root :controller => 'products', :action => 'index'
   
 end

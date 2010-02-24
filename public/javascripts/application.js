@@ -8,6 +8,24 @@
     window.PRIMEDIA = {};
   }
 
+  var Search = function(){};
+  
+  // Search.all = function(){//class method
+  //   alert('hi')
+  // };
+  
+  Search.prototype = {
+    init: function(){
+      var input = $('#search-input');
+      if( input.length ){
+        input.focus(function(){
+          $(this).val('');
+        });
+      }
+    }
+  }
+  
+  window.PRIMEDIA.Search = Search;
   
   /*	=KeyValueForm Object     
   	...................................................................... */
@@ -38,7 +56,7 @@
             self.removeClass('normal');
             self.addClass('faint'); 
           }
-      }); 
+      });
     },//end form_row_events
     this.create_key_val = function(){
       var kvp_form = document.getElementById("new_key_value_pair");
@@ -98,11 +116,15 @@
                $(this).removeClass('normal');
                $(this).addClass('faint');
              });
-             $('form#new_key_value_pair input#key_value_pair_key').val('key');//reset default input value
              $('form#new_key_value_pair input#key_value_pair_value').val('value');//reset default input value
+             $('form#new_key_value_pair input#key_value_pair_key') // auto-focus the value field
+               .focus()
+               .val('')
+               .removeClass('faint')
+               .addClass('normal');
             }//end success
-          });//end ajaxca
-          
+          });//end ajax
+
           return false;
         }//end onsubmit
       }//endif keyval form
@@ -343,5 +365,8 @@ $(document).ready(function() {
   mt.delete_multitrack_tag_form_row();
   mt.save_multitrack_tag();
   mt.form_row_events();
-    
+  
+  var s = new PRIMEDIA.Search();
+  s.init();
+  
 });
