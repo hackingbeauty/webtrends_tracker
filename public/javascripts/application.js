@@ -267,7 +267,7 @@
             
             $('#page-view-tags-table').zebra_stripe();
             
-            $('a[href=/page_view_tags/' + page_view_tag.id + ']').click(function(){
+            $('a[href=/page_view_tags/' + page_view_tag.id + ']:last').click(function(){
                var sure = confirm("Are you sure?");
                if ( ! sure ) {
                  return false;
@@ -409,7 +409,7 @@
             $('#multitrack-tags-table').zebra_stripe();            
             
             //AJAX delete
-            $('a[href=/multitrack_tags/' + multitrack_tag.id + ']').click(function(){
+            $('a[href=/multitrack_tags/' + multitrack_tag.id + ']:last').click(function(){
                var sure = confirm("Are you sure?");
                if ( ! sure ) {
                  return false;

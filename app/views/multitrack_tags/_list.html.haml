@@ -20,9 +20,11 @@
         %td  
           = link_to tag.hook, tag
         %td
-          = tag.location
+          %p.location
+            = tag.location
         %td
-          = tag.description
+          %p.description
+            = tag.description
         %td
           = tag.type
         - if params[:action] == "index"

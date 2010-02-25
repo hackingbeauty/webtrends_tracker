@@ -9,8 +9,6 @@
         %th
           Location
         %th
-          Description
-        %th
           Type
         - if params[:action] == "index"
           %th
@@ -30,8 +28,6 @@
             - else
               = link_to tag.location, tag
 
-          %td
-            = tag.description
           %td
             = tag.type
           - if params[:action] == "index"
