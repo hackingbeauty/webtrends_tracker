@@ -6,7 +6,22 @@
   if(!window.PRIMEDIA) { 
     window.PRIMEDIA = {};
   }
-
+  
+  /*	=Utilities
+  	...................................................................... */
+  
+  var h = function (stg) {                                        
+    return(                                                                 
+      stg.replace(/&/g,'&amp;').                                         
+          replace(/>/g,'&gt;').                                           
+          replace(/</g,'&lt;').                                           
+          replace(/"/g,'&quot;')                                         
+    );                                                                      
+  };
+  
+  /*	=Search Object
+  	...................................................................... */
+  
   var Search = function(){};
   
   Search.prototype = {
@@ -80,26 +95,9 @@
             success: function(res){
               var kvp = res.key_value_pair;
               var new_row = $('<tr class="row"><td>' + kvp.key + '</td>' +
-                    '<td>' + kvp.value + '</td>' + 
+                    '<td>' + h(kvp.value) + '</td>' + 
                     '<td>' + kvp.key_val_type + '</td>' + 
                     '<td><a class="delete button" href="/key_value_pairs/' + kvp.id + '">Delete</a></td></tr>');             
-             //AJAX Delete button    
-             $('a[href=/key_value_pairs/' + kvp.id + ']').click(function(){
-               var sure = confirm("Are you sure?");
-               if ( ! sure ) {
-                 return false;
-               } else {
-                 $.ajax({
-                   type: 'post',
-                   data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
-                   url: this.href,
-                   success: function(){
-                     $('#key_val_table table tr:last').fadeOut(1000);
-                   }
-                 });//end ajax
-               }//end if
-               return false;
-             });//end click 
              //zebra striping
              var prev = $('table#kvp-table tbody tr:last-child');
              if( prev.length ) {
@@ -117,10 +115,26 @@
              });
              $('form#new_key_value_pair input#key_value_pair_value').val('value');//reset default input value
              $('form#new_key_value_pair input#key_value_pair_key') // auto-focus the value field
-               .focus()
-               .val('')
+               .focus().val('')
                .removeClass('faint')
                .addClass('normal');
+             //AJAX Delete button    
+             $('a[href=/key_value_pairs/' + kvp.id + ']').click(function(){
+               var sure = confirm("Are you sure?");
+               if ( ! sure ) {
+                 return false;
+               } else {
+                 $.ajax({
+                   type: 'post',
+                   data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
+                   url: this.href,
+                   success: function(){
+                     new_row.fadeOut(1000);
+                   }
+                 });//end ajax
+               }//end if
+               return false;
+             });//end click
             }//end success
           });//end ajax
 
@@ -226,6 +240,24 @@
               new_row.appendTo($('#page-view-tags-table tbody'));
               new_row.addClass('odd');
             }
+            
+            $('a[href=/page_view_tags/' + page_view_tag.id + ']').click(function(){
+               var sure = confirm("Are you sure?");
+               if ( ! sure ) {
+                 return false;
+               } else {
+                 $.ajax({
+                   type: 'post',
+                   data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
+                   url: this.href,
+                   success: function(){
+                     new_row.fadeOut(1000);
+                   }
+                 });//end ajax
+               }//end if
+               return false;
+             });//end click
+            
             self.fadeOut(400);            
           }//end success
         });//end ajax
@@ -333,6 +365,23 @@
               new_row.appendTo($('#multitrack-tags-table tbody'));
               new_row.addClass('odd');
             }
+            $('a[href=/multitrack_tags/' + multitrack_tag.id + ']').click(function(){
+               var sure = confirm("Are you sure?");
+               if ( ! sure ) {
+                 return false;
+               } else {
+                 $.ajax({
+                   type: 'post',
+                   data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
+                   url: this.href,
+                   success: function(){
+                     new_row.fadeOut(1000);
+                   }
+                 });//end ajax
+               }//end if
+               return false;
+             });//end click
+            
             self.fadeOut(400);  
           }//end success
         });//end ajax
