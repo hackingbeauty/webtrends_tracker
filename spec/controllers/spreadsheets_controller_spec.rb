@@ -20,13 +20,13 @@ describe SpreadsheetsController do
     
     it "should return a comma separated file of tags" do
       kvp = mock_model(KeyValuePair, :key => 'foo', :bar => 'bar')
-      tag = mock_model(Tag, :hook => 'wt_rh_1000', :location => 'blah', :description => 'desc', :key_value_pairs => [kvp], :value_str => 'bar')
+      tag = mock_model(Tag, :hook => 'wt_rh_1000', :location => 'blah', :description => 'desc', :key_value_pairs => [kvp], :value_str => 'bar', :type => 'MultitrackTag')
       product = mock_model(Product, :abbreviation => "rh", :tags => [tag], :name => 'rentalhouses')
       tag.stub!(:product => product)
       Product.should_receive(:all).and_return([product])
       do_get
-      response.body.should include('product,hook,foo')
-      response.body.should include('rentalhouses,wt_rh_1000,bar')
+      response.body.should include('product,type,hook,location,description,foo')
+      response.body.should include('rentalhouses,MultitrackTag,wt_rh_1000,blah,desc,bar')
     end
     
     it "should have a content-type of text/csv in the headers" do
