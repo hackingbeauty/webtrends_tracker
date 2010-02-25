@@ -13,12 +13,25 @@
 
 class KeyValuePair < ActiveRecord::Base
 
+  named_scope :search, lambda { |search_string|
+    {
+      :conditions =>
+        [ "(`key` LIKE :search_string) or (value LIKE :search_string)",
+          {:search_string => "%#{search_string}%"}
+        ]
+    }
+  }
+
   belongs_to :tag
   validates_presence_of :tag
   
   validates_presence_of :key
   validates_presence_of :value
   validates_uniqueness_of :key, :scope => :tag_id
+  
+  def self.per_page
+    20
+  end
   
   def validate
     if self.key == 'key'

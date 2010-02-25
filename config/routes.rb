@@ -19,7 +19,9 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.spreadsheet '/spreadsheet', :controller => 'spreadsheets'
-
+  
+  map.search '/search', :controller => 'search', :conditions => { :method => :get }
+  
   map.root :controller => 'products', :action => 'index'
   
 end

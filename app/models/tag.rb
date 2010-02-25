@@ -15,7 +15,16 @@
 #
 
 class Tag < ActiveRecord::Base
-    
+  
+  named_scope :search, lambda { |search_string|
+    {
+      :conditions =>
+        [ "(hook LIKE :search_string) or (location LIKE :search_string)",
+          {:search_string => "%#{search_string}%"}
+        ]
+    }
+  }
+  
   has_attached_file :snapshot, :styles => { :normal => "975x975>" }
   
   has_many :key_value_pairs, :order => "'key'", :dependent => :destroy

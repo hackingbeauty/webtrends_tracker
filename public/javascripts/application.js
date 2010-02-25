@@ -1,6 +1,5 @@
 (function(){
-	
-	
+  
   /*	=Namespace
   	...................................................................... */
 
@@ -10,16 +9,16 @@
 
   var Search = function(){};
   
-  // Search.all = function(){//class method
-  //   alert('hi')
-  // };
-  
   Search.prototype = {
     init: function(){
       var input = $('#search-input');
       if( input.length ){
         input.focus(function(){
           $(this).val('');
+        });
+        
+        $('#search-btn').click(function(){
+          $(this).parents('form').submit();
         });
       }
     }
@@ -131,7 +130,6 @@
     }//end create_key_val
   }//end KeyValueForm
   window.PRIMEDIA.KeyValueForm = KeyValueForm;
-  
   
   /*	=PageViewTag Object
   	...................................................................... */

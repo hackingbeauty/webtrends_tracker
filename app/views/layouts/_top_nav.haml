@@ -2,8 +2,7 @@
   - if logged_in?
     %ul
       %li.search
-        %form{ :action => '#', :method => 'get' }
-          %input{:type => 'hidden', :name => 'authenticity_token', :value => form_authenticity_token }
+        %form{ :action => '/search', :method => 'get' } 
           %input{:id=> 'search-input', :type => 'text', :name => 'search_input', :value => 'Search', :tabindex => 1, :size => 28}
           %input{:id => 'search-btn', :type => 'button', :name=> 'search'}
       %li

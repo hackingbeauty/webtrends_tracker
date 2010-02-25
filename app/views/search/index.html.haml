@@ -1,0 +1,61 @@
+.module
+  %h3
+    Search Results
+  %table#all-tags-table.main-table
+    %thead
+      %tr
+        %th.hook
+          Hook
+        %th
+          Location
+        %th
+          Description
+        %th
+          Type
+        - if params[:action] == "index"
+          %th
+            Product
+    %tbody
+      - @tags.each do |tag|
+        %tr{:class=>"#{cycle('odd', 'even')} row"}
+          %td
+            - if tag.hook
+              = link_to tag.hook, tag 
+            - else
+              = "---------------"
+          %td
+            - if tag.hook
+              = tag.location
+            - else
+              = link_to tag.location, tag
+
+          %td
+            = tag.description
+          %td
+            = tag.type
+          - if params[:action] == "index"
+            %td
+              = tag.product.name
+      %tr
+  = will_paginate @tags, :param_name => 'tags_page'
+
+  %table#kvp-table.main-table
+    %thead
+      %tr
+        %th{:width => "20%"} Key
+        %th{:width => "20%"} Value
+        %th{:width => "20%"} Key/Val Type
+        %th{:width => "20%"} Tag Type
+        %th{:width => "20%"} Product
+        
+    %tbody
+      - @kvps.each do |kvp|
+        %tr{:class=>"#{cycle('odd', 'even')} row"}
+          %td= link_to kvp.key, kvp.tag
+          %td= h kvp.value
+          %td= h kvp.key_val_type
+          %td= h kvp.tag.type 
+          %td= h kvp.tag.product.name
+          
+  = will_paginate @kvps, :param_name => 'kvps_page'
+          
