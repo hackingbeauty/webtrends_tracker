@@ -19,6 +19,20 @@
     );                                                                      
   };
   
+  $.fn.zebra_stripe = function(){
+    var prev = 'odd';
+    $('tr', this).each(function(){
+      $(this).removeClass('odd even');
+      if( prev == 'odd'){
+        $(this).addClass('even');
+        prev = 'even';
+      } else {
+        $(this).addClass('odd');
+        prev = 'odd';
+      }
+    });
+  };
+  
   /*	=Search Object
   	...................................................................... */
   
@@ -129,7 +143,7 @@
                    data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
                    url: this.href,
                    success: function(){
-                     new_row.fadeOut(1000);
+                     new_row.fadeOut(1000, function(){ $(this).remove(); });
                    }
                  });//end ajax
                }//end if
@@ -200,7 +214,7 @@
     this.delete_pageview_tag_form_row = function(){
       $('.clear').live('click', function(){
         var form_row = $(this).parents('form.create_page_view_tag');
-        $(form_row).fadeOut(300);
+        $(form_row).fadeOut(300, function(){ $(this).remove(); });
       })
     },//end delete_pageview_tag_form_row
     this.save_page_view_tag = function(){
@@ -230,16 +244,28 @@
                   '<td>' + page_view_tag.description + '</td>' + 
                   '<td>PageViewTag</td>' +
                   '<td><a class="delete button" href="/page_view_tags/'+page_view_tag.id +'">Delete</a></td></tr>d');
-            var prev = $('table#page-view-tags-table tbody tr:last-child');
-            if( prev.length ) {
-              new_row.insertAfter(prev);
-              var previous_class = prev.attr('class');             
-              var next_class = previous_class.match(/even/) ? 'odd' : 'even';
-              new_row.addClass(next_class);
+            
+            var rows = $('table#page-view-tags-table tbody tr');
+            var hook_arr = [];
+            
+            rows.each(function(index){
+              hook_arr.push($('td:first a', this).text()); // create an array of all locations
+            }); 
+            
+            hook_arr.push(page_view_tag.location);
+            hook_arr.sort();
+            var index = hook_arr.indexOf(page_view_tag.location); // find where in the sorted array the newly added hook exists
+            var prev_row = $(rows[index - 1]);
+            
+            if( rows.length && prev_row.length == 0 ){
+              new_row.insertBefore($(rows[0]));
+            } else if ( rows.length ) {
+              new_row.insertAfter(prev_row);
             } else {
               new_row.appendTo($('#page-view-tags-table tbody'));
-              new_row.addClass('odd');
             }
+            
+            $('#page-view-tags-table').zebra_stripe();
             
             $('a[href=/page_view_tags/' + page_view_tag.id + ']').click(function(){
                var sure = confirm("Are you sure?");
@@ -251,14 +277,17 @@
                    data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
                    url: this.href,
                    success: function(){
-                     new_row.fadeOut(1000);
+                     new_row.fadeOut(1000, function(){ $(this).remove(); });
                    }
                  });//end ajax
                }//end if
                return false;
              });//end click
             
-            self.fadeOut(400);            
+            self.fadeOut(400, function(){
+              $(this).remove(); // remove from inputs from dom
+              $('.page_view_tag_location:first').focus(); // focus the first pageview input
+            });
           }//end success
         });//end ajax
         return false;
@@ -323,7 +352,7 @@
     this.delete_multitrack_tag_form_row = function(){
       $('.clear').live('click', function(){
         var form_row = $(this).parents('form.create_multitrack_tag');
-        $(form_row).fadeOut(300);
+        $(form_row).fadeOut(300, function(){ $(this).remove(); });
       })
     },//end delete_multitrack_tag_form_row
     
@@ -349,22 +378,37 @@
             setTimeout(function(){ error_container.slideUp(500); }, 8000);
           },
           success: function(res){
-            var multitrack_tag = res.multitrack_tag;              
+            var multitrack_tag = res.multitrack_tag;
+                          
             var new_row = $('<tr><td><a href="/multitrack_tags/' + multitrack_tag.id + '">' + multitrack_tag.hook + '</a></td>' +
                   '<td>' + multitrack_tag.location + '</td>' + 
                   '<td>' + multitrack_tag.description + '</td>' + 
                   '<td>MultitrackTag</td>' +
                   '<td><a class="delete button" href="/multitrack_tags/'+ multitrack_tag.id +'">Delete</a></td></tr>d')      
-            var prev = $('table#multitrack-tags-table tbody tr:last-child'); 
-            if( prev.length ) {
-              new_row.insertAfter(prev);
-              var previous_class = prev.attr('class');             
-              var next_class = previous_class.match(/even/) ? 'odd' : 'even';
-              new_row.addClass(next_class);
+            
+            var rows = $('table#multitrack-tags-table tbody tr');
+            var hook_arr = [];
+            
+            rows.each(function(index){
+              hook_arr.push($('td:first a', this).text()); // create an array of all multitrack hooks
+            }); 
+            
+            hook_arr.push(multitrack_tag.hook);
+            hook_arr.sort();
+            var index = hook_arr.indexOf(multitrack_tag.hook); // find where in the sorted array the newly added hook exists
+            var prev_row = $(rows[index - 1]);
+                        
+            if( rows.length && prev_row.length == 0 ){
+              new_row.insertBefore($(rows[0]));
+            } else if ( rows.length ) {
+              new_row.insertAfter(prev_row);
             } else {
               new_row.appendTo($('#multitrack-tags-table tbody'));
-              new_row.addClass('odd');
             }
+            
+            $('#multitrack-tags-table').zebra_stripe();            
+            
+            //AJAX delete
             $('a[href=/multitrack_tags/' + multitrack_tag.id + ']').click(function(){
                var sure = confirm("Are you sure?");
                if ( ! sure ) {
@@ -375,14 +419,17 @@
                    data: { '_method': 'delete', 'authenticity_token' : rails_authenticity_token },
                    url: this.href,
                    success: function(){
-                     new_row.fadeOut(1000);
+                     new_row.fadeOut(1000, function(){ $(this).remove(); });
                    }
                  });//end ajax
                }//end if
                return false;
              });//end click
             
-            self.fadeOut(400);  
+            self.fadeOut(400, function(){
+              $(this).remove(); // remove from inputs from dom
+              $('.multitrack_tag_hook:first').focus(); // focus the first multitrack input
+            });
           }//end success
         });//end ajax
         return false;
