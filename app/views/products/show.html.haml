@@ -20,6 +20,7 @@
     %h3  
       = "Multitrack Tags <span class='instruction'>(Many Multitrack Tags per page. Contains many Key/Value pairs)"
     = render :partial => 'multitrack_tags/list'
+  = will_paginate(@multitrack_tags, :param_name => 'multitrack_page')
   
 #pageviews.module
   #pageviews-add
@@ -28,6 +29,7 @@
     %h3  
       = "Page View Tags <span class='instruction'>(One Page View Tag per page. May contain many Key/Value pairs)"
     = render :partial => 'page_view_tags/list'
+  = will_paginate(@page_view_tags, :param_name => 'page_view_page')
   
 - content_for :js_data_load do
   = "var PRIMEDIA_product_id = #{@product.id}"

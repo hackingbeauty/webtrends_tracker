@@ -46,8 +46,8 @@ class Tag < ActiveRecord::Base
     20
   end
   
-  def self.list(page=1)
-    Tag.paginate(:page => page, :order => :type)
+  def self.list(page=1, order=:type)
+    paginate(:page => page, :order => order)
   end
   
 end
