@@ -7,6 +7,7 @@
         - products.each do |p|
           %li
             = link_to p.name, p
+      = link_to "Add Product", new_product_path, :id => 'add_product_link'
     .module
       %h3
         = "Totals <span class='instruction'>(ALL sites)</span>"

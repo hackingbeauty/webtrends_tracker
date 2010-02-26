@@ -1,2 +1,2 @@
-- form_for :multitrack_tag, @tag, :url => multitrack_tags_path, :builder => LabeledFormBuilder, :html => { :id => 'create_tag', :class => 'module', :multipart => true } do |f|
+- form_for :product, @product, :url => products_path, :html => { :class => 'module' } do |f|
   = render :partial => "fields", :locals => { :f => f }

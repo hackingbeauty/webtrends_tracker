@@ -1,0 +1,2 @@
+- form_for :product, @product, :url => @product, :html => { :class => 'module', :method => :put } do |f|
+  = render :partial => "fields", :locals => { :f => f }

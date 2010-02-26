@@ -164,6 +164,13 @@ form.create_multitrack_tag ul li {float:left;}
 /*	=Show Product Page (products/show)
 	...................................................................... */
 
+.module #add_product_link { display:block;margin-bottom:20px; }
+
+.module #delete_product_link, 
+.module #edit_product_link {float:right;margin-top:-35px;}
+
+.module #edit_product_link {margin-right: 133px;}
+
 .module.stats {float:left;width:94.6%;}
 
 .module div.stats {margin-top:10px;}

@@ -1,6 +1,9 @@
 .module.stats
   %h3
     = "Tags for #{@product.name}"
+  = link_to "Edit Product", edit_product_path(@product), :id => 'edit_product_link'
+  = link_to "Delete Product", product_path(@product), :confirm => "Are you sure?", :id => 'delete_product_link', :method => "delete"
+  
   %div.stats    
     %ul.stats-list
       %li

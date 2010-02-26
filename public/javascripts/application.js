@@ -10,6 +10,19 @@
   /*	=Utilities
   	...................................................................... */
   
+  //Patch for IE - cannot use indexOf on Array for IE
+  if(!Array.indexOf){
+      Array.prototype.indexOf = function(obj){
+          for(var i=0; i<this.length; i++){
+              if(this[i]==obj){
+                  return i;
+              }
+          }
+          return -1;
+      }
+  }
+  
+  
   var h = function (stg) {                                        
     return stg.replace(/&/g,'&amp;').                                         
                replace(/>/g,'&gt;').                                           

@@ -1,0 +1,13 @@
+#new_product
+  = f.error_messages
+  .form-row
+    = f.label "Name"
+    = f.text_field :name
+  .form-row
+    = f.label "Abbreviation"
+    = f.text_field :abbreviation
+  .form-row
+    = f.label "Pivotal Project ID"
+    = f.text_field :pivotal_project_id
+  .form-row
+    = f.submit "Save", :id => "submit", :class => "button"
