@@ -27,7 +27,8 @@ describe Story do
       @tag = mock("tag", 
         :nil_object => true, 
         :location => "Search results page", 
-        :hook => 'wt_ag_0001', 
+        :hook => 'wt_ag_0001',
+        :type => 'tag type',
         :story_description => 'desc',
         :multitrack_key_values => {
           'WT.dl' => 'pageview or multitrack', 
@@ -44,7 +45,7 @@ describe Story do
 
     it "should have multitrack values" do
       @story.tag.should == @tag
-      @story.name.should == "WebTrends - Create/Update multitrack tag for #{@tag.location}" 
+      @story.name.should == "WebTrends - Create/Update tag type for #{@tag.location}" 
       @story.requested_by.should == "Jeri Beckley" 
       @story.description.should == @tag.story_description
     end

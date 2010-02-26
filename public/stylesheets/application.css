@@ -120,6 +120,7 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .container #main table td p.location {width:110px;display:table-cell;overflow:hidden !important; vertical-align:middle;}
 
+
 /*	=Inputs
 	...................................................................... */
 
@@ -133,6 +134,8 @@ input#search-input {float:left;padding-left:10px;}
 input#search-btn {background:url('../images/icons/icon-magnifying-glass.png') 5px 4px no-repeat; border:none; width:25px;float:right;/*margin-top:-10px;position:relative;top:-31px;left:30px;*/}
 
 input[type="hidden"] {display:none !important;} /* Rails adds weird hidden inputs for forms */
+
+input#story_name {width:600px;}
 
 
 /*	=Forms

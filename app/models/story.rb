@@ -51,7 +51,7 @@ class Story < ActiveRecord::Base
   
   def after_initialize
     if tag
-      self.name ||= "WebTrends - Create/Update multitrack tag for #{tag.location}" 
+      self.name ||= "WebTrends - Create/Update #{tag.type.to_s.titleize.downcase} for #{tag.location}" 
       self.description ||= tag.story_description
     end
     self.requested_by ||= "Jeri Beckley"
