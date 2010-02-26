@@ -9,28 +9,63 @@
         = "Total Page View Tags: #{@total_page_view_tags}"
     %ul.actions
       %li
-        = link_to "Create Multitrack Tag", product_new_multitrack_tag_path(@product), :class => 'button', :id => 'create-multitrack-tag'
+        = link_to "Create Multitrack Tag", product_new_multitrack_tag_path(@product), :class => 'button', :id => 'create_multitrack_tag'
       %li
-        = link_to "Create Page View Tag", product_new_page_view_tag_path(@product), :class => 'button', :id => 'create-pageview-tag'  
+        = link_to "Create Page View Tag", product_new_page_view_tag_path(@product), :class => 'button', :id => 'create_page_view_tag'  
     
-#multitracks.module
-  #multitracks-add
+#multitrack.module
+  #multitrack_add
     %h3  Add Multitrack Tags
-  #multitracks-show      
+  #multitrack_show      
     %h3  
       = "Multitrack Tags <span class='instruction'>(Many Multitrack Tags per page. Contains many Key/Value pairs)"
     = render :partial => 'multitrack_tags/list'
   = will_paginate(@multitrack_tags, :param_name => 'multitrack_page')
+  #multitrack_form_snippet
+    %form.create_multitrack_tag{ :action => "/multitrack_tags", :method => "post" }
+      %div{ :style => "margin:0;padding:0;display:inline" }
+        %input{ :name => "authenticity_token", :type => "hidden", :value => form_authenticity_token }
+        .form-row
+          %ul
+            %li
+              %input.multitrack_tag_hook{ :name => "multitrack_tag[hook]", :size => "15", :autocomplete => "off", :type => "text", :value => "hook" }
+            %li
+              %input.multitrack_tag_location{ :name => "multitrack_tag[location]", :size => "15", :autocomplete => "off", :type => "text", :value => "location" }
+            %li
+              %input.multitrack_tag_description{ :name => "multitrack_tag[description]", :size => "15", :autocomplete => "off", :type => "text", :value => "description" }
+            %li
+              %input.multitrack_tag_product_id{ :name => "multitrack_tag[product_id]", :type => "hidden", :value => @product.id }
+            %li
+              %a.clear.button
+                Clear
+            %li
+              %input.button.submit_multitrack_btn{ :type => "submit", :value => "Save" }
   
-#pageviews.module
-  #pageviews-add
+  
+#page_view.module
+  #page_view_add
     %h3  Add Page View Tags
-  #pageviews-show
+  #page_view_show
     %h3  
       = "Page View Tags <span class='instruction'>(One Page View Tag per page. May contain many Key/Value pairs)"
     = render :partial => 'page_view_tags/list'
   = will_paginate(@page_view_tags, :param_name => 'page_view_page')
+  #page_view_form_snippet
+    %form.create_page_view_tag{ :action => "/page_view_tags", :method => "post" }
+      %div{ :style => "margin:0;padding:0;display:inline" }
+        %input{ :name => "authenticity_token", :type => "hidden", :value => form_authenticity_token }
+        .form-row
+          %ul
+            %li
+              %input.page_view_tag_location{ :name => "page_view_tag[location]", :size => "15", :autocomplete => "off", :type => "text", :value => "location" }
+            %li
+              %input.page_view_tag_description{ :name => "page_view_tag[description]", :size => "15", :autocomplete => "off", :type => "text", :value => "description" }
+            %li
+              %input.page_view_tag_product_id{ :name => "page_view_tag[product_id]", :type => "hidden", :value => @product.id }
+            %li
+              %a.clear.button
+                Clear
+            %li
+              %input.button.submit_page_view_btn{ :type => "submit", :value => "Save" }
   
-- content_for :js_data_load do
-  = "var PRIMEDIA_product_id = #{@product.id}"
 

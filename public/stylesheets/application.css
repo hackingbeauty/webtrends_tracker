@@ -86,7 +86,7 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .fieldWithErrors .input_error {border:2px solid red;}
 
-#error_container {background-color:white;padding:5px 0; width:100%;display:none;position:fixed;top:0px;}
+#error_container {border-bottom:1px solid black;background-color:white;padding:5px 0; width:100%;display:none;position:fixed;top:0px;}
 
 
 /*	=Tables
@@ -106,13 +106,13 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .container #main table#multitrack-tags-table a.delete {position:relative;left:13px;}
 
-.container #main table#page-view-tags-table a.delete {position:relative;left:4px;}
-
-.container #main table#page-view-tags-table th.location {width:200px;}
-
-.container #main table#page-view-tags-table th.description {width:210px;}
-
-.container #main table#page-view-tags-table th.description {width:210px;}
+.container #main table#page_view_tags_table a.delete {position:relative;left:4px;}
+                       
+.container #main table#page_view_tags_table th.location {width:200px;}
+                       
+.container #main table#page_view_tags_table th.description {width:210px;}
+                       
+.container #main table#page_view_tags_table th.description {width:210px;}
 
 .container #main table#all-tags-table th.hook {width:90px !important;}
 
@@ -173,44 +173,45 @@ form.create_multitrack_tag ul li {float:left;}
 
 .module div.stats ul li a.button {width:190px;}
 
-#multitracks {float:left;width:94.6%;}
+#multitrack {float:left;width:94.6%;}
+           
+#multitrack .form-row {margin:5px 0 !important;}
+                      
+#multitrack.module input {float:left;}
+           
+#multitrack.module input.multitrack_tag_hook {margin-right:10px !important;}
+           
+#multitrack.module input.multitrack_tag_location {margin-right:10px !important;width:174px;}
+           
+#multitrack.module input.multitrack_tag_description {margin-right:10px !important;}
+           
+#multitrack.module a.button {margin-top:4px;}
+           
+#multitrack.module #multitrack_add {display:none;margin-bottom:10px;float:left;width:100%;}
 
-#multitracks .form-row {margin:5px 0 !important;}
+.submit_multitrack_btn,
+.submit_page_view_btn {margin-left:2px !important;position:relative;top:-2px;background-color:white;font-weight:bold;}
 
-#multitracks.module label {/*float:left;*/}
+#multitrack.module #multitrack_show {clear:both;border:1px solid white;}
 
-#multitracks.module input {float:left;}
+#page_view.module #page_view_add {display:none;margin-bottom:10px;:float:left;width:100%;}
 
-#multitracks.module input.multitrack_tag_hook {margin-right:10px !important;}
+#page_view.module #page_view_show {clear:both;border:1px solid white;}
 
-#multitracks.module input.multitrack_tag_location {margin-right:10px !important;width:174px;}
-
-#multitracks.module input.multitrack_tag_description {margin-right:10px !important;}
-
-#multitracks.module a.button {margin-top:4px;}
-
-#multitracks.module #multitracks-add {display:none;margin-bottom:10px;float:left;width:100%;}
-
-.submit-multitrack-btn,
-.submit-pageview-btn {margin-left:2px !important;position:relative;top:-2px;background-color:white;font-weight:bold;}
-
-#multitracks.module #multitracks-show {clear:both;border:1px solid white;}
-
-#pageviews.module #pageviews-add {display:none;margin-bottom:10px;:float:left;width:100%;}
-
-#pageviews.module #pageviews-show {clear:both;border:1px solid white;}
-
-#pageviews.module input {float:left;}
-
-#pageviews.module input.page_view_tag_location {margin-right:10px !important;}
-
-#pageviews.module input.page_view_tag_description {margin-right:10px !important;width:310px;}
-
-#pageviews.module a.button {margin-top:4px;}
+#page_view.module input {float:left;}
+ 
+#page_view.module input.page_view_tag_location {margin-right:10px !important;}
+ 
+#page_view.module input.page_view_tag_description {margin-right:10px !important;width:310px;}
+ 
+#page_view.module a.button {margin-top:4px;}
 
 .submit-pageview-btn {margin-left:2px !important;}
 
-#pageviews.module .form-row {margin:5px 0 !important;}
+#page_view.module .form-row {margin:5px 0 !important;}
+
+#page_view_form_snippet,
+#multitrack_form_snippet {display:none;}
 
 
 /*	=New Tag Page (tags/new)
