@@ -71,7 +71,7 @@
       }
     }
   }
-  
+
   window.PRIMEDIA.Search = Search;
   
   /*	=KeyValueForm Object     
@@ -80,7 +80,6 @@
   var KeyValueForm = function(){ // constructor function object 
     this.init = function(){
       this.create_key_val();
-      //this.form_row_events();
        $('#kvp_form input:text').faint_input(); //utility function to make input value faint font
     },//end init
     this.create_key_val = function(){
