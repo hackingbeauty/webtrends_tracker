@@ -16,7 +16,7 @@
   %tbody
   - if @multitrack_tags and !@multitrack_tags.blank?
     - @multitrack_tags.each do |tag|
-      %tr{:class=>"#{cycle('odd', 'even')} row"}
+      %tr{:class=>"#{cycle('odd', 'even', :name => 'rows')} row"}
         %td  
           = link_to tag.hook, tag
         %td

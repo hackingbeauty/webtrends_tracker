@@ -221,17 +221,17 @@
               
             var row_stg = '<tr>';
             
-              if( tag_type == 'multitrack' ){ 
-                row_stg += '<td><a href="/' + tag_type + '_tags/' + tag.id +'">' + tag.hook + '</a></td>';
-                row_stg += '<td>' + tag.location + '</td>';
-              } else {
-                row_stg += '<td><a href="/' + tag_type + '_tags/' + tag.id +'">' + tag.location + '</a></td>';
-              }
-              
-              row_stg += '<td>' + tag.description + '</td>' + 
-              '<td>' + tag_type_name + '</td>' +
-              '<td><a class="delete button" href="/' + tag_type + '_tags/'+ tag.id +'">Delete</a></td>' +
-              '</tr>';
+            if( tag_type == 'multitrack' ){ 
+              row_stg += '<td><a href="/' + tag_type + '_tags/' + tag.id +'">' + tag.hook + '</a></td>';
+              row_stg += '<td>' + tag.location + '</td>';
+            } else {
+              row_stg += '<td><a href="/' + tag_type + '_tags/' + tag.id +'">' + tag.location + '</a></td>';
+            }
+            
+            row_stg += '<td>' + tag.description + '</td>' + 
+            '<td>' + tag_type_name + '</td>' +
+            '<td><a class="delete button" href="/' + tag_type + '_tags/'+ tag.id +'">Delete</a></td>' +
+            '</tr>';
               
             var new_row = $(row_stg);
             
@@ -247,12 +247,12 @@
             var index = hook_arr.indexOf(tag_sort_key); // find where in the sorted array the newly added hook/location exists
             var prev_row = $(rows[index - 1]);
             
-            if( rows.length && prev_row.length == 0 ){
+            if( rows.length && prev_row.length == 0 ){ // rows present, new_row should be first
               new_row.insertBefore($(rows[0]));
-            } else if ( rows.length ) {
+            } else if ( rows.length ) { // one or more rows present
               new_row.insertAfter(prev_row);
-            } else {
-              new_row.appendTo($('#'+tag_type+'tags_table tbody'));
+            } else { // no previous rows
+              new_row.appendTo($('#'+tag_type+'_tags_table tbody'));
             }
             
             $('#'+tag_type+'_tags_table').zebra_stripe();

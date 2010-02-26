@@ -116,9 +116,9 @@ a#logo {background:url('../images/logo.png');width:320px;height:110px;display:bl
 
 .container #main table#all-tags-table th.hook {width:90px !important;}
 
-.container #main table td p.description {width:140px; overflow:hidden !important; vertical-align:middle;}
+.container #main table td p.description {width:140px;display:table-cell;overflow:hidden !important; vertical-align:middle;}
 
-.container #main table td p.location {width:110px; overflow:hidden !important; vertical-align:middle;}
+.container #main table td p.location {width:110px;display:table-cell;overflow:hidden !important; vertical-align:middle;}
 
 /*	=Inputs
 	...................................................................... */

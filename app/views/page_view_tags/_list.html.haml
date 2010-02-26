@@ -12,9 +12,10 @@
           Product
       %th.action
   %tbody
+  - reset_cycle('rows')
   - if @page_view_tags and !@page_view_tags.blank?
     - @page_view_tags.each do |tag|   
-      %tr{:class=>"#{cycle('odd', 'even')} row"}
+      %tr{:class=>"#{cycle('odd', 'even', :name => 'rows')} row"}
         %td
           = link_to tag.location, tag
         %td
