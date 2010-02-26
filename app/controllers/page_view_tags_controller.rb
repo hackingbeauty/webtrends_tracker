@@ -27,6 +27,15 @@ class PageViewTagsController < ApplicationController
     end
   end
     
+  def update
+    if @tag.update_attributes(params[:tag])
+      flash[:notice] = "Tag updated succesfully"
+      redirect_to @tag
+    else
+      render :action => "edit"
+    end 
+  end  
+    
   def destroy    
     @tag.destroy
     redirect_to @tag.product
