@@ -1,41 +1,32 @@
 # SQLite version 3.x
-#   gem install sqlite3-ruby (not necessary on OS X Leopard)
+#   gem install postgres-ruby (not necessary on OS X Leopard)
 development:
-  adapter: mysql
-  encoding: utf8
-  pool: 5
-  database: webtrends_tracker_development
-  username: ccuser
-  password: y0ud0ntkn0w
-  host: dbhost
-
+ adapter: postgresql
+ encoding: utf8  
+ database: webtrendstracker_dev
+ username: postgres
+ password: orangutan
+ pool: 5
+ timeout: 5000
+ 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: mysql
+  adapter: postgresql
   encoding: utf8
+  database: webtrendstracker_test
+  username: postgres
+  password: orangutan
   pool: 5
-  database: webtrends_tracker_test
-  username: ccuser
-  password: y0ud0ntkn0w
-  host: dbhost
-
-qa:
-  adapter: mysql
-  encoding: utf8
-  pool: 5
-  database: webtrends_tracker_qa
-  username: wt_dev
-  password: y0ud0ntkn0w
-  host: dbhost
-
+  timeout: 5000
+  
 production:
-# SQLite version 3.x
-  adapter: mysql
+  adapter: postgresql
   encoding: utf8
+  database: webtrendstracker_prod
+  username: postgres
+  password: orangutan
   pool: 5
-  database: webtrends_tracker_prod
-  username: wt_dev
-  password: y0ud0ntkn0w
-  host: dbhost
+  timeout: 5000
+
